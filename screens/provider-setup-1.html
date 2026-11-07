@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB - Service Provider Onboarding</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#286652",
+            "surface-variant": "#dae2fd",
+            "tertiary-container": "#43806a",
+            "on-primary": "#ffffff",
+            "surface-tint": "#006780",
+            "surface-container": "#eaedff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004e61",
+            "on-tertiary-container": "#f5fff8",
+            "on-secondary-container": "#007353",
+            "surface": "#faf8ff",
+            "surface-container-highest": "#dae2fd",
+            "primary-fixed-dim": "#6cd3f7",
+            "secondary-container": "#97f5cc",
+            "inverse-surface": "#283044",
+            "background": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "secondary": "#006c4e",
+            "surface-container-low": "#f2f3ff",
+            "surface-bright": "#faf8ff",
+            "surface-dim": "#d2d9f4",
+            "on-surface-variant": "#3e484d",
+            "on-background": "#131b2e",
+            "inverse-on-surface": "#eef0ff",
+            "tertiary-fixed": "#b0f0d6",
+            "primary": "#00647c",
+            "on-tertiary-fixed-variant": "#0b513d",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#002117",
+            "error": "#ba1a1a",
+            "outline-variant": "#bdc8ce",
+            "secondary-fixed-dim": "#7bd8b1",
+            "on-primary-fixed": "#001f28",
+            "on-secondary-fixed-variant": "#00513a",
+            "outline": "#6e797e",
+            "on-secondary-fixed": "#002115",
+            "secondary-fixed": "#97f5cc",
+            "on-primary-container": "#fafdff",
+            "primary-container": "#007f9d",
+            "primary-fixed": "#b7eaff",
+            "tertiary-fixed-dim": "#95d3ba",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#e2e7ff",
+            "inverse-primary": "#6cd3f7",
+            "on-surface": "#131b2e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter-sm": "0.75rem",
+            "margin-lg": "2rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-gradient-btn {
+      background: linear-gradient(135deg, #007f9d 0%, #006c4e 100%);
+    }
+    .custom-stepper-gradient {
+      background: linear-gradient(90deg, #007f9d 0%, #006c4e 100%);
+    }
+    /* Custom subtle ambient card shadow */
+    .card-ambient-shadow {
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-full bg-[#f8fafc] text-on-surface flex justify-center selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Mobile Viewport Container (390px max-width) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#f8fafc] flex flex-col relative pb-32">
+<!-- Shared TopAppBar Anchor Component -->
+<header class="bg-surface-container-lowest/80 dark:bg-surface-dim/80 backdrop-blur-md text-primary dark:text-inverse-primary docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-5 py-3">
+<!-- Leading Icon Button -->
+<button aria-label="Go Back" class="flex items-center justify-center w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container text-primary transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<!-- Brand Center Headline & Shield Mark -->
+<div class="flex items-center gap-1.5">
+<div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">FIB</span>
+</div>
+<!-- Trailing Action: Bilingual Language Switcher -->
+<div class="flex items-center gap-1 bg-surface-container-low border border-outline-variant/30 rounded-full px-2.5 py-1 hover:text-primary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined text-primary text-[16px]">language</span>
+<span class="text-label-md font-label-md font-semibold text-primary">EN</span>
+<span class="text-label-sm font-label-sm text-outline">| GE</span>
+</div>
+</div>
+<!-- Linear Stepper Bar & Metadata Banner -->
+<div class="px-5 pb-3.5 pt-1 border-t border-outline-variant/10">
+<div class="flex items-center justify-between text-body-sm font-body-sm mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="text-label-md font-label-md text-primary font-bold">Step 1 &amp; 2 of 6</span>
+<span class="text-outline text-label-sm">•</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Identity &amp; Narrative</span>
+</div>
+<span class="text-label-md font-label-md font-semibold text-secondary">33% Complete</span>
+</div>
+<!-- Segmented 6-step progress track -->
+<div class="grid grid-cols-6 gap-1.5 w-full h-1.5">
+<div class="h-full rounded-full bg-secondary"></div>
+<div class="h-full rounded-full bg-secondary"></div>
+<div class="h-full rounded-full bg-surface-container-high"></div>
+<div class="h-full rounded-full bg-surface-container-high"></div>
+<div class="h-full rounded-full bg-surface-container-high"></div>
+<div class="h-full rounded-full bg-surface-container-high"></div>
+</div>
+</div>
+</header>
+<!-- Main Wizard Content Canvas -->
+<main class="flex-1 px-5 pt-4 space-y-6">
+<!-- Onboarding Wizard Title & Intro -->
+<section class="space-y-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container/50 border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-label-sm font-semibold text-on-secondary-container">Service Provider Onboarding</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Identity &amp; Narrative</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">პროფილის შექმნა • Configure your public credentials and professional summary to start receiving enterprise mandates.</p>
+</section>
+<!-- STEP 1: Personal Information (პირადი ინფორმაცია) -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 card-ambient-shadow space-y-4">
+<!-- Step Section Header -->
+<div class="flex items-start justify-between pb-3 border-b border-outline-variant/15">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-label-sm font-bold flex items-center justify-center">1</span>
+<h2 class="text-title-md font-title-md font-semibold text-on-surface">Personal Information</h2>
+</div>
+<p class="text-label-sm font-label-sm text-outline mt-0.5">პირადი ინფორმაცია • Appears on verified client quotes</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container text-label-sm font-semibold">Active</span>
+</div>
+<!-- Avatar Uploader Component -->
+<div class="flex items-center gap-4 py-1">
+<div class="relative group cursor-pointer">
+<div class="w-18 h-18 w-[72px] h-[72px] rounded-full ring-2 ring-primary/20 p-0.5 bg-gradient-to-tr from-primary-container/30 to-secondary-container/40 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full rounded-full object-cover" data-alt="Professional studio portrait of Alexandre, a Georgian software architect wearing modern dark apparel with soft ambient cyan studio rim lighting against a clean neutral high-tech background in an executive light-mode aesthetic." src="../assets/img/m60.jpg"/>
+</div>
+<button aria-label="Upload photo" class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm border border-surface-container-lowest hover:bg-primary-container transition-transform active:scale-90" type="button">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</button>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<button class="text-label-md font-label-md font-semibold text-primary hover:underline" type="button">Change photo</button>
+<span class="text-outline text-label-sm">•</span>
+<button class="text-label-sm font-label-sm text-outline hover:text-error transition-colors" type="button">Remove</button>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[11px] leading-tight">PNG, JPG up to 5MB. Recommended min. 400×400px.</p>
+</div>
+</div>
+<!-- Form Input 1: Full Name (Bilingual Context) -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface">Full Legal Name <span class="text-error">*</span></label>
+<span class="text-label-sm font-label-sm text-outline">სახელი და გვარი</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-12 px-3.5 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all placeholder:text-outline-variant" type="text" value="Alexandre Giorgadze / ალექსანდრე გიორგაძე"/>
+<span class="material-symbols-outlined absolute right-3 text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Form Input 2: Professional Title -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface">Professional Headline <span class="text-error">*</span></label>
+<span class="text-label-sm font-label-sm text-outline">პოზიცია</span>
+</div>
+<div class="relative">
+<input class="w-full h-12 px-3.5 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" placeholder="e.g. Senior AI Engineer &amp; Full-Stack Architect" type="text" value="Senior AI Engineer &amp; Full-Stack Architect"/>
+</div>
+<p class="text-body-sm font-body-sm text-outline text-[11px]">Short headline displayed under your name on search directories.</p>
+</div>
+<!-- Form Input 3: Location Selector (Tbilisi, Georgia) -->
+<div class="space-y-1.5">
+<label class="text-label-md font-label-md text-on-surface">Base Location <span class="text-error">*</span></label>
+<div class="relative flex items-center cursor-pointer">
+<span class="material-symbols-outlined absolute left-3.5 text-primary text-[20px]">location_on</span>
+<input class="w-full h-12 pl-10 pr-9 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-body-md font-body-md text-on-surface cursor-pointer focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10" readonly="" type="text" value="Tbilisi, Georgia / თბილისი (GMT+4)"/>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Form Input 4: Verified Contact Email -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface">Institutional Email</label>
+<span class="inline-flex items-center gap-1 text-label-sm font-label-sm font-semibold text-secondary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+              Verified
+            </span>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[18px]">mail</span>
+<input class="w-full h-12 pl-10 pr-9 bg-surface-container-low/60 border border-outline-variant/40 rounded-xl text-body-md font-body-md text-on-surface-variant cursor-not-allowed" readonly="" type="email" value="alexandre@fib.io"/>
+<span class="material-symbols-outlined absolute right-3 text-outline text-[18px]">lock</span>
+</div>
+</div>
+<!-- Form Input 5: Phone Number (International + Flag format) -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface">Mobile Phone</label>
+<span class="text-label-sm font-label-sm text-outline">Optional / არასავალდებულო</span>
+</div>
+<div class="flex items-center gap-2">
+<!-- Georgian Flag Dial Code Selector -->
+<div class="flex items-center gap-1 h-12 px-2.5 bg-surface-container-low border border-outline-variant/60 rounded-xl cursor-pointer hover:bg-surface-container transition-colors">
+<span class="text-[16px] leading-none">🇬🇪</span>
+<span class="text-body-md font-body-md font-medium text-on-surface">+995</span>
+<span class="material-symbols-outlined text-outline text-[16px]">arrow_drop_down</span>
+</div>
+<!-- Number Field -->
+<input class="flex-1 h-12 px-3.5 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all" type="tel" value="599 12 34 56"/>
+</div>
+</div>
+</section>
+<!-- STEP 2: About Me (ჩემს შესახებ) -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 card-ambient-shadow space-y-4">
+<!-- Step Section Header -->
+<div class="flex items-start justify-between pb-3 border-b border-outline-variant/15">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-label-sm font-bold flex items-center justify-center">2</span>
+<h2 class="text-title-md font-title-md font-semibold text-on-surface">About Me</h2>
+</div>
+<p class="text-label-sm font-label-sm text-outline mt-0.5">ჩემს შესახებ • Craft your elevator pitch and experience</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-medium">In Progress</span>
+</div>
+<!-- Experience Level Chips Selection (Single Choice) -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface flex items-center justify-between">
+<span>Overall Experience Tier</span>
+<span class="text-outline text-label-sm">გამოცდილების დონე</span>
+</label>
+<div class="grid grid-cols-2 gap-2">
+<!-- Option 1: Beginner -->
+<div class="p-2.5 rounded-xl border border-outline-variant/50 bg-surface-container-lowest flex items-center justify-between cursor-pointer hover:border-primary/40 transition-colors">
+<div>
+<p class="text-label-md font-label-md text-on-surface">Beginner</p>
+<p class="text-label-sm font-label-sm text-outline">&lt; 1 year</p>
+</div>
+<div class="w-4 h-4 rounded-full border border-outline-variant"></div>
+</div>
+<!-- Option 2: 1-2 years -->
+<div class="p-2.5 rounded-xl border border-outline-variant/50 bg-surface-container-lowest flex items-center justify-between cursor-pointer hover:border-primary/40 transition-colors">
+<div>
+<p class="text-label-md font-label-md text-on-surface">1–2 years</p>
+<p class="text-label-sm font-label-sm text-outline">Mid Junior</p>
+</div>
+<div class="w-4 h-4 rounded-full border border-outline-variant"></div>
+</div>
+<!-- Option 3: 3-5 years -->
+<div class="p-2.5 rounded-xl border border-outline-variant/50 bg-surface-container-lowest flex items-center justify-between cursor-pointer hover:border-primary/40 transition-colors">
+<div>
+<p class="text-label-md font-label-md text-on-surface">3–5 years</p>
+<p class="text-label-sm font-label-sm text-outline">Professional</p>
+</div>
+<div class="w-4 h-4 rounded-full border border-outline-variant"></div>
+</div>
+<!-- Option 4: 5+ years (ACTIVE SENIOR/LEAD) -->
+<div class="p-2.5 rounded-xl border-2 border-secondary bg-secondary-container/15 flex items-center justify-between cursor-pointer shadow-sm">
+<div>
+<p class="text-label-md font-label-md font-bold text-on-secondary-container">5+ years</p>
+<p class="text-label-sm font-label-sm text-secondary font-medium">Senior / Lead</p>
+</div>
+<div class="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bio / Elevator Pitch Textarea -->
+<div class="space-y-1.5 pt-1">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface">Executive Summary &amp; Bio <span class="text-error">*</span></label>
+<span class="text-label-sm font-label-sm text-primary font-medium">348 / 1,000</span>
+</div>
+<div class="relative">
+<textarea class="w-full p-3.5 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all resize-none leading-relaxed" rows="4">Full-stack AI developer with 6+ years building scalable fintech platforms, LLM agents, and high-frequency cloud microservices across European and regional ecosystems. Specialized in ultra-secure banking integrations, decentralized ledgers, and reactive front-end performance.</textarea>
+</div>
+<!-- Pro-Tip Box -->
+<div class="flex items-start gap-2 p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">lightbulb</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant text-[11px] leading-tight">
+<span class="font-semibold text-primary">Tip:</span> Highlight quantified results, key enterprise projects, and proprietary frameworks you specialize in.
+            </p>
+</div>
+</div>
+</section>
+<!-- Institutional Trust Micro-Card -->
+<section class="rounded-xl border border-outline-variant/30 bg-surface-container-low/50 p-3 flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-outline-variant/20 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="space-y-0.5">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface">Encrypted Credential Verification</h4>
+<p class="text-body-sm font-body-sm text-outline text-[11px]">All submissions are hashed and verified according to FIB ISO/IEC 27001 standards.</p>
+</div>
+</section>
+</main>
+<!-- Shared Footer Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant/20 dark:border-outline/20 full-width mt-6 pb-28">
+<div class="flex flex-col items-center justify-center w-full px-5 py-6 gap-3">
+<div class="text-title-md font-title-md font-bold text-primary dark:text-primary-fixed">FIB</div>
+<div class="flex items-center gap-4">
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Privacy Policy</a>
+<span class="text-outline text-label-sm">•</span>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Terms of Service</a>
+<span class="text-outline text-label-sm">•</span>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Security</a>
+</div>
+<p class="text-body-sm font-body-sm text-outline text-center">© 2025 FIB Financial Technologies Inc. All rights reserved.</p>
+</div>
+</footer>
+<!-- Fixed Bottom Sticky Action Bar (Wired for Wizard Task Flow) -->
+<aside class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/30 px-5 py-3.5 z-40 space-y-2 shadow-[0_-8px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-2.5">
+<!-- Back Button -->
+<button class="h-12 px-4 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-on-surface text-label-lg font-label-lg font-semibold hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center" type="button">
+          Back
+        </button>
+<!-- Primary Action Button: Cyan-Emerald Signature Gradient -->
+<button class="flex-1 h-12 custom-gradient-btn text-on-primary rounded-xl font-label-lg text-label-lg font-bold shadow-sm flex items-center justify-center gap-1.5 hover:brightness-105 active:scale-[0.98] transition-all" type="button">
+<span>Continue to Skills</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex items-center justify-center">
+<button class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors py-0.5" type="button">
+          Save &amp; Continue Later (შენახვა)
+        </button>
+</div>
+</aside>
+</div>
+<script src="../assets/screens.js"></script>
+</body></html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FIB — Project Workspace Dashboard &amp; AI Task Engine</title>
+<!-- Tailwind CSS & Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Space Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#F8FAFC",
+            "error-container": "#93000a",
+            "on-primary-container": "#00201f",
+            "primary": "#00E5E2",
+            "surface-container-low": "#111827",
+            "surface-variant": "#1E293B",
+            "on-background": "#F8FAFC",
+            "primary-fixed-dim": "#00ddda",
+            "primary-container": "#00e5e2",
+            "on-tertiary-fixed-variant": "#005046",
+            "outline-variant": "rgba(255, 255, 255, 0.08)",
+            "on-tertiary-container": "#106256",
+            "secondary": "#10B981",
+            "surface-container-lowest": "#0B0F17",
+            "tertiary-fixed-dim": "#8cd4c4",
+            "secondary-fixed-dim": "#4edea3",
+            "outline": "#64748B",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary": "#003824",
+            "background": "#0B0F17",
+            "surface-tint": "#00ddda",
+            "inverse-surface": "#F8FAFC",
+            "surface": "#0B0F17",
+            "tertiary-fixed": "#a8f1e0",
+            "on-primary": "#003736",
+            "on-tertiary-fixed": "#00201b",
+            "on-secondary-fixed-variant": "#005236",
+            "tertiary-container": "#94dccc",
+            "primary-fixed": "#3ffaf7",
+            "on-secondary-fixed": "#002113",
+            "on-secondary-container": "#00311f",
+            "inverse-primary": "#006a68",
+            "on-primary-fixed-variant": "#00504e",
+            "on-error": "#690005",
+            "surface-dim": "#080c14",
+            "surface-container-highest": "#283548",
+            "on-tertiary": "#003730",
+            "surface-bright": "#1F2937",
+            "inverse-on-surface": "#0F172A",
+            "error": "#ffb4ab",
+            "on-primary-fixed": "#00201f",
+            "secondary-container": "#00a572",
+            "tertiary": "#aff9e8",
+            "on-surface-variant": "#94A3B8",
+            "surface-container-high": "#1E293B",
+            "surface-container": "#182234",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "0.75rem",
+            "margin-lg": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+      background-color: #0B0F17;
+    }
+  </style>
+</head>
+<body class="bg-[#0B0F17] text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary/20 selection:text-primary">
+<!-- Mobile Simulator Container (390px Max Standard) -->
+<div class="w-full max-w-[390px] min-h-screen flex flex-col bg-[#0B0F17] relative pb-28 shadow-2xl border-x border-white/[0.06] overflow-x-hidden">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 left-0 right-0 max-w-[390px] mx-auto z-50 flex items-center justify-between px-margin h-16 bg-[#0B0F17]/90 backdrop-blur-md shadow-sm border-b border-white/[0.08]">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 flex items-center justify-center flex-shrink-0"><img src="../assets/logo.svg" alt="FIB Monogram Logo" class="w-7 h-7 object-contain"></div>
+<div>
+<div class="flex items-center gap-1.5 cursor-pointer">
+<span class="text-label-md font-label-md font-bold text-on-surface truncate max-w-[130px]">Social Media Design...</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="expand_more">expand_more</span>
+</div>
+<!-- AI PM status micro-indicator -->
+<div class="flex items-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#10B981] animate-pulse"></span>
+<span class="text-[10px] font-semibold text-emerald-400 tracking-wide uppercase">AI PM Active</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<!-- AI Engine Badge -->
+<div class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="smart_toy">smart_toy</span>
+<span class="text-[10px] font-semibold text-primary">v2.4 Engine</span>
+</div>
+<!-- Theme Switcher Toggle Button -->
+<button aria-label="Toggle Theme" class="w-8 h-8 rounded-full flex items-center justify-center text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all active:scale-95" title="Theme Mode: Dark (FIB Obsidian)">
+<span class="material-symbols-outlined text-[17px]" data-icon="dark_mode">dark_mode</span>
+</button>
+<!-- Notification Button -->
+<button aria-label="Notifications" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-white/[0.06] relative active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error border border-[#0B0F17] shadow-[0_0_6px_rgba(255,180,171,0.6)]"></span>
+</button>
+</div>
+</header>
+<!-- MAIN SCROLLABLE WORKSPACE CONTENT -->
+<main class="flex-1 px-margin pt-20 flex flex-col gap-space-md">
+<!-- SECTION: PROJECT CONTEXT CARD -->
+<section class="bg-[#182234] rounded-xl p-space-md border border-white/[0.08] shadow-[0_4px_24px_-2px_rgba(0,0,0,0.5)] relative overflow-hidden">
+<!-- Visual cyan gradient bar top border indicator -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-emerald-400 to-secondary shadow-[0_0_12px_rgba(0,229,226,0.5)]"></div>
+<div class="flex justify-between items-start mb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/15 text-emerald-300 text-label-sm font-label-sm font-bold tracking-wide border border-emerald-500/20">
+                ACTIVE • Day 1 of 30
+              </span>
+</div>
+<h1 class="text-headline-sm font-headline-sm text-on-surface font-bold mt-1">Social Media Campaign</h1>
+</div>
+<a class="flex items-center gap-1 text-primary text-label-sm font-label-sm font-semibold hover:underline bg-white/[0.05] border border-white/[0.06] px-2 py-1 rounded" href="#">
+<span class="">Signed Brief v1.0</span>
+<span class="material-symbols-outlined text-[13px]" data-icon="description">description</span>
+</a>
+</div>
+<!-- Progress Metrics Bar -->
+<div class="my-2.5">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1">
+<span class="text-on-surface-variant font-medium">Progress</span>
+<span class="text-primary font-bold">15% Setup Complete</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 shadow-[0_0_8px_#00E5E2]" style="width: 15%"></div>
+</div>
+</div>
+<!-- Stakeholders Profile Row -->
+<div class="flex items-center justify-between py-2 border-y border-white/[0.08] my-2">
+<!-- Employer -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<img class="w-8 h-8 rounded-full object-cover border border-white/20" data-alt="Professional headshot of a business executive in modern corporate attire against a neutral high-tech workspace background, soft lighting, cyan and slate accents, crisp portrait style." src="../assets/img/m77.jpg">
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-[#182234]"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface leading-tight">David K.</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Employer (TechCorp)</span>
+</div>
+</div>
+<!-- Divider arrow -->
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="sync_alt">sync_alt</span>
+<!-- Candidate -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<img class="w-8 h-8 rounded-full object-cover border border-white/20" data-alt="Portrait of a young creative digital designer woman smiling, minimalist modern design studio setting, clean lighting, turquoise subtle details, high professional polish." src="../assets/img/m78.jpg">
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary border-2 border-[#182234]"></span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface leading-tight">Nino T.</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Lead Designer</span>
+</div>
+<button aria-label="Direct message" class="w-7 h-7 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-primary active:scale-95 hover:bg-white/[0.1]">
+<span class="material-symbols-outlined text-[15px]" data-icon="forum">forum</span>
+</button>
+</div>
+</div>
+<!-- Key stats pills Bento-like row -->
+<div class="grid grid-cols-2 gap-2 mt-2 pt-1">
+<div class="bg-slate-900/60 rounded-lg p-2.5 flex flex-col justify-between border border-white/[0.06]">
+<div class="flex items-center gap-1 text-[10px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[12px] text-secondary" data-icon="lock">lock</span>
+<span class="">Total Escrow</span>
+</div>
+<span class="text-label-md font-label-md font-bold text-on-surface mt-0.5">1,000 GEL Locked</span>
+</div>
+<div class="bg-slate-900/60 rounded-lg p-2.5 flex flex-col justify-between border border-white/[0.06]">
+<div class="flex items-center gap-1 text-[10px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[12px] text-primary" data-icon="flag">flag</span>
+<span class="">Next Milestone</span>
+</div>
+<span class="text-label-md font-label-md font-bold text-primary mt-0.5">Oct 31 (In 6 days)</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1 text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="event">event</span>
+            Final Deadline: <strong class="text-on-surface ml-0.5">Nov 24</strong>
+</span>
+<a class="text-primary font-semibold flex items-center gap-0.5 hover:underline" href="#">
+            View Contract
+            <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</section>
+<!-- SECTION: AI-GENERATED PROJECT PLAN BANNER -->
+<section class="bg-gradient-to-br from-[#182234] to-[#111827] rounded-xl p-space-md border border-primary/30 relative overflow-hidden shadow-lg">
+<!-- Atmospheric luminous accent -->
+<div class="absolute -right-10 -bottom-10 w-36 h-36 bg-primary/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-start gap-2.5 relative z-10">
+<div class="w-8 h-8 rounded-lg bg-primary text-[#003736] flex items-center justify-center flex-shrink-0 shadow-[0_0_12px_rgba(0,229,226,0.4)]">
+<span class="material-symbols-outlined text-[18px]" data-icon="psychology">psychology</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h2 class="text-label-lg font-label-lg font-bold text-on-surface">Plan Derived from Signed Brief</h2>
+<span class="px-1.5 py-0.2 rounded text-[9px] bg-primary/20 text-primary border border-primary/30 font-bold uppercase tracking-wider">AI Synced</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+              FIB AI mapped out <strong class="text-on-surface">4 key milestones</strong> and <strong class="text-on-surface">8 actionable subtasks</strong> with responsible assignees &amp; escrow gates.
+            </p>
+</div>
+</div>
+<!-- Task Matrix Filter Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto custom-scroll mt-3 pt-1 relative z-10">
+<button class="px-3 py-1.5 rounded-full text-label-sm font-label-sm font-bold bg-primary text-[#003736] whitespace-nowrap shadow-[0_0_10px_rgba(0,229,226,0.3)]">
+            All Tasks (8)
+          </button>
+<button class="px-3 py-1.5 rounded-full text-label-sm font-label-sm font-medium bg-[#111827] text-on-surface-variant border border-white/[0.08] whitespace-nowrap hover:bg-[#1E293B] hover:text-on-surface transition-colors">
+            In Progress (2)
+          </button>
+<button class="px-3 py-1.5 rounded-full text-label-sm font-label-sm font-medium bg-[#111827] text-on-surface-variant border border-white/[0.08] whitespace-nowrap hover:bg-[#1E293B] hover:text-on-surface transition-colors">
+            Review (1)
+          </button>
+<button class="px-3 py-1.5 rounded-full text-label-sm font-label-sm font-medium bg-[#111827] text-on-surface-variant border border-white/[0.08] whitespace-nowrap hover:bg-[#1E293B] hover:text-on-surface transition-colors">
+            Milestones (4)
+          </button>
+</div>
+</section>
+<!-- SECTION: STRUCTURED TASK MATRIX -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-title-md font-title-md font-bold text-on-surface">Milestone 1 Workstream</h3>
+<span class="text-label-sm font-label-sm text-emerald-400 font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+            AI Enforced Gate
+          </span>
+</div>
+<!-- TASK 1: Asset & Brand Guideline Handover -->
+<div class="bg-[#182234] rounded-xl p-3.5 border border-white/[0.08] shadow-sm hover:border-primary/50 transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded flex items-center justify-center border border-slate-600 bg-white/[0.03] text-transparent hover:border-primary cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<span class="text-label-lg font-label-lg font-bold text-on-surface">Asset &amp; Brand Guideline Handover</span>
+</div>
+<!-- Cyan Badge -->
+<span class="px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/25 text-[10px] font-bold tracking-wide flex-shrink-0">
+              In Progress
+            </span>
+</div>
+<!-- Task Details & Critical Path -->
+<div class="mt-2.5 ml-7 flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-medium text-rose-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                Critical Path
+              </span>
+<span class="text-slate-600">•</span>
+<span class="">Due: Tomorrow, 10:00 AM</span>
+</div>
+<!-- Subtask & Assignee info -->
+<div class="bg-slate-900/60 rounded-lg p-2.5 text-[11px] text-on-surface-variant flex flex-col gap-1 border border-white/[0.04]">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-semibold">Subtasks:</span>
+<span class="text-primary font-medium">1 / 2 Completed</span>
+</div>
+<p class="text-[11px] text-slate-300">Vector logos (SVG) &amp; Typography pack handover</p>
+<!-- Attached Files -->
+<div class="flex items-center gap-2 pt-1 border-t border-white/[0.06] mt-1">
+<span class="flex items-center gap-1 text-[10px] font-semibold text-primary">
+<span class="material-symbols-outlined text-[12px]" data-icon="attach_file">attach_file</span>
+                  2 items attached
+                </span>
+<span class="text-slate-600">•</span>
+<span class="text-[10px] text-on-surface-variant">Assignee: <strong class="text-on-surface">David K. (TechCorp)</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- TASK 2: Creative Direction & Moodboard Formulation -->
+<div class="bg-[#182234] rounded-xl p-3.5 border border-white/[0.08] shadow-sm hover:border-emerald-500/50 transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded flex items-center justify-center border border-slate-600 bg-white/[0.03] text-transparent hover:border-emerald-400 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<span class="text-label-lg font-label-lg font-bold text-on-surface">Creative Direction &amp; Moodboard</span>
+</div>
+<!-- Emerald Badge -->
+<span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 text-[10px] font-bold tracking-wide flex-shrink-0">
+              In Progress
+            </span>
+</div>
+<div class="mt-2.5 ml-7 flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px] text-emerald-400" data-icon="schedule">schedule</span>
+                Due: Oct 28
+              </span>
+<span class="text-[11px] text-on-surface-variant">Assignee: <strong class="text-on-surface">Nino T.</strong></span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1 mt-0.5">
+<div class="bg-secondary h-1 rounded-full shadow-[0_0_6px_#10B981]" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- TASK 3: Batch 1: First 6 Social Media Posts (Concepts) -->
+<div class="bg-[#182234] rounded-xl p-3.5 border border-white/[0.08] shadow-sm opacity-95">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded flex items-center justify-center border border-slate-700 bg-white/[0.03] text-transparent">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<div>
+<span class="text-label-lg font-label-lg font-bold text-on-surface">Batch 1: First 6 Social Media Posts</span>
+<div class="text-[10px] text-primary font-bold mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+                  Milestone 1 Gate • 500 GEL Escrow Release
+                </div>
+</div>
+</div>
+<!-- Gray / Upcoming Badge -->
+<span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-on-surface-variant border border-white/[0.08] text-[10px] font-bold tracking-wide flex-shrink-0">
+              Upcoming
+            </span>
+</div>
+<div class="mt-2.5 ml-7 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="text-[11px]">Due: <strong class="text-on-surface">Oct 31</strong></span>
+<span class="text-[11px]">Assignee: <strong class="text-on-surface">Nino T.</strong></span>
+</div>
+</div>
+<!-- TASK 4: Milestone 1 Review & Revision Cycle -->
+<div class="bg-[#182234] rounded-xl p-3.5 border border-white/[0.08] shadow-sm opacity-80">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded flex items-center justify-center border border-slate-700 bg-white/[0.03] text-transparent">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<span class="text-label-lg font-label-lg font-bold text-on-surface">Milestone 1 Review &amp; Revision Cycle</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-on-surface-variant border border-white/[0.08] text-[10px] font-bold tracking-wide flex-shrink-0">
+              Upcoming
+            </span>
+</div>
+<div class="mt-2 ml-7 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1 text-emerald-400 font-medium">
+<span class="material-symbols-outlined text-[13px]" data-icon="gavel">gavel</span>
+              2 revisions policy enforced by AI
+            </span>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="info">info</span>
+</div>
+</div>
+</section>
+<!-- SECTION: QUICK ACTIONS DOCKED PANEL (FLOATING PILL DECK) -->
+<section class="mt-2">
+<div class="bg-[#182234]/95 backdrop-blur-md p-2 rounded-xl border border-white/[0.08] shadow-[0_4px_24px_-2px_rgba(0,0,0,0.6)] flex items-center justify-between gap-1.5">
+<!-- + New Task Button -->
+<button class="flex-1 py-2 px-1 rounded-lg bg-[#111827] text-on-surface font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1 border border-white/[0.06] hover:bg-white/[0.08] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="add">add</span>
+<span class="">Task</span>
+</button>
+<!-- Submit Deliverable Button (Primary Accent) -->
+<button class="flex-[1.4] py-2 px-1 rounded-lg bg-gradient-to-r from-primary to-secondary text-[#003736] font-label-sm text-label-sm font-bold flex items-center justify-center gap-1 shadow-[0_0_15px_rgba(0,229,226,0.3)] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="cloud_upload">cloud_upload</span>
+<span class="">Deliverable</span>
+</button>
+<!-- Ask AI PM Button -->
+<button class="flex-1 py-2 px-1 rounded-lg bg-[#111827] text-on-surface font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1 border border-white/[0.06] hover:bg-white/[0.08] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-emerald-400 text-[16px]" data-icon="smart_toy">smart_toy</span>
+<span class="">Ask AI</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Anchor Component) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-50 flex justify-around items-center px-gutter-sm h-16 bg-[#0B0F17]/90 backdrop-blur-md border-t border-white/[0.08] shadow-[0_-4px_20px_-2px_rgba(0,0,0,0.5)]">
+<!-- Dashboard (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold py-1.5 px-3 rounded-full bg-primary/10 border border-primary/20 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">Dashboard</span>
+</a>
+<!-- Tasks -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="checklist">checklist</span>
+<span class="text-label-sm font-label-sm mt-0.5">Tasks</span>
+</a>
+<!-- Chat with notification dot -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95 relative" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="forum">forum</span>
+<span class="absolute -top-0.5 -right-1 w-2 h-2 rounded-full bg-primary border-2 border-[#0B0F17] shadow-[0_0_6px_#00E5E2]"></span>
+</div>
+<span class="text-label-sm font-label-sm mt-0.5">Chat</span>
+</a>
+<!-- Files -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="folder_open">folder_open</span>
+<span class="text-label-sm font-label-sm mt-0.5">Files</span>
+</a>
+<!-- Escrow -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span class="text-label-sm font-label-sm mt-0.5">Escrow</span>
+</a>
+</nav>
+</div>
+
+
+<script src="../assets/screens.js"></script>
+</body></html>

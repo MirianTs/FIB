@@ -1,0 +1,474 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FIB — Shared Project Chat, Files &amp; Escrow Milestone Rails</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#F8FAFC",
+            "error-container": "#93000a",
+            "on-primary-container": "#00201f",
+            "primary": "#00E5E2",
+            "surface-container-low": "#111827",
+            "surface-variant": "#1E293B",
+            "on-background": "#F8FAFC",
+            "primary-fixed-dim": "#00ddda",
+            "primary-container": "#00e5e2",
+            "on-tertiary-fixed-variant": "#005046",
+            "outline-variant": "rgba(255, 255, 255, 0.08)",
+            "on-tertiary-container": "#106256",
+            "secondary": "#10B981",
+            "surface-container-lowest": "#0B0F17",
+            "tertiary-fixed-dim": "#8cd4c4",
+            "secondary-fixed-dim": "#4edea3",
+            "outline": "#64748B",
+            "secondary-fixed": "#6ffbbe",
+            "on-secondary": "#003824",
+            "background": "#0B0F17",
+            "surface-tint": "#00ddda",
+            "inverse-surface": "#F8FAFC",
+            "surface": "#0B0F17",
+            "tertiary-fixed": "#a8f1e0",
+            "on-primary": "#003736",
+            "on-tertiary-fixed": "#00201b",
+            "on-secondary-fixed-variant": "#005236",
+            "tertiary-container": "#94dccc",
+            "primary-fixed": "#3ffaf7",
+            "on-secondary-fixed": "#002113",
+            "on-secondary-container": "#00311f",
+            "inverse-primary": "#006a68",
+            "on-primary-fixed-variant": "#00504e",
+            "on-error": "#690005",
+            "surface-dim": "#080c14",
+            "surface-container-highest": "#283548",
+            "on-tertiary": "#003730",
+            "surface-bright": "#1F2937",
+            "inverse-on-surface": "#0F172A",
+            "error": "#ffb4ab",
+            "on-primary-fixed": "#00201f",
+            "secondary-container": "#00a572",
+            "tertiary": "#aff9e8",
+            "on-surface-variant": "#94A3B8",
+            "surface-container-high": "#1E293B",
+            "surface-container": "#182234",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "0.75rem",
+            "margin-lg": "2rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-gradient-cta {
+      background: linear-gradient(135deg, #00E5E2 0%, #10B981 100%);
+    }
+    .custom-mesh-card {
+      background: linear-gradient(145deg, #182234 0%, #111827 100%);
+    }
+    body {
+      min-height: max(884px, 100dvh);
+      background-color: #0B0F17;
+    }
+  </style>
+</head>
+<body class="bg-[#0B0F17] text-on-surface antialiased flex justify-center min-h-screen selection:bg-primary/20 selection:text-primary">
+<!-- Mobile Device Simulation Frame (390px Width Container) -->
+<main class="w-full max-w-[390px] relative min-h-screen bg-[#0B0F17] flex flex-col pb-44 shadow-2xl border-x border-white/[0.06] overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 max-w-[390px] mx-auto z-50 flex justify-between items-center px-margin h-16 bg-[#0B0F17]/90 backdrop-blur-md shadow-sm border-b border-white/[0.08]">
+<div class="flex items-center gap-space-sm">
+<img src="../assets/logo.svg" alt="FIB Monogram Logo" class="w-7 h-7 object-contain block shrink-0">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight">FIB Workspace</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-emerald-300 text-label-sm font-label-sm flex items-center gap-1 border border-secondary/30">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#10B981] animate-pulse"></span>
+          Escrow Rail
+        </span>
+<!-- Dark Theme Indicator / Toggle -->
+<button aria-label="Toggle Theme" class="w-8 h-8 rounded-full flex items-center justify-center text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all active:scale-95" title="Theme Mode: Dark (FIB Obsidian)" type="button">
+<span class="material-symbols-outlined text-[17px]" data-icon="dark_mode">dark_mode</span>
+</button>
+<button aria-label="AI Assistant" class="w-8 h-8 rounded-full flex items-center justify-center text-primary hover:bg-white/[0.06] transition-all duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[19px]" data-icon="smart_toy">smart_toy</span>
+</button>
+</div>
+</header>
+<!-- Sub-Header & Segmented Tabs Context -->
+<section class="mt-16 px-margin pt-space-md pb-space-sm bg-[#0B0F17]/90 backdrop-blur-md border-b border-white/[0.08] sticky top-16 z-40">
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider block font-mono">Active Contract • Client View</span>
+<h1 class="text-title-md font-title-md text-on-surface font-bold tracking-tight">Social Media Design Project</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary/15 border border-secondary/30 flex items-center justify-center text-secondary shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+<!-- Tab Selector Navigation Pill -->
+<nav aria-label="Project Hub Tabs" class="flex items-center justify-between p-1 bg-[#182234] rounded-xl border border-white/[0.08]">
+<button class="flex-1 py-1.5 text-center rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-primary transition-all" type="button">
+          Shared Chat
+        </button>
+<button class="flex-1 py-1.5 text-center rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-primary transition-all" type="button">
+          Files (5)
+        </button>
+<button class="flex-1 py-1.5 text-center rounded-lg bg-primary/15 border border-primary/30 text-primary shadow-[0_0_12px_rgba(0,229,226,0.2)] font-semibold text-label-md font-label-md transition-all" type="button">
+          Escrow &amp; Milestones
+        </button>
+</nav>
+</section>
+<!-- Content Body: Micro-Padded Container -->
+<div class="px-margin flex flex-col gap-space-lg pt-space-md">
+<!-- Section 2: Escrow Financial Health & Big Balance Card -->
+<section class="custom-mesh-card rounded-2xl p-space-md border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] relative overflow-hidden">
+<!-- Luminous Glow Accent Element -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Rail Identity & Safety Badge -->
+<div class="flex items-center justify-between pb-space-sm border-b border-white/[0.08] mb-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="lock">lock</span>
+<span class="text-label-sm font-label-sm font-semibold tracking-wide text-on-surface-variant font-mono">Rail #ESC-7729-GEL</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary/15 text-emerald-300 text-label-sm font-label-sm font-semibold border border-secondary/30">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+            Bank-Grade Safety
+          </span>
+</div>
+<!-- Big Balance Metrics Display -->
+<div class="flex flex-col mb-space-md">
+<span class="text-label-md font-label-md text-outline">Total Agreed Budget</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="text-display-lg-mobile font-display-lg-mobile text-on-surface tracking-tight font-bold">1,000 GEL</span>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-emerald-300 border border-secondary/30 text-label-sm font-label-sm font-bold tracking-tight">
+              100% Funded
+            </span>
+</div>
+<span class="text-body-sm font-body-sm text-secondary font-medium mt-1 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#10B981]"></span>
+            In FIB Neutral Escrow Vault
+          </span>
+</div>
+<!-- Interactive Progress Stratification Meter -->
+<div class="w-full bg-slate-800 rounded-full h-2 mb-space-md overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#10B981]" style="width: 50%;"></div>
+<div class="bg-primary/30 h-full rounded-full transition-all duration-500" style="width: 50%;"></div>
+</div>
+<!-- Financial Split Ratio Bento -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-2.5 rounded-xl bg-[#0B0F17]/60 border border-white/[0.06]">
+<span class="text-label-sm font-label-sm text-outline block">Disbursed So Far</span>
+<span class="text-headline-sm font-headline-sm text-on-surface font-semibold mt-0.5 block">0 GEL</span>
+<span class="text-label-sm font-label-sm text-slate-500">0 of 2 milestones released</span>
+</div>
+<div class="p-2.5 rounded-xl bg-[#0B0F17]/60 border border-white/[0.06]">
+<span class="text-label-sm font-label-sm text-outline block">Escrow Remaining</span>
+<span class="text-headline-sm font-headline-sm text-primary font-semibold mt-0.5 block">1,000 GEL</span>
+<span class="text-label-sm font-label-sm text-emerald-400 font-medium">Secured in Smart Safe</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Interactive Milestone Release Schedule -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="timeline">timeline</span>
+<h2 class="text-title-md font-title-md text-on-surface font-bold tracking-tight">Milestone Release Schedule</h2>
+</div>
+<span class="text-label-sm font-label-sm text-outline font-mono">2 Segments</span>
+</div>
+<!-- Milestone 1 Card (Active / In Progress) -->
+<div class="bg-[#182234] rounded-2xl p-space-md border-2 border-primary/40 shadow-[0_8px_32px_rgba(0,0,0,0.5)] relative">
+<!-- Active Status Pill -->
+<div class="flex items-start justify-between gap-2 mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary text-[#003736] flex items-center justify-center text-label-sm font-bold shadow-[0_0_8px_rgba(0,229,226,0.5)]">1</span>
+<div>
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold leading-tight">Initial Concepts &amp; First 6 Posts</h3>
+<span class="text-label-sm font-label-sm text-primary font-medium flex items-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+                  In Progress • Due Oct 31
+                </span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-title-md font-title-md font-bold text-on-surface block">500 GEL</span>
+<span class="text-label-sm font-label-sm text-outline">50% of budget</span>
+</div>
+</div>
+<!-- Gate Requirement Box -->
+<div class="p-space-sm rounded-xl bg-[#0B0F17]/80 border border-white/[0.06] my-space-sm flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" data-icon="rule">rule</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+<strong class="text-on-surface font-semibold">Gate Requirement:</strong> Both parties sign off on 6 approved carousel/post graphics before fund dispatch.
+            </p>
+</div>
+<!-- Milestone 1 Action Sub-panel -->
+<div class="pt-space-xs flex items-center justify-between border-t border-white/[0.08] mt-2">
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-amber-400 font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="hourglass_top">hourglass_top</span>
+<span class="">Awaiting Deliverable Submission</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline italic">Candidate Uploading</span>
+</div>
+</div>
+<!-- Milestone 2 Card (Locked) -->
+<div class="bg-[#182234]/60 rounded-2xl p-space-md border border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.3)] opacity-75">
+<div class="flex items-start justify-between gap-2 mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-slate-700 text-on-surface-variant flex items-center justify-center text-label-sm font-bold">2</span>
+<div>
+<h3 class="text-body-lg font-body-lg text-on-surface font-semibold leading-tight">Remaining 6 Posts &amp; Final Source File Handover</h3>
+<span class="text-label-sm font-label-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock_clock">lock_clock</span>
+                  Locked • Due Nov 24
+                </span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-title-md font-title-md font-bold text-on-surface block">500 GEL</span>
+<span class="text-label-sm font-label-sm text-outline">50% of budget</span>
+</div>
+</div>
+<!-- Locked Gate Condition -->
+<div class="p-space-sm rounded-xl bg-[#0B0F17]/50 border border-white/[0.05] flex items-start gap-2">
+<span class="material-symbols-outlined text-outline text-[18px] shrink-0" data-icon="task_alt">task_alt</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+<strong class="text-on-surface font-semibold">Gate Requirement:</strong> Complete final asset archive inspection and verified Figma vector source layers.
+            </p>
+</div>
+</div>
+</section>
+<!-- Section 4: Shared Deliverables & Version Archive -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="folder_zip">folder_zip</span>
+<h2 class="text-title-md font-title-md text-on-surface font-bold tracking-tight">Latest Deliverables</h2>
+</div>
+<button class="text-primary text-label-md font-label-md font-semibold hover:underline" type="button">View All (5)</button>
+</div>
+<!-- Deliverable Item Card -->
+<div class="bg-[#182234] rounded-2xl p-space-md border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex items-start gap-3 mb-space-sm">
+<div class="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="archive">archive</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="text-body-md font-body-md font-bold text-on-surface truncate">Batch_01_Draft_Concepts.zip</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/15 text-primary text-label-sm font-label-sm font-semibold border border-primary/30 shrink-0">
+                  Under Review
+                </span>
+</div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline mt-0.5">
+<span class="">v1.2</span>
+<span class="">•</span>
+<span class="">48 MB</span>
+<span class="">•</span>
+<span class="flex items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+                  2 comments
+                </span>
+</div>
+</div>
+</div>
+<!-- Visual Concept Preview Mockup Frame -->
+<div class="rounded-xl overflow-hidden mb-space-md relative border border-white/[0.08] h-28 w-full bg-[#0B0F17]">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist flatlay preview mockup of six digital marketing social media graphics presented with cyan and emerald tonal branding on a crisp white high-tech fintech mobile user interface. Soft morning light highlights sharp geometric layouts, pristine typography, and subtle tech gradients." src="../assets/img/m80.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-2.5">
+<span class="text-white text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="visibility">visibility</span>
+                Interactive Sandbox Preview
+              </span>
+</div>
+</div>
+<!-- Triple Action Controls -->
+<div class="grid grid-cols-3 gap-2">
+<button class="h-10 rounded-lg border border-white/[0.08] bg-[#111827] hover:bg-[#1E293B] text-on-surface text-label-sm font-label-sm font-semibold flex items-center justify-center gap-1 transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="download">download</span>
+              Download
+            </button>
+<button class="h-10 rounded-lg border border-white/[0.08] bg-[#111827] hover:bg-[#1E293B] text-on-surface text-label-sm font-label-sm font-semibold flex items-center justify-center gap-1 transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="rate_review">rate_review</span>
+              Revision (1/2)
+            </button>
+<button class="h-10 rounded-lg bg-gradient-to-r from-primary to-secondary text-[#003736] font-bold text-label-sm font-label-sm flex items-center justify-center gap-1 transition-all shadow-[0_0_12px_rgba(0,229,226,0.3)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="done_all">done_all</span>
+              Approve
+            </button>
+</div>
+</div>
+</section>
+<!-- Section 5: Project Completion Preview Modal / Protocol Section -->
+<section class="bg-gradient-to-br from-[#182234] to-[#111827] rounded-2xl p-space-md border border-secondary/30 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex items-start justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary/15 border border-secondary/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">Completion &amp; Rating Protocol</h3>
+<span class="text-label-sm font-label-sm text-emerald-400 font-semibold">Post-Milestone Final Gate</span>
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-outline bg-[#0B0F17] px-2 py-0.5 rounded-full border border-white/[0.08] font-mono">Protocol #88</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-md leading-relaxed">
+          When the 2nd milestone is authorized, FIB automated rails trigger mutual disbursement, unlocking bilateral review exchange and NFT-backed certification.
+        </p>
+<!-- Protocol Step Pills Bento -->
+<div class="space-y-2">
+<div class="flex items-center gap-2.5 p-2 rounded-xl bg-[#0B0F17]/70 border border-white/[0.06]">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="verified">verified</span>
+<span class="text-label-md font-label-md text-on-surface font-semibold flex-1">1. Bilateral Star Rating &amp; AI Endorsement</span>
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-[16px] text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.6)]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px] text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.6)]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px] text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.6)]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px] text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.6)]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px] text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.6)]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 p-2 rounded-xl bg-[#0B0F17]/70 border border-white/[0.06]">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="text-label-md font-label-md text-on-surface font-semibold flex-1">2. Automatic Move to 'Archived &amp; Certified'</span>
+<span class="text-label-sm font-label-sm font-bold text-secondary bg-secondary/15 border border-secondary/30 px-2 py-0.5 rounded">Auto</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Section 6: Bottom Docked Action Bar (Milestone 1 Release & Biometric Confirmation) -->
+<div class="fixed bottom-16 left-0 right-0 max-w-[390px] mx-auto z-40 bg-[#0B0F17]/90 backdrop-blur-md px-margin py-3 border-t border-white/[0.08] shadow-[0_-4px_24px_rgba(0,0,0,0.6)]">
+<div class="flex items-center gap-2">
+<button aria-label="Biometric Verification Lock" class="w-12 h-12 rounded-xl bg-[#182234] border border-white/[0.08] flex items-center justify-center text-primary active:scale-95 transition-transform shrink-0 hover:border-primary/40" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="fingerprint">fingerprint</span>
+</button>
+<button class="flex-1 h-12 rounded-xl custom-gradient-cta text-[#003736] font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,229,226,0.35)] hover:opacity-95 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span class="">Release Milestone 1 (500 GEL)</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-1.5 mt-1.5 text-label-sm font-label-sm text-outline">
+<span class="material-symbols-outlined text-[13px] text-secondary" data-icon="encrypted">encrypted</span>
+<span class="">Secured via two-factor biometric authorization</span>
+</div>
+</div>
+<!-- Section 7: BottomNavBar (Active Escrow Tab in Obsidian Cybernetic Suite) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-50 flex justify-around items-center px-gutter-sm h-16 bg-[#0B0F17]/90 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.5)] border-t border-white/[0.08]">
+<!-- Tab 1: Dashboard (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">Dashboard</span>
+</a>
+<!-- Tab 2: Tasks (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="checklist">checklist</span>
+<span class="text-label-sm font-label-sm mt-0.5">Tasks</span>
+</a>
+<!-- Tab 3: Chat (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="forum">forum</span>
+<span class="text-label-sm font-label-sm mt-0.5">Chat</span>
+</a>
+<!-- Tab 4: Files (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1.5 px-3 hover:text-primary transition-colors duration-150 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="folder_open">folder_open</span>
+<span class="text-label-sm font-label-sm mt-0.5">Files</span>
+</a>
+<!-- Tab 5: Escrow (ACTIVE STATE) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold py-1.5 px-3 rounded-full bg-primary/10 border border-primary/20 shadow-[0_0_12px_rgba(0,229,226,0.15)] active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments" data-weight="fill" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-label-sm font-label-sm mt-0.5">Escrow</span>
+</a>
+</nav>
+</main>
+<script>
+    // Micro-interactions and state visual switches
+    document.addEventListener('DOMContentLoaded', () => {
+      const releaseBtn = document.querySelector('.custom-gradient-cta');
+      if (releaseBtn) {
+        releaseBtn.addEventListener('click', () => {
+          releaseBtn.classList.add('opacity-80');
+          const originalText = releaseBtn.innerHTML;
+          releaseBtn.innerHTML = `
+            <span class="material-symbols-outlined animate-spin text-[20px]" data-icon="sync">sync</span>
+            <span>Verifying Safe Rail...</span>
+          `;
+          setTimeout(() => {
+            releaseBtn.innerHTML = `
+              <span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+              <span>Milestone 1 Authorized!</span>
+            `;
+            setTimeout(() => {
+              releaseBtn.innerHTML = originalText;
+              releaseBtn.classList.remove('opacity-80');
+            }, 2500);
+          }, 1200);
+        });
+      }
+    });
+  </script>
+
+
+<script src="../assets/screens.js"></script>
+</body></html>

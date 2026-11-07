@@ -1,0 +1,344 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta content="width=390px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>FIB — Signed Agreement Confirmation &amp; Escrow Activation</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-primary": "#003736",
+          "on-error": "#690005",
+          "secondary": "#4edea3",
+          "surface-variant": "#31353e",
+          "tertiary": "#aff9e8",
+          "secondary-container": "#00a572",
+          "on-surface": "#dfe2ee",
+          "on-secondary-fixed": "#002113",
+          "primary": "#73fffc",
+          "on-tertiary-container": "#106256",
+          "on-secondary-fixed-variant": "#005236",
+          "surface-bright": "#353942",
+          "on-error-container": "#ffdad6",
+          "surface-container-low": "#181c24",
+          "surface": "#0f131c",
+          "on-background": "#dfe2ee",
+          "on-surface-variant": "#b9cac8",
+          "outline": "#849493",
+          "secondary-fixed": "#6ffbbe",
+          "inverse-on-surface": "#2c3039",
+          "tertiary-container": "#94dccc",
+          "surface-container-lowest": "#0a0e16",
+          "inverse-surface": "#dfe2ee",
+          "surface-container-highest": "#31353e",
+          "on-tertiary-fixed": "#00201b",
+          "error": "#ffb4ab",
+          "tertiary-fixed": "#a8f1e0",
+          "surface-container": "#1c2028",
+          "inverse-primary": "#006a68",
+          "surface-dim": "#0f131c",
+          "primary-container": "#00e5e2",
+          "secondary-fixed-dim": "#4edea3",
+          "background": "#0f131c",
+          "on-secondary": "#003824",
+          "surface-container-high": "#262a33",
+          "on-primary-container": "#006260",
+          "primary-fixed-dim": "#00ddda",
+          "tertiary-fixed-dim": "#8cd4c4",
+          "on-primary-fixed-variant": "#00504e",
+          "on-primary-fixed": "#00201f",
+          "surface-tint": "#00ddda",
+          "on-tertiary": "#003730",
+          "error-container": "#93000a",
+          "on-tertiary-fixed-variant": "#005046",
+          "on-secondary-container": "#00311f",
+          "outline-variant": "#3b4a49",
+          "primary-fixed": "#3ffaf7"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "margin": "1.25rem",
+          "gutter": "1rem",
+          "space-xl": "2.5rem",
+          "space-xs": "0.25rem"
+        },
+        "fontFamily": {
+          "headline-lg": ["Space Grotesk"],
+          "headline-md": ["Space Grotesk"],
+          "label-lg": ["JetBrains Mono"],
+          "headline-sm": ["Space Grotesk"],
+          "label-sm": ["JetBrains Mono"],
+          "body-sm": ["Manrope"],
+          "body-lg": ["Manrope"],
+          "body-md": ["Manrope"],
+          "label-md": ["JetBrains Mono"],
+          "title-md": ["Space Grotesk"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .signature-font {
+      font-family: 'Brush Script MT', 'Segoe Script', cursive, sans-serif;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+      background-color: #0b0f17;
+    }
+</style>
+</head>
+<body class="bg-[#0b0f17] text-[#dfe2ee] antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Viewport Shell (390px fixed preview width) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#0f131c] relative flex flex-col pb-12 shadow-2xl border-x border-white/5">
+<!-- Top Navigation Bar (Shared Component: TopAppBar docked full-width) -->
+<header class="fixed top-0 left-0 w-full max-w-[390px] mx-auto right-0 z-50 flex justify-between items-center px-margin h-16 bg-[#0f131c]/90 backdrop-blur-md shadow-sm border-b border-white/10">
+<div class="flex items-center gap-2">
+<img src="../assets/logo.svg" alt="FIB Monogram Logo" class="w-7 h-7 object-contain select-none">
+<span class="font-headline-sm text-lg font-bold text-white tracking-tight">FIB Workspace</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="inline-flex items-center gap-1 bg-secondary/10 px-2 py-0.5 rounded-full border border-secondary/30">
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-[11px] text-secondary font-semibold">Dual-Secured</span>
+</div>
+<!-- Theme Switcher Toggle (Moon/Dark Icon) -->
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-primary hover:bg-[#181c24] transition-colors" title="Toggle Theme">
+<span class="material-symbols-outlined text-[19px]">dark_mode</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-primary hover:bg-[#181c24] transition-colors">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas (Scrollable) -->
+<main class="flex-1 px-margin pt-20 flex flex-col gap-space-lg">
+<!-- Success Hero Celebration Section -->
+<section class="flex flex-col items-center text-center pt-2">
+<!-- Glowing Verified Shield Indicator -->
+<div class="relative mb-3 flex items-center justify-center">
+<div class="absolute w-20 h-20 rounded-full bg-secondary/20 animate-ping opacity-30"></div>
+<div class="absolute w-16 h-16 rounded-full bg-gradient-to-tr from-secondary/30 to-primary/40 opacity-40 blur-md"></div>
+<div class="relative w-14 h-14 rounded-full bg-[#181c24] shadow-[0_0_20px_rgba(78,222,163,0.25)] border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[32px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<!-- Official Status Headline -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/30 mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_6px_#4edea3]"></span>
+<span class="font-label-sm text-[11px] text-secondary uppercase font-bold tracking-wider">Escrow Activated • 100% Locked</span>
+</div>
+<h1 class="font-headline-sm text-[20px] font-bold text-white text-balance px-2 leading-snug">
+          Your project agreement is officially confirmed!
+        </h1>
+<p class="font-body-md text-[13px] text-[#94a3b8] mt-1 max-w-[320px] leading-relaxed">
+          Both parties have synchronously countersigned. Capital is cryptographically escrowed in institutional vaults.
+        </p>
+<!-- Cryptographic Proof Hash Module -->
+<div class="mt-3 w-full bg-[#181c24] rounded-xl p-3 border border-white/10 flex items-center justify-between shadow-lg">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-[#0f131c] border border-white/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="text-left">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-xs text-[#00e5e2] font-semibold tracking-wide">#FIB-8921-SC</span>
+<span class="font-label-sm text-[10px] text-secondary bg-secondary/15 border border-secondary/25 px-1.5 rounded">Verified</span>
+</div>
+<p class="font-body-sm text-[11px] text-[#64748b]">Timestamp: Oct 24, 2024 • 10:59:12 UTC</p>
+</div>
+</div>
+<button class="text-primary hover:text-white p-1 rounded-md transition-colors" title="Copy Hash ID">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</section>
+<!-- Dual Electronic Signature Verification Block -->
+<section class="bg-[#181c24] rounded-xl p-4 border border-white/10 shadow-lg flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">history_edu</span>
+<span class="font-title-md text-[15px] font-semibold text-white">Dual-Party Signatures</span>
+</div>
+<span class="font-label-sm text-[11px] bg-secondary/15 text-secondary border border-secondary/30 font-bold px-2.5 py-0.5 rounded-full">
+            Consensus: 100%
+          </span>
+</div>
+<!-- Party 1: Employer -->
+<div class="p-3 rounded-lg bg-[#0f131c] border border-white/10 flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 text-primary flex items-center justify-center font-bold text-xs">
+                DK
+              </div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-sm text-white font-bold">David K.</span>
+<span class="font-label-sm text-xs text-[#64748b]">(TechCorp)</span>
+</div>
+<div class="flex items-center gap-1 text-secondary mt-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium">Signed via FIB Biometric Auth</span>
+</div>
+</div>
+</div>
+<div class="signature-font text-xl text-primary font-bold opacity-90 -rotate-3 select-none">
+              David K.
+            </div>
+</div>
+<div class="flex items-center justify-between text-[#64748b] text-[11px] pt-1 border-t border-white/5 font-body-sm">
+<span class="">Role: Employer / Client</span>
+<span class="">Oct 24, 10:58 AM GET</span>
+</div>
+</div>
+<!-- Party 2: Candidate -->
+<div class="p-3 rounded-lg bg-[#0f131c] border border-white/10 flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary/10 border border-secondary/20 text-secondary flex items-center justify-center font-bold text-xs">
+                NT
+              </div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-sm text-white font-bold">Nino Tskhadadze</span>
+<span class="font-label-sm text-xs text-[#64748b]">(Senior Pro)</span>
+</div>
+<div class="flex items-center gap-1 text-secondary mt-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">token</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium">Signed via FIB Key ID #NT-44</span>
+</div>
+</div>
+</div>
+<div class="signature-font text-xl text-secondary font-bold opacity-90 -rotate-2 select-none">
+              N. Tskhadadze
+            </div>
+</div>
+<div class="flex items-center justify-between text-[#64748b] text-[11px] pt-1 border-t border-white/5 font-body-sm">
+<span class="">Role: Lead Designer / Candidate</span>
+<span class="">Oct 24, 10:59 AM GET</span>
+</div>
+</div>
+</section>
+<!-- Brief & Terms Snapshot Bento Module -->
+<section class="bg-[#181c24] rounded-xl p-4 border border-white/10 shadow-lg flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-white/10 pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+<span class="font-title-md text-[15px] font-semibold text-white">Agreed Contract Terms</span>
+</div>
+<span class="font-label-sm text-[11px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Encrypted
+          </span>
+</div>
+<!-- Snapshot Details -->
+<div class="space-y-2.5 font-body-sm text-[13px]">
+<div class="flex justify-between items-start">
+<span class="text-[#94a3b8] font-medium">Project Scope</span>
+<span class="text-white font-semibold text-right max-w-[210px]">Social Media Design Project (12 Posts/Mo)</span>
+</div>
+<div class="flex justify-between items-center py-2 px-3 rounded-lg bg-[#0f131c] border border-white/10">
+<span class="text-[#94a3b8] font-medium">Final Agreed Budget</span>
+<div class="text-right">
+<span class="font-headline-sm text-lg font-bold text-secondary">1,000 GEL</span>
+<p class="font-label-sm text-[10px] text-[#64748b]">Locked in Institutional Escrow Rail</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="p-2.5 rounded-lg bg-[#0f131c] border border-white/10">
+<span class="text-[#64748b] block text-[11px]">Project Start Date</span>
+<span class="font-label-md text-xs text-white font-semibold mt-0.5 block">Immediate (Today, Oct 24)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-[#0f131c] border border-white/10">
+<span class="text-[#64748b] block text-[11px]">Revision SLA</span>
+<span class="font-label-md text-xs text-white font-semibold mt-0.5 block">2 Comprehensive Included</span>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-[#0f131c] border border-white/10">
+<div class="flex justify-between items-center">
+<span class="text-[#64748b] text-[11px]">Final Delivery Target</span>
+<span class="font-label-md text-xs text-white font-bold">Nov 24, 2024</span>
+</div>
+<p class="text-[#94a3b8] text-[11px] mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">schedule</span>
+              First concepts due in 7 days (Oct 31)
+            </p>
+</div>
+</div>
+<!-- Download Legal Brief Action Link -->
+<a class="mt-1 flex items-center justify-between p-2.5 rounded-lg border border-primary/30 bg-[#0f131c] hover:bg-primary/10 transition-colors" href="#download-pdf">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]">picture_as_pdf</span>
+<div class="text-left">
+<span class="font-label-md text-xs text-primary font-bold block">View Signed Legal Brief Document</span>
+<span class="font-body-sm text-[11px] text-[#64748b]">PDF • 4.2 MB • Digitally Signed &amp; Sealed</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">download</span>
+</a>
+</section>
+<!-- Automated Setup Notice Module -->
+<section class="bg-gradient-to-r from-[#181c24] to-[#1c2028] rounded-xl p-4 border border-white/10 flex gap-3 items-start shadow-lg">
+<div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 text-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-sm text-white font-bold">AI Project Manager Initialized</span>
+<span class="font-label-sm text-[10px] bg-primary/15 text-primary border border-primary/30 font-semibold px-1.5 rounded">Active</span>
+</div>
+<p class="font-body-sm text-[12px] text-[#94a3b8] mt-1 leading-relaxed">
+            FIB AI has parsed all signed clauses and automatically synthesized your milestone roadmap, task backlog, and cryptographic escrow release gates.
+          </p>
+</div>
+</section>
+<!-- Primary Action Cluster -->
+<section class="flex flex-col gap-2.5 pt-1 mb-4">
+<!-- Main Launch Action -->
+<button class="w-full h-12 rounded-lg bg-gradient-to-r from-primary-container to-secondary text-[#003736] font-label-lg text-sm font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,229,226,0.3)] active:scale-[0.98] transition-transform">
+<span class="">Start Project &amp; Open Workspace</span>
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+</button>
+<!-- Secondary Receipt Download -->
+<button class="w-full py-2 flex items-center justify-center gap-1.5 text-[#94a3b8] hover:text-primary font-label-md text-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span class="">Download Escrow Receipt (ID: #ESC-992)</span>
+</button>
+</section>
+</main>
+<!-- Contextual Micro Footer Note -->
+<footer class="px-margin text-center text-[#64748b] font-label-sm text-[10px] space-y-1">
+<div class="flex items-center justify-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[13px]">shield</span>
+<span class="">FDIC-Insured Custodial Bank Partner Rail</span>
+</div>
+<p class="">© 2024 Financial Infrastructure &amp; Blockchain Workspace Inc.</p>
+</footer>
+</div>
+
+
+<script src="../assets/screens.js"></script>
+</body></html>

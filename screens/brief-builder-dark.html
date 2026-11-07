@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FIB - AI Collaborative Brief Builder</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config verbatim matching Design Tokens & Obsidian Cybernetic Theme -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#dfe2ee",
+            "outline": "#849493",
+            "surface-container-low": "#181c24",
+            "on-secondary": "#003824",
+            "tertiary": "#aff9e8",
+            "on-primary-container": "#006260",
+            "secondary-container": "#00a572",
+            "inverse-primary": "#006a68",
+            "surface-container-high": "#262a33",
+            "tertiary-fixed-dim": "#8cd4c4",
+            "surface": "#0f131c",
+            "on-primary": "#003736",
+            "on-secondary-fixed": "#002113",
+            "tertiary-container": "#94dccc",
+            "on-tertiary-fixed": "#00201b",
+            "secondary": "#4edea3",
+            "surface-variant": "#31353e",
+            "surface-dim": "#0f131c",
+            "inverse-surface": "#dfe2ee",
+            "background": "#0b0f17",
+            "on-secondary-container": "#00311f",
+            "primary-container": "#00e5e2",
+            "secondary-fixed": "#6ffbbe",
+            "tertiary-fixed": "#a8f1e0",
+            "error-container": "#93000a",
+            "on-secondary-fixed-variant": "#005236",
+            "primary": "#73fffc",
+            "secondary-fixed-dim": "#4edea3",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed": "#00201f",
+            "primary-fixed": "#3ffaf7",
+            "inverse-on-surface": "#2c3039",
+            "surface-container-highest": "#31353e",
+            "on-tertiary-container": "#106256",
+            "on-surface": "#dfe2ee",
+            "surface-tint": "#00ddda",
+            "primary-fixed-dim": "#00ddda",
+            "on-tertiary-fixed-variant": "#005046",
+            "on-error": "#690005",
+            "surface-container-lowest": "#0a0e16",
+            "on-primary-fixed-variant": "#00504e",
+            "on-surface-variant": "#b9cac8",
+            "outline-variant": "#3b4a49",
+            "surface-container": "#1c2028",
+            "on-tertiary": "#003730",
+            "surface-bright": "#353942",
+            "error": "#ffb4ab"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2rem",
+            "margin-lg": "2rem",
+            "gutter-sm": "0.75rem",
+            "space-md": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Hide scrollbar for clean app experience */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Subtle pulsating effect for AI status */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.04); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#0B0F17] text-[#E2E8F0] antialiased font-body-md select-none flex justify-center min-h-screen">
+<!-- Mobile Screen Canvas Wrapper (Target 390px Mobile Viewport) -->
+<div class="relative w-full max-w-[390px] min-h-screen bg-[#0B0F17] flex flex-col shadow-2xl border-x border-white/10 overflow-hidden pb-[148px]">
+<!-- ======================================================== -->
+<!-- 1. FIXED TOP APP BAR & 3-WAY COLLABORATION HEADER       -->
+<!-- ======================================================== -->
+<header class="fixed top-0 left-0 right-0 max-w-[390px] mx-auto z-40 bg-[#0F131C]/90 backdrop-blur-md border-b border-white/10 shadow-lg">
+<!-- Row 1: Brand Anchor & Navigation Control -->
+<div class="flex items-center justify-between px-space-md py-space-sm h-14">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go back" class="p-1 rounded-full text-[#E2E8F0] hover:bg-white/5 transition-colors active:scale-95 duration-150" type="button">
+<span class="material-symbols-outlined text-primary text-[22px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px] fill">shield</span>
+<span class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">FIB</span>
+<span class="text-label-sm font-label-sm text-cyan-300/80 px-1.5 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/20 font-medium ml-0.5">Mediated</span>
+</div>
+</div>
+<!-- Trailing actions: Theme Toggle & 3-way Participant Badges -->
+<div class="flex items-center gap-2">
+<!-- Theme Toggle Control -->
+<button aria-label="Toggle theme mode" class="w-7 h-7 rounded-full flex items-center justify-center text-amber-400 bg-white/5 border border-white/10 hover:bg-white/10 active:scale-95 transition-transform" id="theme-toggle" title="Cybernetic Dark Theme Active" type="button">
+<span class="material-symbols-outlined text-[17px]">dark_mode</span>
+</button>
+<!-- Dual-Participant Mini Badges Stack -->
+<div class="flex items-center -space-x-1.5 mr-0.5" title="David K. (Employer) &amp; Nino T. (Candidate)">
+<!-- Employer Avatar -->
+<div class="w-7 h-7 rounded-full ring-2 ring-[#0B0F17] overflow-hidden bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center relative">
+<span class="text-[10px] font-bold text-primary font-label-sm">DK</span>
+<span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-[#0B0F17]" title="Active"></span>
+</div>
+<!-- Candidate Avatar -->
+<div class="w-7 h-7 rounded-full ring-2 ring-[#0B0F17] overflow-hidden bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center relative">
+<span class="text-[10px] font-bold text-emerald-400 font-label-sm">NT</span>
+<span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-[#0B0F17]" title="Active"></span>
+</div>
+</div>
+<button aria-label="More actions" class="w-8 h-8 rounded-full flex items-center justify-center text-[#94A3B8] hover:bg-white/5 active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Project Identification & Live Status Header -->
+<div class="px-space-md pb-2 pt-0.5 flex items-center justify-between">
+<div>
+<h1 class="text-title-md font-title-md text-[#F8FAFC] tracking-tight leading-tight flex items-center gap-1.5">
+            Social Media Design Project
+          </h1>
+<p class="text-body-sm font-body-sm text-[#94A3B8] flex items-center gap-1.5 mt-0.5">
+<span>David K. (TechCorp)</span>
+<span class="text-white/20">•</span>
+<span>Nino T. (Senior Pro)</span>
+</p>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/15 rounded-full border border-emerald-400/30">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+<span class="text-label-sm font-label-sm text-emerald-300 font-semibold whitespace-nowrap">Brief in progress</span>
+</div>
+</div>
+<!-- Row 3: Quick Summary Accordion Trigger Bar -->
+<button class="w-full bg-[#182234]/70 px-space-md py-2 border-t border-white/10 flex items-center justify-between text-left transition-colors hover:bg-[#1E293B]" id="brief-accordion-toggle" type="button">
+<div class="flex items-center gap-2 w-full pr-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between text-label-sm font-label-sm mb-1">
+<span class="text-[#F8FAFC] font-semibold truncate">Live Brief: 85% Agreed</span>
+<span class="text-primary font-bold ml-1">1 Pending Item</span>
+</div>
+<!-- Metric Progress Bar -->
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(115,255,252,0.4)]" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 pl-1 text-[#94A3B8]">
+<span class="text-[11px] font-label-sm text-primary font-semibold">Inspect</span>
+<span class="material-symbols-outlined text-[18px] transition-transform duration-300" id="accordion-icon">expand_more</span>
+</div>
+</button>
+<!-- Expandable Live Project Brief Panel (Interactive Dropdown Drawer) -->
+<div class="hidden max-h-[360px] overflow-y-auto bg-[#111827] border-t border-white/10 px-space-md py-3 shadow-2xl no-scrollbar" id="brief-drawer">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px] fill">gavel</span>
+<span class="text-label-lg font-label-lg text-[#F8FAFC] font-bold">Collaborative Terms Sheet</span>
+</div>
+<span class="text-[11px] font-label-sm bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[#94A3B8] font-medium">v1.2 Live Diff</span>
+</div>
+<div class="space-y-2 text-body-sm font-body-sm">
+<!-- Clause 1 -->
+<div class="p-2.5 rounded-lg bg-[#182234] border border-white/10 flex items-start justify-between gap-2">
+<div>
+<div class="font-semibold text-[#F8FAFC] text-label-md">1. Project Scope &amp; Deliverables</div>
+<p class="text-[#94A3B8] text-[11px] mt-0.5">12 multi-format posts/mo (IG, LinkedIn, Carousels) + source Figma files.</p>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-emerald-500/15 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-0.5 shrink-0">
+<span class="material-symbols-outlined text-[12px]">check</span> Agreed
+            </span>
+</div>
+<!-- Clause 2 -->
+<div class="p-2.5 rounded-lg bg-[#182234] border border-white/10 flex items-start justify-between gap-2">
+<div>
+<div class="font-semibold text-[#F8FAFC] text-label-md">2. Escrow &amp; Compensation</div>
+<p class="text-[#94A3B8] text-[11px] mt-0.5">1,000 GEL / mo • Automated milestones unlocked on 15th &amp; 30th.</p>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-emerald-500/15 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-0.5 shrink-0">
+<span class="material-symbols-outlined text-[12px]">check</span> Agreed
+            </span>
+</div>
+<!-- Clause 3: Adjusted & Agreed -->
+<div class="p-2.5 rounded-lg bg-[#182234] border border-white/10 flex items-start justify-between gap-2">
+<div>
+<div class="font-semibold text-[#F8FAFC] text-label-md">3. Timeline &amp; First Concept</div>
+<p class="text-[#94A3B8] text-[11px] mt-0.5">First concept in 7 days (Adjusted from 5 days by Candidate proposal).</p>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-emerald-500/15 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-0.5 shrink-0">
+<span class="material-symbols-outlined text-[12px]">check</span> Agreed
+            </span>
+</div>
+<!-- Clause 4 -->
+<div class="p-2.5 rounded-lg bg-[#182234] border border-white/10 flex items-start justify-between gap-2">
+<div>
+<div class="font-semibold text-[#F8FAFC] text-label-md">4. Revision Governance</div>
+<p class="text-[#94A3B8] text-[11px] mt-0.5">2 included revisions; additional revisions billed at 65 GEL/hr.</p>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-emerald-500/15 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-0.5 shrink-0">
+<span class="material-symbols-outlined text-[12px]">check</span> Agreed
+            </span>
+</div>
+<!-- Clause 5: PENDING -->
+<div class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-500/30 flex items-start justify-between gap-2">
+<div>
+<div class="font-semibold text-amber-200 text-label-md flex items-center gap-1">
+<span>5. Copywriting &amp; Asset Delivery</span>
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+</div>
+<p class="text-amber-300/80 text-[11px] mt-0.5">Copywriting provided by Employer by Monday 10:00 AM prior to sprint.</p>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/40 flex items-center gap-0.5 shrink-0">
+<span class="material-symbols-outlined text-[12px]">pending</span> Waiting for Nino
+            </span>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-[#94A3B8]">
+<span>7 of 8 parameters locked</span>
+<button class="text-primary hover:underline font-semibold flex items-center gap-0.5" type="button">
+            Download PDF draft <span class="material-symbols-outlined text-[14px]">download</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Top spacing to offset fixed header -->
+<div class="h-28"></div>
+<!-- ======================================================== -->
+<!-- 2. REAL-TIME BRIEF CAPSULE (STICKY ACCELERATOR)        -->
+<!-- ======================================================== -->
+<div class="px-space-md pt-3 pb-1">
+<div class="bg-gradient-to-r from-[#182234] via-[#1E293B] to-[#182234] p-2.5 rounded-xl border border-white/10 flex items-center justify-between shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-label-md font-label-md text-[#F8FAFC] font-bold">Active Agreement</span>
+<span class="text-[10px] font-label-sm bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-1.5 py-0.2 rounded font-semibold">7 Agreed</span>
+</div>
+<p class="text-[11px] font-body-sm text-[#94A3B8]">1 clause awaits candidate confirmation</p>
+</div>
+</div>
+<button class="px-2.5 py-1 text-label-sm font-label-sm text-primary font-bold bg-[#111827] rounded-lg border border-primary/30 shadow-xs active:scale-95 hover:border-primary transition-all" id="quick-view-brief-btn">
+          View Brief
+        </button>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- 3. SHARED 3-WAY CHAT STREAM                             -->
+<!-- ======================================================== -->
+<main class="flex-1 px-space-md py-3 space-y-4 overflow-y-auto">
+<!-- Session Timestamp Anchor -->
+<div class="flex justify-center items-center my-2">
+<span class="text-[11px] font-label-sm text-[#94A3B8] bg-[#182234]/60 px-3 py-0.5 rounded-full border border-white/10">
+          Today • FIB Neutral Workspace Initialized 10:42 AM
+        </span>
+</div>
+<!-- MESSAGE 1: EMPLOYER (David K.) -->
+<div class="flex flex-col items-start max-w-[88%] space-y-1">
+<!-- Participant Tag -->
+<div class="flex items-center gap-1.5 px-1">
+<div class="w-4 h-4 rounded-full bg-cyan-950 border border-cyan-400/40 text-primary flex items-center justify-center text-[9px] font-bold">DK</div>
+<span class="text-label-sm font-label-sm font-semibold text-[#F8FAFC]">David K.</span>
+<span class="text-[10px] font-label-sm text-[#94A3B8] px-1 rounded bg-white/5 border border-white/5">Employer • TechCorp</span>
+<span class="text-[10px] font-label-sm text-[#94A3B8] ml-auto">10:44 AM</span>
+</div>
+<!-- Bubble: Rich Deep Cyan / Slate -->
+<div class="bg-[#133946] text-[#E2E8F0] rounded-2xl rounded-tl-sm p-3 border border-cyan-500/30 shadow-lg">
+<p class="text-body-md font-body-md leading-snug">
+            Hi Nino, excited to collaborate! I need 12 posts per month for our product launch, including promotional banners and stories. The budget is set at <strong class="text-primary font-semibold underline decoration-primary/40">1,000 GEL</strong>, and we'd love the first concepts within 5 days.
+          </p>
+</div>
+</div>
+<!-- MESSAGE 2: CANDIDATE (Nino Tskhadadze) -->
+<div class="flex flex-col items-end max-w-[88%] ml-auto space-y-1">
+<!-- Participant Tag -->
+<div class="flex items-center gap-1.5 px-1">
+<span class="text-[10px] font-label-sm text-[#94A3B8] mr-auto">10:48 AM</span>
+<span class="text-[10px] font-label-sm text-emerald-300 bg-emerald-500/15 border border-emerald-500/20 px-1 rounded font-medium">Candidate Pro</span>
+<span class="text-label-sm font-label-sm font-semibold text-[#F8FAFC]">Nino T.</span>
+<div class="w-4 h-4 rounded-full bg-emerald-950 border border-emerald-400/40 text-emerald-400 flex items-center justify-center text-[9px] font-bold">NT</div>
+</div>
+<!-- Bubble: Dark Slate -->
+<div class="bg-[#1E293B] text-[#F8FAFC] rounded-2xl rounded-tr-sm p-3 border border-white/10 shadow-lg">
+<p class="text-body-md font-body-md leading-snug">
+            Thanks David! The 1,000 GEL budget works well for 12 deliverables. However, to guarantee high-fidelity brand assets, I propose delivering the <strong class="text-primary underline decoration-primary/50">first concepts in 7 days</strong> instead of 5. Also, could you clarify whether ready copywriting is provided?
+          </p>
+</div>
+</div>
+<!-- MESSAGE 3: FIB AI MEDIATOR (Institutional Core) -->
+<div class="w-full my-2 bg-gradient-to-b from-[#0B2925] to-[#102422] rounded-2xl p-3.5 border border-[#10B981]/40 shadow-[0_0_20px_rgba(16,185,129,0.1)] relative overflow-hidden">
+<!-- AI Glowing Accent Bar -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary-container shadow-[0_0_8px_rgba(78,222,163,0.5)]"></div>
+<!-- Header -->
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-md bg-emerald-950 border border-secondary/40 flex items-center justify-center text-primary shadow-xs animate-pulse-subtle">
+<span class="material-symbols-outlined text-[15px] fill">smart_toy</span>
+</div>
+<div>
+<span class="text-label-md font-label-md font-bold text-primary flex items-center gap-1">
+                FIB AI Mediator
+                <span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+</span>
+</div>
+</div>
+<span class="text-[10px] font-label-sm text-cyan-200 px-2 py-0.5 rounded-full bg-cyan-950/70 border border-cyan-400/30 font-medium">
+            Institutional Neutrality
+          </span>
+</div>
+<!-- AI Guidance Content -->
+<p class="text-body-sm font-body-sm text-[#E2E8F0] leading-relaxed mb-3">
+          Understood! I've analyzed the exchange and isolated two parameters for harmonization:
+        </p>
+<!-- Structured AI Variance Breakdown -->
+<div class="space-y-2 mb-3">
+<div class="bg-[#182234]/80 p-2.5 rounded-xl border border-white/10 text-body-sm font-body-sm">
+<div class="flex items-center justify-between font-semibold text-[#F8FAFC] mb-1 text-[12px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[15px]">schedule</span>
+                1. Delivery Variance
+              </span>
+<span class="text-[10px] bg-white/5 border border-white/5 px-1.5 py-0.2 rounded text-[#94A3B8] font-medium">2-day delta</span>
+</div>
+<p class="text-[#94A3B8] text-[11px]">David requested 5 days; Nino proposed 7 days for QA assurance.</p>
+<!-- Inline Resolution Mini-Action -->
+<div class="mt-2 pt-2 border-t border-white/10 flex items-center justify-between">
+<span class="text-[11px] font-semibold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">check_circle</span>
+                David agreed to 7 days
+              </span>
+<span class="text-[10px] font-label-sm text-[#94A3B8]">10:51 AM</span>
+</div>
+</div>
+<div class="bg-[#182234]/80 p-2.5 rounded-xl border border-white/10 text-body-sm font-body-sm">
+<div class="flex items-center justify-between font-semibold text-[#F8FAFC] mb-1 text-[12px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[15px]">edit_note</span>
+                2. Copywriting Scope Clause
+              </span>
+<span class="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.2 rounded font-semibold">Action Required</span>
+</div>
+<p class="text-[#94A3B8] text-[11px]">David confirms: TechCorp will supply finalized copy by Monday 10:00 AM.</p>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-[#F8FAFC] font-medium">
+          Nino, does receiving the copy by Monday 10:00 AM allow you to confirm this final clause?
+        </p>
+</div>
+<!-- INLINE NOTIFICATION PILL: Diff Registered -->
+<div class="flex items-center justify-center my-1">
+<div class="bg-emerald-950/60 border border-emerald-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-secondary text-[15px] fill">auto_awesome</span>
+<span class="text-label-sm font-label-sm text-emerald-200">
+<strong>Brief Updated:</strong> First Delivery locked to <strong>7 Days</strong>
+</span>
+<span class="text-[#94A3B8] text-[10px]">• 10:52 AM</span>
+</div>
+</div>
+<!-- MESSAGE 4: CANDIDATE INLINE ACTION / APPROVAL OF CLAUSE 5 -->
+<div class="flex flex-col items-end max-w-[88%] ml-auto space-y-1">
+<div class="flex items-center gap-1.5 px-1">
+<span class="text-[10px] font-label-sm text-[#94A3B8] mr-auto">10:54 AM</span>
+<span class="text-label-sm font-label-sm font-semibold text-[#F8FAFC]">Nino T.</span>
+<div class="w-4 h-4 rounded-full bg-emerald-950 border border-emerald-400/40 text-emerald-400 flex items-center justify-center text-[9px] font-bold">NT</div>
+</div>
+<div class="bg-[#1E293B] text-[#F8FAFC] rounded-2xl rounded-tr-sm p-3 border border-white/10 shadow-lg">
+<p class="text-body-md font-body-md leading-snug">
+            Yes! Monday 10:00 AM gives me adequate runway to structure the moodboards and typography. I am completely aligned.
+          </p>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- 4. FINAL BRIEF REVIEW & DUAL APPROVAL SYSTEM            -->
+<!-- ======================================================== -->
+<div class="w-full bg-[#182234] rounded-2xl p-4 border border-cyan-500/30 shadow-[0_4px_24px_rgba(0,0,0,0.4)] relative space-y-3.5">
+<!-- Header -->
+<div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 text-slate-950 flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h2 class="text-label-lg font-label-lg font-bold text-[#F8FAFC]">Collaborative Brief Finalized</h2>
+<p class="text-[11px] font-body-sm text-[#94A3B8]">All 6 contract clauses fully resolved</p>
+</div>
+</div>
+<span class="text-[10px] font-label-sm font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.2)]">
+            100% Ready
+          </span>
+</div>
+<!-- Escrow Protection Trust Seal -->
+<div class="bg-[#111827] rounded-xl p-2.5 flex items-center gap-2.5 border border-white/10">
+<div class="w-7 h-7 rounded-full bg-secondary/15 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[17px] fill">lock</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-label-sm font-label-sm font-bold text-[#F8FAFC]">Protected by FIB Escrow</div>
+<div class="text-[11px] font-body-sm text-[#94A3B8]">1,000 GEL will be locked securely upon candidate sign-off.</div>
+</div>
+</div>
+<!-- Dual Approval Participant Cards -->
+<div class="space-y-2">
+<!-- David (Employer) Status Card -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-[#111827] border border-white/10">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-cyan-950 border border-cyan-500/40 text-primary flex items-center justify-center text-[10px] font-bold">DK</div>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-[#F8FAFC]">David K. (TechCorp)</div>
+<div class="text-[10px] font-body-sm text-secondary font-medium">Digitally signed via FIB Auth</div>
+</div>
+</div>
+<span class="text-[11px] font-label-sm font-semibold bg-emerald-500/15 text-emerald-300 px-2 py-1 rounded-md border border-emerald-400/30 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">done_all</span> Approved
+            </span>
+</div>
+<!-- Nino (Candidate) Action Card -->
+<div class="p-2.5 rounded-xl bg-[#111827] border border-primary/40 space-y-2 shadow-[0_0_12px_rgba(115,255,252,0.06)]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-emerald-950 border border-emerald-400/40 text-secondary flex items-center justify-center text-[10px] font-bold">NT</div>
+<div>
+<div class="text-label-sm font-label-sm font-bold text-[#F8FAFC]">Nino Tskhadadze</div>
+<div class="text-[10px] font-body-sm text-[#94A3B8]">Candidate Signature Pending</div>
+</div>
+</div>
+<span class="text-[10px] font-label-sm bg-amber-500/20 text-amber-300 font-semibold px-2 py-0.5 rounded-full border border-amber-400/30">
+                Action needed
+              </span>
+</div>
+<!-- Candidate Approval CTAs -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2 px-3 rounded-lg border border-white/15 text-[#E2E8F0] text-label-sm font-label-sm font-semibold hover:bg-white/5 active:scale-95 transition-all text-center" type="button">
+                Request Edit
+              </button>
+<button class="py-2 px-3 rounded-lg bg-secondary text-slate-950 text-label-sm font-label-sm font-bold hover:bg-opacity-95 active:scale-95 transition-all shadow-md flex items-center justify-center gap-1" id="approve-brief-btn" type="button">
+<span class="material-symbols-outlined text-[15px]">check</span>
+                Approve Brief
+              </button>
+</div>
+</div>
+</div>
+<!-- Master Project Activation Button (Contextual CTA) -->
+<button class="w-full h-12 rounded-lg bg-gradient-to-r from-primary to-secondary text-slate-950 font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(115,255,252,0.3)] active:scale-[0.98] transition-transform" type="button">
+<span>Launch Escrow &amp; Project Workspace</span>
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</button>
+<p class="text-center text-[10px] text-[#94A3B8]">Both parties have full institutional dispute protection under FIB Terms.</p>
+</div>
+<!-- Version Audit Trail Mini-badge -->
+<div class="flex items-center justify-center gap-1 text-[11px] font-label-sm text-[#94A3B8] pb-2">
+<span class="material-symbols-outlined text-[13px]">history</span>
+<span>Version 1.2 finalized • Hash #FIB-8921-SC</span>
+</div>
+</main>
+<!-- ======================================================== -->
+<!-- 5. FIXED QUICK PROMPTS & CHAT COMPOSER                   -->
+<!-- ======================================================== -->
+<div class="fixed bottom-14 left-0 right-0 max-w-[390px] mx-auto z-30 bg-[#0B0F17]/90 backdrop-blur-md border-t border-white/10">
+<!-- Quick Prompt Accelerator Chips (Horizontal Scroll) -->
+<div class="flex items-center gap-1.5 px-space-md py-1.5 overflow-x-auto no-scrollbar">
+<button class="shrink-0 text-[11px] font-label-sm font-semibold px-2.5 py-1 rounded-full bg-[#182234] text-[#E2E8F0] border border-white/10 hover:bg-[#1E293B] transition-colors active:scale-95">
+          ✨ "Agree with 7 days"
+        </button>
+<button class="shrink-0 text-[11px] font-label-sm font-semibold px-2.5 py-1 rounded-full bg-[#182234] text-[#E2E8F0] border border-white/10 hover:bg-[#1E293B] transition-colors active:scale-95">
+          "Clarify source files"
+        </button>
+<button class="shrink-0 text-[11px] font-label-sm font-semibold px-2.5 py-1 rounded-full bg-[#182234] text-[#E2E8F0] border border-white/10 hover:bg-[#1E293B] transition-colors active:scale-95">
+          "Review milestone dates"
+        </button>
+<button class="shrink-0 text-[11px] font-label-sm font-semibold px-2.5 py-1 rounded-full bg-[#182234] text-[#E2E8F0] border border-white/10 hover:bg-[#1E293B] transition-colors active:scale-95">
+          "Ask FIB Mediator"
+        </button>
+</div>
+<!-- Main Input Composer Dock -->
+<div class="px-space-md pb-2 pt-1 flex items-center gap-2">
+<!-- Attachment / Add Specs Button -->
+<button aria-label="Add specs or attachments" class="w-10 h-10 rounded-full flex items-center justify-center text-[#94A3B8] hover:bg-white/5 active:scale-95 transition-transform duration-150 shrink-0" type="button">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+</button>
+<!-- Dynamic Message Input -->
+<div class="flex-1 relative flex items-center">
+<input class="w-full h-10 pl-3 pr-8 rounded-full bg-[#182234] border border-white/15 text-body-md font-body-md text-[#F8FAFC] placeholder:text-[#94A3B8]/60 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-[13px]" placeholder="Message David, Nino, or ask FIB AI..." type="text"/>
+<button aria-label="Voice input" class="absolute right-2.5 text-[#94A3B8] hover:text-[#F8FAFC] active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+</div>
+<!-- Send Button -->
+<button aria-label="Send message" class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary text-slate-950 flex items-center justify-center hover:opacity-90 active:scale-95 transition-transform shadow-[0_0_12px_rgba(115,255,252,0.3)] shrink-0 font-bold" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+<!-- ======================================================== -->
+<!-- 6. DOCKED BOTTOM NAVIGATION BAR (Shared Component Anchor)-->
+<!-- Semantic Shell Mapping: 'My Projects' is the active tab -->
+<!-- ======================================================== -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-40 bg-slate-900/90 backdrop-blur-md border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] h-14 flex justify-around items-center px-space-sm py-space-xs">
+<!-- Nav Item 1: Home -->
+<a class="flex flex-col items-center justify-center text-[#94A3B8] gap-0.5 hover:text-primary transition-colors active:scale-95 duration-150" href="#home">
+<span class="material-symbols-outlined text-[20px]" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<!-- Nav Item 2: Explore -->
+<a class="flex flex-col items-center justify-center text-[#94A3B8] gap-0.5 hover:text-primary transition-colors active:scale-95 duration-150" href="#explore">
+<span class="material-symbols-outlined text-[20px]" data-icon="explore">explore</span>
+<span class="text-label-sm font-label-sm">Explore</span>
+</a>
+<!-- Nav Item 3: My Projects (ACTIVE DESTINATION TAB) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold gap-0.5 active:scale-95 transition-transform duration-150 relative drop-shadow-[0_0_8px_rgba(115,255,252,0.4)]" href="#projects">
+<div class="relative flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] fill" data-icon="work_outline">work_outline</span>
+<!-- Active Dot Indicator -->
+<span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+</div>
+<span class="text-label-sm font-label-sm">My Projects</span>
+</a>
+<!-- Nav Item 4: Messages -->
+<a class="flex flex-col items-center justify-center text-[#94A3B8] gap-0.5 hover:text-primary transition-colors active:scale-95 duration-150 relative" href="#messages">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+<span class="absolute -top-1 -right-1.5 w-3.5 h-3.5 rounded-full bg-primary text-slate-950 text-[9px] flex items-center justify-center font-bold">2</span>
+</div>
+<span class="text-label-sm font-label-sm">Messages</span>
+</a>
+</nav>
+</div>
+<!-- Inline Lightweight Micro-Interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('brief-accordion-toggle');
+      const drawer = document.getElementById('brief-drawer');
+      const arrowIcon = document.getElementById('accordion-icon');
+      const quickBtn = document.getElementById('quick-view-brief-btn');
+      const approveBtn = document.getElementById('approve-brief-btn');
+      const themeToggleBtn = document.getElementById('theme-toggle');
+
+      function toggleDrawer() {
+        const isHidden = drawer.classList.contains('hidden');
+        if (isHidden) {
+          drawer.classList.remove('hidden');
+          arrowIcon.style.transform = 'rotate(180deg)';
+        } else {
+          drawer.classList.add('hidden');
+          arrowIcon.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleDrawer);
+      }
+
+      if (quickBtn) {
+        quickBtn.addEventListener('click', () => {
+          drawer.classList.remove('hidden');
+          arrowIcon.style.transform = 'rotate(180deg)';
+          drawer.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      if (approveBtn) {
+        approveBtn.addEventListener('click', function() {
+          this.innerHTML = `<span class="material-symbols-outlined text-[15px]">done_all</span> Brief Approved`;
+          this.classList.remove('bg-secondary', 'text-slate-950');
+          this.classList.add('bg-primary', 'text-slate-950');
+          alert('Success: Nino Tskhadadze approved all brief clauses. Escrow lock initialized!');
+        });
+      }
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const htmlEl = document.documentElement;
+          if (htmlEl.classList.contains('dark')) {
+            htmlEl.classList.remove('dark');
+            htmlEl.classList.add('light');
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-[17px]">light_mode</span>';
+          } else {
+            htmlEl.classList.remove('light');
+            htmlEl.classList.add('dark');
+            themeToggleBtn.innerHTML = '<span class="material-symbols-outlined text-[17px]">dark_mode</span>';
+          }
+        });
+      }
+    });
+  </script>
+<script src="../assets/screens.js"></script>
+</body></html>

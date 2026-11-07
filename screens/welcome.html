@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Welcome to FIB</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching Design Tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#002117",
+            "on-primary-fixed-variant": "#004e61",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#97f5cc",
+            "error": "#ba1a1a",
+            "inverse-primary": "#6cd3f7",
+            "outline-variant": "#bdc8ce",
+            "surface-bright": "#faf8ff",
+            "on-surface": "#131b2e",
+            "error-container": "#ffdad6",
+            "on-background": "#131b2e",
+            "outline": "#6e797e",
+            "surface-tint": "#006780",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#95d3ba",
+            "on-error": "#ffffff",
+            "surface-dim": "#d2d9f4",
+            "primary-container": "#007f9d",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#f5fff8",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-container": "#97f5cc",
+            "tertiary": "#286652",
+            "primary-fixed": "#b7eaff",
+            "on-primary-container": "#fafdff",
+            "surface": "#faf8ff",
+            "primary-fixed-dim": "#6cd3f7",
+            "tertiary-fixed": "#b0f0d6",
+            "surface-container": "#eaedff",
+            "on-secondary-fixed-variant": "#00513a",
+            "on-primary-fixed": "#001f28",
+            "secondary-fixed-dim": "#7bd8b1",
+            "on-secondary-container": "#007353",
+            "secondary": "#006c4e",
+            "surface-container-high": "#e2e7ff",
+            "on-surface-variant": "#3e484d",
+            "on-tertiary-fixed-variant": "#0b513d",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#283044",
+            "tertiary-container": "#43806a",
+            "surface-container-highest": "#dae2fd",
+            "primary": "#00647c",
+            "background": "#faf8ff",
+            "surface-variant": "#dae2fd",
+            "on-secondary-fixed": "#002115",
+            "surface-container-low": "#f2f3ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-sm": "0.75rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom glow and atmospheric subtle gradients */
+    .bg-mesh-glow {
+      background: radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 25%, rgba(16, 185, 129, 0.07) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 85%, rgba(0, 100, 124, 0.05) 0%, transparent 50%);
+    }
+    .primary-btn-gradient {
+      background: linear-gradient(135deg, #007f9d 0%, #006c4e 100%);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased min-h-screen flex justify-center items-center p-0 md:p-6 select-none font-body-md text-body-md">
+<!-- Mobile Frame: 390px x 844px Container -->
+<div class="w-full max-w-[390px] h-[844px] max-h-[844px] bg-surface-container-lowest relative flex flex-col justify-between overflow-hidden shadow-2xl rounded-[44px] border border-outline-variant/30">
+<!-- Atmospheric Geometric Backdrop Elements (Soft Faint Gradients) -->
+<div class="absolute inset-0 bg-mesh-glow pointer-events-none"></div>
+<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/3 -left-16 w-52 h-52 rounded-full bg-secondary-fixed/25 blur-3xl pointer-events-none"></div>
+<!-- Status Bar / iOS Safe Notch Sim -->
+<div class="relative z-50 w-full px-7 pt-3.5 pb-1 flex justify-between items-center text-on-surface">
+<span class="font-label-md text-label-md font-bold tracking-tight">9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface leading-none">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface leading-none">wifi</span>
+<span class="material-symbols-outlined text-[19px] text-on-surface leading-none">battery_full</span>
+</div>
+</div>
+<!-- Top Navigation / Shared TopAppBar Implementation -->
+
+<!-- Main Content Canvas (Scrollable/Flexible Flow) -->
+<main class="relative z-10 flex-1 flex flex-col justify-between px-6 pt-4 pb-2 overflow-y-auto"><div class="flex-1 flex flex-col justify-center items-center px-2"><div class="flex flex-col items-center mb-16"><div class="w-28 h-28 flex items-center justify-center relative"><img src="../assets/logo.svg" alt="FIB Monogram Logo" class="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(0,229,163,0.35)]"></div><span class="text-display-lg font-bold tracking-tight text-primary font-display-lg mt-4">FIB</span></div><div class="w-full max-w-[320px] flex flex-col gap-4"><button class="primary-btn-gradient w-full h-14 rounded-2xl flex items-center justify-center gap-2 text-on-primary font-label-lg font-semibold tracking-wide shadow-[0_8px_20px_-4px_rgba(0,127,157,0.35)] active:scale-[0.98] transition-all duration-150"><span class="">Sign Up — Create Account</span></button><button class="w-full h-14 rounded-2xl bg-surface-container-lowest border-2 border-primary/30 text-primary font-label-lg font-semibold tracking-wide active:scale-[0.98] active:bg-surface-container-low transition-all duration-150 flex items-center justify-center">Sign In — Log In</button></div></div></main>
+<!-- Footer Section / Shared Footer Alignment -->
+<footer class="relative z-40 bg-surface-container-lowest border-outline-variant/20 px-5 pt-3 pb-6 flex flex-col items-center justify-center w-full gap-2"><div class="w-32 h-1 bg-on-surface/20 rounded-full mt-2"></div></footer>
+</div>
+
+
+
+
+
+
+<script src="../assets/screens.js"></script>
+</body></html>

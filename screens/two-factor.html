@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB — Two-Factor &amp; Biometric Verification</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#007f9d",
+            "inverse-surface": "#283044",
+            "secondary": "#006c4e",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#95d3ba",
+            "surface-variant": "#dae2fd",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#0b513d",
+            "on-error": "#ffffff",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#00513a",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#002115",
+            "primary-fixed": "#b7eaff",
+            "secondary-container": "#97f5cc",
+            "on-secondary-container": "#007353",
+            "primary": "#00647c",
+            "on-primary-fixed-variant": "#004e61",
+            "on-surface": "#131b2e",
+            "surface-tint": "#006780",
+            "surface-container-highest": "#dae2fd",
+            "on-primary-fixed": "#001f28",
+            "on-tertiary-container": "#f5fff8",
+            "inverse-on-surface": "#eef0ff",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "outline": "#6e797e",
+            "surface-dim": "#d2d9f4",
+            "secondary-fixed": "#97f5cc",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#fafdff",
+            "outline-variant": "#bdc8ce",
+            "on-tertiary-fixed": "#002117",
+            "surface-container-high": "#e2e7ff",
+            "background": "#faf8ff",
+            "on-surface-variant": "#3e484d",
+            "surface-bright": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "inverse-primary": "#6cd3f7",
+            "on-background": "#131b2e",
+            "tertiary-container": "#43806a",
+            "tertiary": "#286652",
+            "secondary-fixed-dim": "#7bd8b1",
+            "tertiary-fixed": "#b0f0d6",
+            "primary-fixed-dim": "#6cd3f7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "2rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "0.75rem",
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Subtle pulsing effect for security badge */
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+    .status-pulse {
+      animation: pulse-glow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Biometric scanner subtle radar ring */
+    @keyframes scan-ring {
+      0% { transform: scale(0.96); opacity: 0.8; }
+      50% { transform: scale(1.06); opacity: 0.3; }
+      100% { transform: scale(0.96); opacity: 0.8; }
+    }
+    .pulse-ring {
+      animation: scan-ring 3s ease-in-out infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex justify-center items-start sm:py-8 sm:px-4 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Container (Target 390px x 844px) -->
+<main class="w-full max-w-[390px] min-h-screen sm:min-h-[844px] bg-surface-container-lowest relative flex flex-col justify-between overflow-hidden shadow-2xl sm:rounded-3xl border border-outline-variant/30">
+<!-- Atmospheric Ambient Lighting Gradient (Cyan to Emerald Identity) -->
+<div class="absolute -top-24 -left-20 w-72 h-72 bg-gradient-to-br from-primary-fixed-dim/25 to-secondary-fixed/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-96 -right-24 w-80 h-80 bg-gradient-to-bl from-primary-fixed/20 via-tertiary-fixed/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- MAIN INTERFACE STACK -->
+<div class="w-full flex flex-col flex-1">
+<!-- TopAppBar Component (from Shared Components JSON) -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-md text-primary docked full-width top-0 sticky z-50 shadow-sm flex justify-between items-center w-full px-5 py-3">
+<!-- Leading: Back Action (Contextually replacing generic globe with back button for 2FA task flow while preserving typography & interactions) -->
+<button aria-label="Go back to previous screen" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-150 active:scale-95 bg-surface-container-low/60 border border-outline-variant/30" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Brand Emblem / Headline Anchor -->
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-white text-[16px]" data-icon="verified_user">verified_user</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">FIB</span>
+</div>
+<!-- Trailing: Language Action Pill ('EN') -->
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low/80 border border-outline-variant/30 text-label-md font-label-md text-primary font-semibold hover:text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="language">language</span>
+<span>EN</span>
+</button>
+</header>
+<!-- Main Body Content Canvas -->
+<section class="px-5 pt-5 pb-6 flex flex-col flex-1">
+<!-- Header & Status Pill -->
+<div class="flex flex-col items-start gap-2.5 mb-6">
+<!-- Security status badge pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed/30 border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary status-pulse"></span>
+<span class="material-symbols-outlined text-secondary text-[14px]" data-icon="shield">shield</span>
+<span class="text-label-sm font-label-sm text-on-secondary-fixed-variant font-semibold tracking-wide">Security Verification • 2FA</span>
+</div>
+<!-- Main Headline -->
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Verify Identity</h1>
+<!-- Subtitle / Context Notice -->
+<p class="text-body-md font-body-md text-on-surface-variant">
+            Enter the 6-digit verification code sent to your registered device (<span class="font-semibold text-on-surface">alex***@fib.io</span>) or authenticate with biometrics.
+          </p>
+</div>
+<!-- 6-Digit OTP / Security Code Section -->
+<div class="w-full flex flex-col gap-3 mb-6">
+<div class="flex justify-between items-center">
+<label class="text-label-md font-label-md text-on-surface-variant font-medium" for="otp-input-1">Security Passcode</label>
+<div class="flex items-center gap-1 text-label-sm font-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock_clock">lock_clock</span>
+<span>Expires in 10:00</span>
+</div>
+</div>
+<!-- Individual Digit Boxes (Bento Grid layout) -->
+<div class="grid grid-cols-6 gap-2 w-full">
+<!-- Box 1 (Pre-filled demo state) -->
+<div class="h-14 rounded-xl bg-surface-container-lowest border-2 border-primary shadow-xs flex items-center justify-center transition-all ring-4 ring-primary-fixed-dim/20">
+<input class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-primary bg-transparent border-none focus:outline-none focus:ring-0 p-0" id="otp-input-1" inputmode="numeric" maxlength="1" type="text" value="7"/>
+</div>
+<!-- Box 2 (Pre-filled demo state) -->
+<div class="h-14 rounded-xl bg-surface-container-lowest border border-outline-variant/60 shadow-xs flex items-center justify-center transition-all">
+<input class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-on-surface bg-transparent border-none focus:outline-none focus:ring-0 p-0" inputmode="numeric" maxlength="1" type="text" value="4"/>
+</div>
+<!-- Box 3 (Active Focus empty state) -->
+<div class="h-14 rounded-xl bg-surface-container-lowest border-2 border-primary-container shadow-xs flex items-center justify-center transition-all ring-2 ring-primary-fixed/50 relative">
+<input autofocus="" class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-on-surface bg-transparent border-none focus:outline-none focus:ring-0 p-0" inputmode="numeric" maxlength="1" type="text" value=""/>
+<!-- Caret indicator simulation -->
+<div class="absolute w-0.5 h-6 bg-primary-container animate-pulse pointer-events-none"></div>
+</div>
+<!-- Box 4 (Empty) -->
+<div class="h-14 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 shadow-xs flex items-center justify-center transition-all">
+<input class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-on-surface bg-transparent border-none focus:outline-none focus:ring-0 p-0" inputmode="numeric" maxlength="1" type="text" value=""/>
+</div>
+<!-- Box 5 (Empty) -->
+<div class="h-14 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 shadow-xs flex items-center justify-center transition-all">
+<input class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-on-surface bg-transparent border-none focus:outline-none focus:ring-0 p-0" inputmode="numeric" maxlength="1" type="text" value=""/>
+</div>
+<!-- Box 6 (Empty) -->
+<div class="h-14 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 shadow-xs flex items-center justify-center transition-all">
+<input class="w-full h-full text-center text-headline-sm font-headline-sm font-bold text-on-surface bg-transparent border-none focus:outline-none focus:ring-0 p-0" inputmode="numeric" maxlength="1" type="text" value=""/>
+</div>
+</div>
+<!-- Resend Countdown Prompt -->
+<div class="flex items-center justify-between mt-1 px-1">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Didn't receive code?</span>
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]" data-icon="schedule">schedule</span>
+<span>Resend in <span class="font-semibold text-on-surface">0:42</span></span>
+</div>
+</div>
+</div>
+<!-- Biometric Quick-Auth Alternative Module (Glassmorphism Bento Card) -->
+<div class="w-full p-4 rounded-2xl bg-gradient-to-b from-surface-container-lowest to-surface-container-low/40 border border-outline-variant/40 shadow-sm relative overflow-hidden mb-6 group">
+<!-- Subtle corner accent gradient -->
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary-fixed/30 to-transparent rounded-bl-3xl pointer-events-none"></div>
+<div class="flex items-start justify-between mb-3 relative z-10">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-primary font-bold uppercase tracking-wider">Fast Access</span>
+<h2 class="text-title-md font-title-md text-on-surface font-semibold">Quick Biometric Sign In</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed-variant text-[11px] font-semibold border border-secondary/20">Hardware Token</span>
+</div>
+<div class="flex items-center gap-3.5 my-1 relative z-10">
+<!-- Biometric Graphic Icon Container with glow ring -->
+<div class="relative flex items-center justify-center">
+<div class="absolute inset-0 rounded-2xl bg-primary-fixed-dim/30 pulse-ring"></div>
+<div class="w-12 h-12 rounded-2xl bg-primary-container/10 border border-primary/20 flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[28px]" data-icon="fingerprint">fingerprint</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Use Face ID or Touch ID for instant, cryptographically signed access.
+              </p>
+</div>
+</div>
+<!-- Touch Action Button -->
+<button class="w-full mt-3 py-2.5 px-4 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary/50 text-primary hover:text-primary-container flex items-center justify-center gap-2 text-label-lg font-label-lg transition-all active:scale-[0.98] shadow-xs" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="contactless">contactless</span>
+<span>Authenticate with Biometrics</span>
+</button>
+</div>
+<!-- Primary CTA Action Button (Verify & Continue) -->
+<div class="w-full flex flex-col gap-3">
+<button class="w-full h-14 rounded-xl bg-gradient-to-r from-primary to-secondary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-150" type="button">
+<span>Verify &amp; Continue</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Alternative Security Methods Link -->
+<button class="w-full py-2 flex items-center justify-center gap-1.5 text-label-md font-label-md text-primary hover:text-primary-container active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="key">key</span>
+<span>Try another verification method</span>
+</button>
+</div>
+<!-- Institutional Trust Notice -->
+<div class="mt-5 pt-4 border-t border-outline-variant/20 flex items-center justify-center gap-2 text-center">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="lock">lock</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Secured by <span class="font-semibold text-on-surface">FIB Institutional Vault</span> • 256-bit End-to-End Encryption
+          </p>
+</div>
+</section>
+</div>
+<!-- Footer Component (from Shared Components JSON) -->
+<footer class="bg-surface-container-lowest text-primary full-width bottom border-t border-outline-variant/20 flat no shadows flex flex-col items-center justify-center w-full px-5 py-6 gap-3">
+<!-- Legal Links -->
+<nav aria-label="Legal footer links" class="flex items-center gap-4 text-label-sm font-label-sm text-on-surface-variant">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 active:opacity-80" href="#">Privacy Policy</a>
+<span class="w-1 h-1 rounded-full bg-outline-variant/60"></span>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 active:opacity-80" href="#">Terms of Service</a>
+<span class="w-1 h-1 rounded-full bg-outline-variant/60"></span>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-150 active:opacity-80" href="#">Security</a>
+</nav>
+<!-- Copyright Notice -->
+<p class="text-body-sm font-body-sm text-on-surface-variant/80 text-center">
+        © 2025 FIB Financial Technologies Inc. All rights reserved.
+      </p>
+</footer>
+</main>
+<script src="../assets/screens.js"></script>
+</body></html>

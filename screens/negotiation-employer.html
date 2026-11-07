@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FIB Arbitrate — AI Dual Negotiation</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#b7eaff",
+            "inverse-primary": "#6cd3f7",
+            "tertiary-fixed-dim": "#95d3ba",
+            "secondary-fixed": "#97f5cc",
+            "secondary": "#006c4e",
+            "inverse-on-surface": "#eef0ff",
+            "surface": "#faf8ff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#001f28",
+            "background": "#faf8ff",
+            "on-primary": "#ffffff",
+            "outline": "#6e797e",
+            "on-surface-variant": "#3e484d",
+            "on-primary-fixed-variant": "#004e61",
+            "on-background": "#131b2e",
+            "on-tertiary-fixed": "#002117",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "primary": "#00647c",
+            "surface-tint": "#006780",
+            "tertiary-fixed": "#b0f0d6",
+            "on-surface": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#7bd8b1",
+            "surface-dim": "#d2d9f4",
+            "surface-container": "#eaedff",
+            "primary-fixed-dim": "#6cd3f7",
+            "secondary-container": "#97f5cc",
+            "inverse-surface": "#283044",
+            "surface-variant": "#dae2fd",
+            "on-tertiary-fixed-variant": "#0b513d",
+            "tertiary": "#286652",
+            "surface-container-low": "#f2f3ff",
+            "on-secondary-fixed-variant": "#00513a",
+            "on-secondary-fixed": "#002115",
+            "primary-container": "#007f9d",
+            "on-secondary-container": "#007353",
+            "on-tertiary-container": "#f5fff8",
+            "surface-bright": "#faf8ff",
+            "outline-variant": "#bdc8ce",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#43806a",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#fafdff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "2rem",
+            "gutter-sm": "0.75rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Hide scrollbars for slick mobile look */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-full flex justify-center selection:bg-secondary-container selection:text-on-secondary-container antialiased font-body-md text-body-md">
+<!-- Mobile Viewport Shell (390px fixed container) -->
+<div class="w-full max-w-[390px] h-full flex flex-col bg-background relative overflow-hidden shadow-2xl">
+<!-- Top Navigation Bar (Shared Component: TopAppBar with bilateral context) -->
+<header class="fixed top-0 left-0 right-0 max-w-[390px] mx-auto z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 px-margin h-14 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<button aria-label="Gavel context" class="w-8 h-8 rounded-full flex items-center justify-center text-primary hover:text-primary-container active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="gavel">gavel</span>
+</button>
+<div>
+<div class="flex items-center space-x-1.5">
+<span class="font-title-md text-title-md font-bold text-primary tracking-tight">FIB Arbitrate</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant -mt-0.5">AI Project Coordinator</p>
+</div>
+</div>
+<div class="flex items-center space-x-1.5">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+</div>
+</header>
+<!-- Subheader: Privacy & Counterparty Status Banner -->
+<section class="mt-14 z-30 bg-surface-container-lowest border-b border-outline-variant/20 px-margin py-2.5 flex flex-col gap-1.5 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[14px] text-tertiary" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold tracking-wide">Private Channel</span>
+<span class="text-outline-variant text-[10px]">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[170px]">Candidate cannot see this chat</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low px-2.5 py-1 rounded-lg">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Candidate: <strong class="text-on-surface font-semibold">Nino Tskhadadze</strong></span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-[10px] text-secondary font-medium bg-secondary-container/50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]" data-icon="sync_alt">sync_alt</span>
+          Bilateral Sync Active
+        </span>
+</div>
+</section>
+<!-- Main Scrollable Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-margin pt-4 pb-48 no-scrollbar space-y-4">
+<!-- Timestamp Divider -->
+<div class="flex items-center justify-center my-2">
+<span class="font-label-sm text-label-sm text-outline px-3 py-0.5 bg-surface-container rounded-full">Today • Private Session</span>
+</div>
+<!-- 1. AI Welcome Message -->
+<div class="flex items-start space-x-2.5">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl rounded-tl-sm p-3.5 shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-primary font-bold">FIB AI Coordinator</span>
+<span class="font-label-sm text-label-sm text-outline">10:41 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Hello David! I am your private FIB AI Coordinator. I will help define and negotiate your <strong class="font-semibold text-primary">Social Media Design</strong> project terms with Nino without sharing your private notes or internal thoughts. Let's establish your ideal baseline.
+          </p>
+</div>
+</div>
+<!-- 2. Employer Bubble (User) -->
+<div class="flex items-start justify-end space-x-2 pl-8">
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm p-3.5 shadow-sm max-w-[90%]">
+<div class="flex items-center justify-between mb-1 gap-4">
+<span class="font-label-md text-label-md text-primary-fixed font-semibold">David (You)</span>
+<span class="font-label-sm text-label-sm text-primary-fixed/80">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-primary leading-relaxed">
+            I need a graphic designer to create 12 social media posts every month. Budget is 1,000 GEL per month. I need the first designs within 5 days.
+          </p>
+</div>
+</div>
+<!-- 3. AI Structured Response -->
+<div class="flex items-start space-x-2.5">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl rounded-tl-sm p-3.5 shadow-sm space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">FIB AI Coordinator</span>
+<span class="font-label-sm text-label-sm text-outline">10:43 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+            Got it David. I've logged your initial requirements:
+          </p>
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/20 space-y-1.5">
+<div class="flex items-start space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></span>
+<span class="font-body-sm text-body-sm text-on-surface"><strong class="font-medium">Scope:</strong> 12 social posts / month (promo banners included)</span>
+</div>
+<div class="flex items-start space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></span>
+<span class="font-body-sm text-body-sm text-on-surface"><strong class="font-medium">Proposed Budget:</strong> 1,000 GEL / mo</span>
+</div>
+<div class="flex items-start space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></span>
+<span class="font-body-sm text-body-sm text-on-surface"><strong class="font-medium">Delivery:</strong> First draft in 5 calendar days</span>
+</div>
+<div class="flex items-start space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></span>
+<span class="font-body-sm text-body-sm text-on-surface"><strong class="font-medium">Revisions:</strong> 3 expected</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 pt-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary animate-spin" data-icon="sync_alt">sync_alt</span>
+<span>Now checking feasibility with Nino in her private channel...</span>
+</div>
+</div>
+</div>
+<!-- 4. Reconciled AI Update Card (Bilateral sync) -->
+<div class="relative bg-surface-container-lowest border-2 border-secondary/30 rounded-2xl p-4 shadow-md overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-secondary-container"></div>
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center space-x-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs">⚡</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold">Counterparty Feedback from Nino</h3>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-bold uppercase tracking-wider bg-secondary-container px-2 py-0.5 rounded-full">New Update</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed mb-3">
+          Nino has <strong class="text-secondary font-semibold">accepted the 1,000 GEL budget and 12-post scope</strong>! However, she requests <strong class="text-primary font-semibold">7 days</strong> for the initial design concepts (2-day variance from your 5-day target) to ensure brand guidelines compliance and includes <strong class="text-primary font-semibold">2 rounds of revisions</strong>.
+        </p>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 mb-3.5">
+<p class="font-label-md text-label-md text-on-surface font-medium text-center">
+            Would you accept a 7-day initial turnaround?
+          </p>
+</div>
+<!-- Interactive Choice Buttons -->
+<div class="space-y-2">
+<button class="w-full h-12 bg-secondary text-on-secondary hover:bg-secondary/90 font-label-lg text-label-lg font-semibold rounded-xl flex items-center justify-center space-x-2 shadow-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span>Accept 7 Days &amp; 2 Revisions</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold rounded-xl flex items-center justify-center active:scale-[0.98] transition-all">
+              Counter-propose 6 Days
+            </button>
+<button class="h-10 bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low text-error font-label-md text-label-md font-semibold rounded-xl flex items-center justify-center active:scale-[0.98] transition-all">
+              Insist on 5 Days
+            </button>
+</div>
+</div>
+</div>
+<!-- 5. Reconciled Clause Summary Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2.5">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="description">description</span>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Clause Reconciliation Matrix</h4>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">2 / 4 Locked</span>
+</div>
+<div class="space-y-2.5">
+<!-- Clause 1 -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">Deliverables</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">12 Posts / Month</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Confirmed by Nino
+            </span>
+</div>
+<!-- Clause 2 -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">Monthly Fee</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">1,000 GEL</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Confirmed by Nino
+            </span>
+</div>
+<!-- Clause 3 -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-primary-fixed/20 border border-primary/20">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">First Turnaround</span>
+<span class="font-label-md text-label-md text-primary font-semibold">7 Days Proposed</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-primary text-on-primary px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Action Required
+            </span>
+</div>
+<!-- Clause 4 -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-primary-fixed/20 border border-primary/20">
+<div class="flex flex-col">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">Revision Rounds</span>
+<span class="font-label-md text-label-md text-primary font-semibold">2 Rounds Included</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-primary text-on-primary px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+              Action Required
+            </span>
+</div>
+</div>
+<button class="w-full mt-2 h-11 bg-primary text-on-primary hover:bg-primary-container font-label-lg text-label-lg font-semibold rounded-xl flex items-center justify-center space-x-2 active:scale-[0.98] transition-all">
+<span>Confirm My Requirements</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Floating Dock Composer Section + Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-lg border-t border-outline-variant/30">
+<!-- Composer Input -->
+<div class="p-2.5 px-3 flex items-center space-x-2">
+<button aria-label="Attach File" class="w-9 h-9 rounded-full flex items-center justify-center text-outline hover:text-primary active:scale-[0.98] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="attach_file">attach_file</span>
+</button>
+<div class="flex-1 relative flex items-center">
+<input class="w-full h-10 pl-3 pr-9 bg-surface-container-low border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded-full font-body-md text-body-md text-on-surface placeholder:text-outline outline-none transition-all" placeholder="Message FIB AI privately..." type="text"/>
+<button aria-label="Microphone Voice Note" class="absolute right-2.5 text-outline hover:text-primary active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+</button>
+</div>
+<button aria-label="Send Message" class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow hover:bg-secondary/90 active:scale-[0.98] transition-all flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+<!-- BottomNavBar (Shared Component JSON execution) -->
+<!-- Mapping active tab: 'AI Stream' is the current live negotiation stream -->
+<nav class="flex justify-around items-center px-gutter py-2 border-t border-outline-variant/20 bg-surface-container-lowest">
+<!-- Tab 1: Brief -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm mt-0.5">Brief</span>
+</button>
+<!-- Tab 2: AI Stream (Active Match for AI Dual Negotiation) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-3 py-1 font-semibold hover:text-primary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy" data-weight="fill" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-sm text-label-sm mt-0.5">AI Stream</span>
+</button>
+<!-- Tab 3: Reconcile -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync_alt">sync_alt</span>
+<span class="font-label-sm text-label-sm mt-0.5">Reconcile</span>
+</button>
+<!-- Tab 4: Escrow -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm mt-0.5">Escrow</span>
+</button>
+</nav>
+</div>
+</div>
+<script src="../assets/screens.js"></script>
+</body></html>
