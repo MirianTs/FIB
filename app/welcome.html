@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB Ecosystem — AI-Powered Professional Verification</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "primary-container": "#00855d",
+            "on-primary": "#ffffff",
+            "secondary-container": "#dae2fd",
+            "on-secondary-fixed-variant": "#3f465c",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#001f26",
+            "on-surface-variant": "#3d4a42",
+            "on-primary-fixed-variant": "#005137",
+            "background": "#f8f9ff",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#6d7a72",
+            "outline-variant": "#bccac0",
+            "on-tertiary-container": "#f9fdff",
+            "on-background": "#0b1c30",
+            "surface": "#f8f9ff",
+            "on-primary-fixed": "#002114",
+            "on-primary-container": "#f5fff7",
+            "tertiary-fixed": "#acedff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-container": "#5c647a",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "error": "#ba1a1a",
+            "inverse-primary": "#68dba9",
+            "secondary-fixed-dim": "#bec6e0",
+            "surface-dim": "#cbdbf5",
+            "surface-container": "#e5eeff",
+            "on-surface": "#0b1c30",
+            "tertiary-container": "#008096",
+            "primary-fixed-dim": "#68dba9",
+            "surface-tint": "#006c4a",
+            "tertiary": "#006577",
+            "surface-container-high": "#dce9ff",
+            "primary": "#059669",
+            "secondary": "#565e74",
+            "inverse-surface": "#0A1128",
+            "surface-variant": "#d3e4fe",
+            "surface-container-low": "#eff4ff",
+            "on-secondary-fixed": "#131b2e",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "surface-container-highest": "#d3e4fe",
+            "secondary-fixed": "#dae2fd",
+            "primary-fixed": "#85f8c4",
+            "surface-bright": "#f8f9ff",
+            "navy-brand": "#0A1128",
+            "emerald-brand": "#059669"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Plus Jakarta Sans", "sans-serif"],
+            "body": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .dark .glass-card {
+      background: rgba(10, 17, 40, 0.92);
+    }
+    .beveled-btn {
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.28), 0 2px 4px 0 rgba(5, 150, 105, 0.2);
+    }
+</style>
+</head>
+<body class="bg-background dark:bg-[#070b19] text-on-surface dark:text-slate-100 antialiased font-body transition-colors duration-200 min-h-screen flex flex-col justify-between selection:bg-[#059669] selection:text-white">
+<!-- Interactive Prototype Simulation Banner -->
+<aside aria-label="Prototype Notice" class="w-full bg-[#0A1128] text-white py-1.5 px-3 text-center border-b border-slate-800 z-50 sticky top-0 flex items-center justify-center space-x-2">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<p class="font-headline text-[11px] uppercase tracking-wider font-semibold text-slate-300">
+    Interactive Prototype Simulation — Live Client-Side Engine
+  </p>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="bg-surface/90 dark:bg-[#0A1128]/90 backdrop-blur-md sticky top-7 z-40 border-b border-outline-variant/30 dark:border-slate-800">
+<div class="flex justify-between items-center w-full px-4 max-w-md mx-auto h-16">
+<!-- Brand / Ecosystem identity -->
+<div class="flex items-center space-x-2">
+<div class="w-9 h-9 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#059669]">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div>
+<span class="font-headline font-extrabold text-[17px] text-[#0A1128] dark:text-white leading-tight block">
+          FIB Ecosystem
+        </span>
+<span class="text-[10px] font-headline font-bold text-[#059669] tracking-wider uppercase">
+          Institutional Trust
+        </span>
+</div>
+</div>
+<!-- Header Right: Theme switch + Demo Modal Trigger -->
+<div class="flex items-center space-x-2">
+<button aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" id="themeToggleBtn">
+<span class="material-symbols-outlined text-[20px] dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined text-[20px] hidden dark:inline">light_mode</span>
+</button>
+<button class="text-xs font-headline font-bold px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-[#059669] dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-100 transition" onclick="switchTab('demo')">
+        Demo Sandbox
+      </button>
+</div>
+</div>
+</header>
+<!-- ACTIVE SESSION BANNER (Simulated Authentication State) -->
+<div class="hidden w-full max-w-md mx-auto px-4 pt-3" id="activeSessionBanner">
+<div class="p-3.5 bg-white dark:bg-[#0E1726] border-2 border-emerald-500/50 rounded-2xl shadow-md flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-[#0A1128] text-white font-headline font-bold flex items-center justify-center text-sm border-2 border-emerald-400" id="sessionAvatar">
+        SJ
+      </div>
+<div>
+<div class="flex items-center space-x-1.5">
+<span class="font-headline font-bold text-sm text-[#0A1128] dark:text-white" id="sessionUserName">Sarah Jenkins</span>
+<span class="text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-emerald-500 text-white" id="sessionRoleBadge">
+            Company Lead
+          </span>
+</div>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span id="sessionStatusText">Active • Valid 24h</span>
+</p>
+</div>
+</div>
+<button class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition" onclick="terminateSession()">
+      Log Out
+    </button>
+</div>
+</div>
+<!-- MAIN CANVAS WRAPPER -->
+<main class="flex-1 w-full max-w-md mx-auto px-4 py-3 flex flex-col justify-start pb-24">
+<!-- 3-Segmented Master Tab Bar -->
+<div class="bg-slate-200/80 dark:bg-slate-900/90 p-1 rounded-xl grid grid-cols-3 gap-1 mb-4 border border-slate-300/40 dark:border-slate-800">
+<button class="py-2 text-[12px] font-headline font-bold rounded-lg transition-all text-white bg-[#0A1128] shadow-sm" id="tabBtnWelcome" onclick="switchTab('welcome')">
+      Welcome &amp; Auth
+    </button>
+<button class="py-2 text-[12px] font-headline font-bold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" id="tabBtnRegister" onclick="switchTab('register')">
+      Register (5-Step)
+    </button>
+<button class="py-2 text-[12px] font-headline font-bold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" id="tabBtnDemo" onclick="switchTab('demo')">
+      Demo Sandbox
+    </button>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 1: WELCOME & AUTHENTICATION VIEW                                      -->
+<!-- ========================================================================= -->
+<section class="space-y-4" id="paneWelcomeAuth">
+<!-- Brand Official Logo & Hero -->
+<div class="text-center pt-1 space-y-3">
+<div class="flex justify-center items-center">
+<div class="p-2.5 rounded-2xl bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 shadow-sm inline-block">
+<img alt="FIB Official Logo" class="h-10 w-auto object-contain block" src="../assets/logo.svg"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[#059669] dark:text-emerald-400 text-[11px] font-headline font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Cryptographic Verification v4.8</span>
+</div>
+<h1 class="font-headline font-extrabold text-[24px] text-[#0A1128] dark:text-white tracking-tight leading-snug">
+          The AI-Powered Professional Ecosystem
+        </h1>
+<p class="font-body text-xs text-slate-600 dark:text-slate-400 max-w-xs mx-auto leading-relaxed">
+          High-trust infrastructure connecting institutional enterprises with cryptographically verified talent.
+        </p>
+</div>
+<!-- 3 Feature Badges -->
+<div class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+<span class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 text-[11px] font-headline font-semibold text-[#0A1128] dark:text-slate-200 shadow-xs">
+<span class="material-symbols-outlined text-[#059669] text-[15px]">verified</span>
+<span>Verified AI Matchmaking</span>
+</span>
+<span class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 text-[11px] font-headline font-semibold text-[#0A1128] dark:text-slate-200 shadow-xs">
+<span class="material-symbols-outlined text-[#006577] text-[15px]">lock_clock</span>
+<span>Zero-Friction Escrow</span>
+</span>
+<span class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 text-[11px] font-headline font-semibold text-[#0A1128] dark:text-slate-200 shadow-xs">
+<span class="material-symbols-outlined text-[#565e74] text-[15px]">hub</span>
+<span>Dual-Sided Workspaces</span>
+</span>
+</div>
+</div>
+<!-- Master Action Switches -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition active:scale-[0.98]" onclick="switchTab('register')">
+<span>Create FIB Account</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<button class="h-11 bg-white dark:bg-[#0E1726] border border-slate-300 dark:border-slate-700 text-[#0A1128] dark:text-white font-headline font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 transition active:scale-[0.98]" id="btnToggleLogin" onclick="toggleInlineLogin()">
+<span class="material-symbols-outlined text-[16px]">login</span>
+<span>Sign In to Existing Portal</span>
+</button>
+</div>
+<!-- Inline Authentication Form Card -->
+<div class="glass-card p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3" id="inlineLoginForm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline font-extrabold text-sm text-[#0A1128] dark:text-white">Institutional Sign In</h2>
+<p class="text-[11px] text-slate-500">Access verified portal or enterprise dashboard</p>
+</div>
+<span class="text-[10px] font-mono text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded-full font-bold">TLS 1.3 SECURE</span>
+</div>
+<!-- Feedback Alert Box -->
+<div class="hidden p-2.5 rounded-xl text-xs font-semibold flex items-center space-x-2" id="authAlertBox">
+<span class="material-symbols-outlined text-[18px]" id="authAlertIcon"></span>
+<span id="authAlertText">Alert message</span>
+</div>
+<div class="space-y-2.5">
+<div>
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300 mb-1">Work / Registered Email</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none" id="loginEmail" placeholder="name@enterprise.ai" type="email"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[16px] text-slate-400">mail</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300">Password</label>
+<button class="text-[11px] text-[#059669] hover:underline font-semibold" onclick="openForgotModal()" type="button">Forgot Password?</button>
+</div>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none" id="loginPassword" placeholder="••••••••" type="password"/>
+<button class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600" onclick="togglePasswordVis('loginPassword', 'eyeLoginIcon')" type="button">
+<span class="material-symbols-outlined text-[16px]" id="eyeLoginIcon">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<label class="flex items-center space-x-1.5 cursor-pointer text-slate-600 dark:text-slate-400">
+<input checked="" class="rounded border-slate-300 text-[#059669] focus:ring-[#059669] h-3.5 w-3.5" id="chkRememberMe" type="checkbox"/>
+<span class="text-[11px]">Remember me</span>
+</label>
+<span class="text-[10px] text-slate-400 font-mono">2FA Hardware Ready</span>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-11 bg-[#0A1128] hover:bg-slate-800 text-white font-headline font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition active:scale-[0.98]" onclick="executeLogin()">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+<span>Sign In to FIB</span>
+</button>
+<!-- Quick Fill Buttons -->
+<div class="pt-1 border-t border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between gap-2">
+<button class="flex-1 py-1.5 px-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 rounded-lg text-[10px] font-headline font-bold text-slate-700 dark:text-slate-300 transition text-center" onclick="quickFillLogin('company')" type="button">
+            Fill Employer Login
+          </button>
+<button class="flex-1 py-1.5 px-2 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 rounded-lg text-[10px] font-headline font-bold text-[#059669] dark:text-emerald-300 transition text-center" onclick="quickFillLogin('individual')" type="button">
+            Fill Talent Login
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- TAB 2: 5-STEP REGISTRATION FLOW                                           -->
+<!-- ========================================================================= -->
+<section class="hidden space-y-3.5" id="paneRegister">
+<!-- Stepper Top Bar & Segments -->
+<div class="bg-white dark:bg-[#0E1726] p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<button class="p-1 rounded-md text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800" id="stepperBackBtn" onclick="prevStep()">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+</button>
+<h2 class="font-headline font-bold text-xs text-[#0A1128] dark:text-white" id="stepperHeaderTitle">
+            Step 1: Details
+          </h2>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-[#059669] dark:text-emerald-300" id="stepperPercentBadge">
+          Step 1/5 • 20%
+        </span>
+</div>
+<!-- Visual 5 Steps Indicator with Labels -->
+<div class="grid grid-cols-5 gap-1 pt-1">
+<div class="space-y-1">
+<div class="h-1.5 rounded-full bg-[#059669]" id="barStep1"></div>
+<p class="text-[9px] text-center font-bold text-[#059669]" id="lblStep1">Details</p>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700" id="barStep2"></div>
+<p class="text-[9px] text-center font-semibold text-slate-400" id="lblStep2">Email</p>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700" id="barStep3"></div>
+<p class="text-[9px] text-center font-semibold text-slate-400" id="lblStep3">Role</p>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700" id="barStep4"></div>
+<p class="text-[9px] text-center font-semibold text-slate-400" id="lblStep4">Legal</p>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 rounded-full bg-slate-200 dark:bg-slate-700" id="barStep5"></div>
+<p class="text-[9px] text-center font-semibold text-slate-400" id="lblStep5">Done</p>
+</div>
+</div>
+</div>
+<!-- STEP 1: USER INFORMATION -->
+<div class="bg-white dark:bg-[#0E1726] p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3" id="cardRegStep1">
+<div>
+<h3 class="font-headline font-extrabold text-sm text-[#0A1128] dark:text-white">Create Master Credentials</h3>
+<p class="text-[11px] text-slate-500">Provide your verified legal name and organizational email.</p>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300 mb-1">First Name</label>
+<input class="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="regFirstName" placeholder="e.g. Alex" type="text" value="Alex"/>
+</div>
+<div>
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300 mb-1">Last Name</label>
+<input class="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="regLastName" placeholder="e.g. Vance" type="text" value="Vance"/>
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300 mb-1">Work Email Address</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="regEmail" placeholder="alex.vance@enterprise.ai" type="email" value="alex.vance@enterprise.ai"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[16px] text-emerald-600">verified</span>
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300 mb-1">Password</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="regPassword" oninput="handlePasswordStrength(this.value)" placeholder="At least 8 chars with symbols" type="password" value="FIBEnterprise#2025"/>
+<button class="absolute right-2.5 top-2.5 text-slate-400" onclick="togglePasswordVis('regPassword', 'eyeRegIcon1')" type="button">
+<span class="material-symbols-outlined text-[16px]" id="eyeRegIcon1">visibility</span>
+</button>
+</div>
+<!-- 3-bar Strength Indicator -->
+<div class="mt-2 space-y-1">
+<div class="flex justify-between items-center text-[10px]">
+<span class="text-slate-500">Security Complexity:</span>
+<span class="font-bold text-emerald-600" id="regStrengthLabel">Cryptographically Strong</span>
+</div>
+<div class="grid grid-cols-3 gap-1 h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-emerald-500 rounded-full" id="strBar1"></div>
+<div class="bg-emerald-500 rounded-full" id="strBar2"></div>
+<div class="bg-emerald-500 rounded-full" id="strBar3"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300">Confirm Password</label>
+<span class="text-[10px] font-semibold text-emerald-600 flex items-center space-x-0.5" id="matchConfirmBadge">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>Passwords Match</span>
+</span>
+</div>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="regConfirmPass" oninput="verifyPasswordMatch()" placeholder="Re-enter password" type="password" value="FIBEnterprise#2025"/>
+<button class="absolute right-2.5 top-2.5 text-slate-400" onclick="togglePasswordVis('regConfirmPass', 'eyeRegIcon2')" type="button">
+<span class="material-symbols-outlined text-[16px]" id="eyeRegIcon2">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition active:scale-[0.98] mt-1" onclick="nextStep(2)">
+<span>Continue to Email Verification</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- STEP 2: EMAIL VERIFICATION (OTP) -->
+<div class="hidden bg-white dark:bg-[#0E1726] p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3.5 text-center" id="cardRegStep2">
+<div class="w-12 h-12 rounded-full bg-emerald-500/10 text-[#059669] mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">mark_email_read</span>
+</div>
+<div>
+<h3 class="font-headline font-extrabold text-sm text-[#0A1128] dark:text-white">Verify Your Email</h3>
+<p class="text-[11px] text-slate-500 mt-0.5">
+          We sent a 6-digit cryptographic pin to:
+        </p>
+<p class="text-xs font-headline font-bold text-[#059669] dark:text-emerald-400 mt-0.5" id="dispOtpTargetEmail">
+          alex.vance@enterprise.ai
+        </p>
+</div>
+<!-- 6-digit inputs -->
+<div class="flex justify-center items-center gap-2 py-1">
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="8"/>
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="4"/>
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="9"/>
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="2"/>
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="0"/>
+<input class="otp-input w-10 h-11 text-center font-headline font-extrabold text-lg rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-[#0A1128] dark:text-white focus:border-[#059669] outline-none" maxlength="1" value="1"/>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-[11px] font-headline font-bold text-[#059669] dark:text-emerald-300 border border-emerald-500/30 flex items-center justify-center space-x-1 hover:bg-emerald-100 transition" onclick="fillDemoCode()">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>Auto-Fill Code (849-201)</span>
+</button>
+<button class="w-full h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition active:scale-[0.98]" onclick="nextStep(3)">
+<span>Verify &amp; Choose Account Type</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- STEP 3: SELECT ACCOUNT TYPE (STRICT SEPARATION) -->
+<div class="hidden bg-white dark:bg-[#0E1726] p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3" id="cardRegStep3">
+<div>
+<h3 class="font-headline font-extrabold text-sm text-[#0A1128] dark:text-white">Select Account Type</h3>
+<p class="text-[11px] text-slate-500">Strict architectural role isolation is enforced at infrastructure level.</p>
+</div>
+<!-- Option A: Individual Account -->
+<div class="p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 cursor-pointer transition relative" id="roleCardIndividual" onclick="selectAccountType('individual')">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#059669] text-[22px]">person</span>
+<div>
+<p class="font-headline font-extrabold text-xs text-[#0A1128] dark:text-white">Individual Account</p>
+<span class="text-[10px] font-medium text-slate-500">For Talents, Engineers &amp; Independent Experts</span>
+</div>
+</div>
+<input checked="" class="text-[#059669] focus:ring-[#059669] h-4 w-4" id="radioIndividual" name="acc_type_radio" type="radio"/>
+</div>
+<!-- Sub-Pills for Individual -->
+<div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-emerald-200/60 dark:border-emerald-800/40">
+<button class="subpill-ind px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-[#059669] text-white" onclick="event.stopPropagation(); setIndividualSubrole('Job Seeker', this)" type="button">
+            Job Seeker
+          </button>
+<button class="subpill-ind px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation(); setIndividualSubrole('Freelancer / Service Provider', this)" type="button">
+            Freelancer / Service Provider
+          </button>
+<button class="subpill-ind px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation(); setIndividualSubrole('Both Roles', this)" type="button">
+            Both Roles
+          </button>
+</div>
+</div>
+<!-- Option B: Company Account -->
+<div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 cursor-pointer transition relative" id="roleCardCompany" onclick="selectAccountType('company')">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#0A1128] dark:text-slate-300 text-[22px]">corporate_fare</span>
+<div>
+<p class="font-headline font-extrabold text-xs text-[#0A1128] dark:text-white">Company Account</p>
+<span class="text-[10px] font-medium text-slate-500">For Enterprises, Startups &amp; Hiring Managers</span>
+</div>
+</div>
+<input class="text-[#059669] focus:ring-[#059669] h-4 w-4" id="radioCompany" name="acc_type_radio" type="radio"/>
+</div>
+<!-- Sub-Pills for Company -->
+<div class="flex flex-wrap gap-1.5 mt-2.5 pt-2 border-t border-slate-200/80 dark:border-slate-800">
+<button class="subpill-comp px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-slate-900 text-white dark:bg-slate-700" onclick="event.stopPropagation(); setCompanySubrole('Employer', this)" type="button">
+            Employer
+          </button>
+<button class="subpill-comp px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation(); setCompanySubrole('Client / Project Owner', this)" type="button">
+            Client / Project Owner
+          </button>
+<button class="subpill-comp px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700" onclick="event.stopPropagation(); setCompanySubrole('Both Roles', this)" type="button">
+            Both Roles
+          </button>
+</div>
+</div>
+<!-- Dual Capacity Profile Switch -->
+<div class="p-2.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between">
+<div class="pr-2">
+<p class="font-headline font-bold text-xs text-[#0A1128] dark:text-white">Allow activating dual-capacity profile</p>
+<p class="text-[10px] text-slate-500">Seamlessly toggle between Hiring and Consulting</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="chkDualToggle" type="checkbox"/>
+<div class="w-8 h-4 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#059669]"></div>
+</label>
+</div>
+<button class="w-full h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition active:scale-[0.98]" onclick="nextStep(4)">
+<span>Continue to Terms &amp; Privacy</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- STEP 4: LEGAL & PRIVACY -->
+<div class="hidden bg-white dark:bg-[#0E1726] p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3" id="cardRegStep4">
+<div>
+<h3 class="font-headline font-extrabold text-sm text-[#0A1128] dark:text-white">Legal &amp; Compliance Protocols</h3>
+<p class="text-[11px] text-slate-500">Review terms for cryptographic institutional agreements.</p>
+</div>
+<div class="h-24 overflow-y-auto p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400 space-y-1">
+<p class="font-bold text-[#0A1128] dark:text-white">Institutional Terms v4.8</p>
+<p>1. Operational Escrow: Multi-signature release upon cryptographic verification.</p>
+<p>2. Cryptographic Proof: AI benchmark skills immutably hashed.</p>
+<p>3. Privacy: Zero-knowledge proofs prevent unauthorized talent credential harvesting.</p>
+</div>
+<div class="space-y-2 pt-1">
+<label class="flex items-start space-x-2.5 cursor-pointer">
+<input checked="" class="mt-0.5 rounded border-slate-300 text-[#059669] focus:ring-[#059669] h-3.5 w-3.5" id="chkLegal1" type="checkbox"/>
+<span class="text-[11px] text-slate-700 dark:text-slate-300 leading-tight">
+            I accept the <strong class="text-[#059669]">FIB Terms of Service &amp; Professional Code</strong> (required)
+          </span>
+</label>
+<label class="flex items-start space-x-2.5 cursor-pointer">
+<input checked="" class="mt-0.5 rounded border-slate-300 text-[#059669] focus:ring-[#059669] h-3.5 w-3.5" id="chkLegal2" type="checkbox"/>
+<span class="text-[11px] text-slate-700 dark:text-slate-300 leading-tight">
+            I agree to the <strong class="text-[#059669]">AI Privacy Policy and Biometric/Work Data Processing</strong> (required)
+          </span>
+</label>
+<label class="flex items-start space-x-2.5 cursor-pointer">
+<input class="mt-0.5 rounded border-slate-300 text-[#059669] focus:ring-[#059669] h-3.5 w-3.5" id="chkLegal3" type="checkbox"/>
+<span class="text-[11px] text-slate-500 leading-tight">
+            Receive AI market alerts &amp; matching insights (optional)
+          </span>
+</label>
+</div>
+<button class="w-full h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition active:scale-[0.98]" onclick="nextStep(5)">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Create FIB Account</span>
+</button>
+</div>
+<!-- STEP 5: CREATION SUCCESS & SMART ROLE ROUTING -->
+<div class="hidden bg-white dark:bg-[#0E1726] p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center space-y-4" id="cardRegStep5">
+<div class="relative w-14 h-14 mx-auto">
+<div class="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping"></div>
+<div class="relative w-14 h-14 rounded-full bg-[#059669] text-white flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-[28px] font-bold">check</span>
+</div>
+</div>
+<div>
+<span class="text-[10px] font-headline font-bold text-[#059669] uppercase tracking-wider">Ecosystem Verification Complete</span>
+<h3 class="font-headline font-extrabold text-base text-[#0A1128] dark:text-white mt-0.5">
+          FIB Account Successfully Created!
+        </h3>
+<p class="text-xs text-slate-500 mt-1">
+          Identity hash permanently anchored to FIB institutional ledger.
+        </p>
+</div>
+<!-- Account Type Badge Display -->
+<div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left space-y-1.5">
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-500">Selected Entity:</span>
+<span class="px-2 py-0.5 rounded-full font-headline font-bold text-[10px] uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300" id="step5RoleBadge">
+            Individual Account
+          </span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-500">Sub-Capacity:</span>
+<span class="font-semibold text-[#0A1128] dark:text-white" id="step5SubroleText">Job Seeker</span>
+</div>
+</div>
+<!-- Strict Routing Alert Box -->
+<div class="p-3 rounded-xl bg-blue-50 dark:bg-slate-800/80 border border-blue-200 dark:border-blue-900/60 text-left space-y-1" id="strictRoutingAlert">
+<div class="flex items-center space-x-1.5 text-blue-900 dark:text-blue-300 font-headline font-bold text-xs">
+<span class="material-symbols-outlined text-[16px] text-blue-600 dark:text-blue-400">route</span>
+<span id="routingTargetHeadline">Routing to Individual Setup</span>
+</div>
+<p class="text-[11px] text-blue-800 dark:text-blue-300 leading-snug" id="routingTargetDescription">
+          Routing you to: Individual Setup &amp; AI Portfolio (Skills, Rate Matrix, Availability)...
+        </p>
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 border-t border-blue-100 dark:border-slate-700">
+<strong>Strict Guard:</strong> Individual users never route to Company setup; Company users never route to Individual setup.
+        </p>
+</div>
+<div class="space-y-2 pt-1">
+<button class="w-full h-11 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl beveled-btn flex items-center justify-center space-x-1.5 transition shadow-sm" onclick="launchOnboardingTarget()">
+<span id="btnLaunchLabel">Launch Role Onboarding</span>
+<span class="material-symbols-outlined text-[16px]">rocket_launch</span>
+</button>
+<button class="w-full py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200" onclick="resetFlow()">
+          Reset Flow
+        </button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- TAB 3: DEMO SANDBOX & SESSION SIMULATION                                  -->
+<!-- ========================================================================= -->
+<section class="hidden space-y-3" id="paneDemo">
+<div class="p-3.5 rounded-2xl bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 shadow-xs space-y-1">
+<div class="flex items-center space-x-1.5 text-[#059669]">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<h3 class="font-headline font-extrabold text-xs uppercase tracking-wider">Instant Sandbox Accounts</h3>
+</div>
+<p class="text-[11px] text-slate-500">
+        Simulate real dual-sided role segregation with one click.
+      </p>
+</div>
+<!-- Company Demo Card -->
+<div class="p-3.5 rounded-2xl bg-white dark:bg-[#0E1726] border border-slate-200 dark:border-slate-800 space-y-2.5 shadow-sm">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded text-[10px] font-headline font-bold uppercase bg-[#0A1128] text-white">
+          Company Identity
+        </span>
+<span class="text-[11px] text-emerald-600 font-bold flex items-center space-x-0.5">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Verified Org</span>
+</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-[#0A1128] text-white flex items-center justify-center font-headline font-bold text-sm">
+          SJ
+        </div>
+<div>
+<h4 class="font-headline font-bold text-xs text-[#0A1128] dark:text-white">Sarah Jenkins</h4>
+<p class="text-[11px] text-slate-500">Employer / Client • Apex AI Labs</p>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-[#0A1128] hover:bg-slate-800 text-white font-headline font-bold text-xs flex items-center justify-center space-x-1.5 transition" onclick="startSimulatedSession('company')">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+<span>Login as Sarah Jenkins (Employer)</span>
+</button>
+</div>
+<!-- Individual Demo Card -->
+<div class="p-3.5 rounded-2xl bg-white dark:bg-[#0E1726] border border-emerald-500/30 bg-emerald-50/20 dark:bg-emerald-950/10 space-y-2.5 shadow-sm">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded text-[10px] font-headline font-bold uppercase bg-[#059669] text-white">
+          Individual Identity
+        </span>
+<span class="text-[11px] text-emerald-600 font-bold flex items-center space-x-0.5">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Tier 1 Verified</span>
+</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-[#059669] text-white flex items-center justify-center font-headline font-bold text-sm">
+          MC
+        </div>
+<div>
+<h4 class="font-headline font-bold text-xs text-[#0A1128] dark:text-white">Marcus Chen</h4>
+<p class="text-[11px] text-slate-500">Talent / Freelancer • Senior AI Engineer</p>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs flex items-center justify-center space-x-1.5 transition beveled-btn" onclick="startSimulatedSession('individual')">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+<span>Login as Marcus Chen (Talent)</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Standard Mobile Shell) -->
+<nav aria-label="Mobile Navigation" class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-[#0A1128]/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_16px_rgba(10,17,40,0.04)]">
+<button class="flex flex-col items-center justify-center text-[#059669] font-headline font-semibold py-1" id="navWelcome" onclick="switchTab('welcome')">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="text-[10px] mt-0.5">Welcome</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 hover:text-[#059669] font-headline font-semibold py-1" id="navRegister" onclick="switchTab('register')">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span class="text-[10px] mt-0.5">Register</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 hover:text-[#059669] font-headline font-semibold py-1" id="navDemo" onclick="switchTab('demo')">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+<span class="text-[10px] mt-0.5">Sandbox</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 hover:text-[#059669] font-headline font-semibold py-1" onclick="openSupportModal()">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="text-[10px] mt-0.5">Support</span>
+</button>
+</nav>
+<!-- FORGOT PASSWORD MODAL (Requirement 6) -->
+<div class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-3" id="forgotModal">
+<div class="bg-white dark:bg-[#0E1726] w-full max-w-sm rounded-2xl p-5 space-y-3.5 border border-slate-200 dark:border-slate-800 shadow-xl animate-fadeIn">
+<div class="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-[#059669] flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</div>
+<h3 class="font-headline font-bold text-sm text-[#0A1128] dark:text-white">Reset Password</h3>
+</div>
+<button class="text-slate-400 hover:text-slate-600" onclick="closeForgotModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Green Confirmation Banner -->
+<div class="hidden p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-[#059669] dark:text-emerald-300 text-xs flex items-start space-x-2" id="forgotSuccessBanner">
+<span class="material-symbols-outlined text-[16px] mt-0.5">check_circle</span>
+<p class="leading-tight">Reset instructions dispatched to your verified inbox! Link valid for 15 minutes.</p>
+</div>
+<div class="space-y-2">
+<label class="block text-[11px] font-headline font-bold text-slate-700 dark:text-slate-300">Registered Institutional Email</label>
+<input class="w-full h-10 px-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white focus:border-[#059669] outline-none" id="forgotEmailInput" placeholder="sarah.jenkins@apexai.com" type="email"/>
+</div>
+<button class="w-full h-10 bg-[#059669] hover:bg-[#047857] text-white font-headline font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5 transition" onclick="submitResetInstructions()">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Send Reset Instructions</span>
+</button>
+</div>
+</div>
+<!-- SUPPORT MODAL -->
+<div class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-3" id="supportModal">
+<div class="bg-white dark:bg-[#0E1726] w-full max-w-sm rounded-2xl p-5 space-y-3.5 border border-slate-200 dark:border-slate-800 shadow-xl">
+<div class="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#059669]">contact_support</span>
+<h3 class="font-headline font-bold text-sm text-[#0A1128] dark:text-white">Institutional Support</h3>
+</div>
+<button class="text-slate-400 hover:text-slate-600" onclick="closeSupportModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed">
+      FIB Concierge is on 24/7 standby for cryptographic key recovery, EIN validations, and milestone escrow mediation.
+    </p>
+<div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] flex justify-between">
+<span class="text-slate-500">Security Daemon Status:</span>
+<span class="text-[#059669] font-bold font-mono">100% OPERATIONAL</span>
+</div>
+<button class="w-full h-10 bg-[#0A1128] text-white font-headline font-bold text-xs rounded-xl flex items-center justify-center space-x-1.5" onclick="alert('Connecting to live institutional agent...'); closeSupportModal();">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Start Priority Session</span>
+</button>
+</div>
+</div>
+<!-- CLIENT JAVASCRIPT LOGIC -->
+<script>
+  let activeTab = 'welcome';
+  let activeStep = 1;
+  let chosenAccountType = 'individual'; // 'individual' or 'company'
+  let chosenSubrole = 'Job Seeker';
+  let sessionActive = false;
+
+  // Theme Toggle
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  themeToggleBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // Tab Switching
+  function switchTab(tabId) {
+    activeTab = tabId;
+    const panes = {
+      welcome: document.getElementById('paneWelcomeAuth'),
+      register: document.getElementById('paneRegister'),
+      demo: document.getElementById('paneDemo')
+    };
+
+    const btns = {
+      welcome: document.getElementById('tabBtnWelcome'),
+      register: document.getElementById('tabBtnRegister'),
+      demo: document.getElementById('tabBtnDemo')
+    };
+
+    const navs = {
+      welcome: document.getElementById('navWelcome'),
+      register: document.getElementById('navRegister'),
+      demo: document.getElementById('navDemo')
+    };
+
+    Object.keys(panes).forEach(k => {
+      if (k === tabId) {
+        panes[k].classList.remove('hidden');
+        btns[k].className = 'py-2 text-[12px] font-headline font-bold rounded-lg transition-all text-white bg-[#0A1128] shadow-sm';
+        if (navs[k]) navs[k].className = 'flex flex-col items-center justify-center text-[#059669] font-headline font-semibold py-1';
+      } else {
+        panes[k].classList.add('hidden');
+        btns[k].className = 'py-2 text-[12px] font-headline font-bold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+        if (navs[k]) navs[k].className = 'flex flex-col items-center justify-center text-slate-500 hover:text-[#059669] font-headline font-semibold py-1';
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Toggle Inline Login
+  function toggleInlineLogin() {
+    const form = document.getElementById('inlineLoginForm');
+    form.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('loginEmail').focus();
+  }
+
+  // Quick Login Pre-fill
+  function quickFillLogin(role) {
+    const eInput = document.getElementById('loginEmail');
+    const pInput = document.getElementById('loginPassword');
+    if (role === 'company') {
+      eInput.value = "sarah.jenkins@apexai.com";
+      pInput.value = "Apex#Secure2025!";
+    } else {
+      eInput.value = "marcus.chen@ai-network.dev";
+      pInput.value = "Quantum#Key99";
+    }
+  }
+
+  // Authentication Submission Simulation
+  function executeLogin() {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pass = document.getElementById('loginPassword').value.trim();
+    const alertBox = document.getElementById('authAlertBox');
+    const alertIcon = document.getElementById('authAlertIcon');
+    const alertText = document.getElementById('authAlertText');
+
+    alertBox.classList.remove('hidden');
+
+    if (email && pass) {
+      if (email.toLowerCase().includes('apex') || email.toLowerCase().includes('sarah') || email.toLowerCase().includes('company')) {
+        startSimulatedSession('company');
+      } else {
+        startSimulatedSession('individual');
+      }
+      alertBox.className = "p-2.5 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300";
+      alertIcon.innerText = "check_circle";
+      alertText.innerText = "Cryptographic signature accepted. Session initialized!";
+      setTimeout(() => {
+        alertBox.classList.add('hidden');
+      }, 3000);
+    } else {
+      alertBox.className = "p-2.5 rounded-xl text-xs font-semibold flex items-center space-x-2 bg-red-50 text-red-700 border border-red-200 dark:bg-red-950/60 dark:text-red-300";
+      alertIcon.innerText = "error";
+      alertText.innerText = "Invalid credentials. Please enter work email and valid password.";
+    }
+  }
+
+  // Password Visibility Toggle
+  function togglePasswordVis(inputId, iconId) {
+    const el = document.getElementById(inputId);
+    const ic = document.getElementById(iconId);
+    if (el.type === 'password') {
+      el.type = 'text';
+      ic.innerText = 'visibility_off';
+    } else {
+      el.type = 'password';
+      ic.innerText = 'visibility';
+    }
+  }
+
+  // Dynamic Password Strength
+  function handlePasswordStrength(val) {
+    const lbl = document.getElementById('regStrengthLabel');
+    const b1 = document.getElementById('strBar1');
+    const b2 = document.getElementById('strBar2');
+    const b3 = document.getElementById('strBar3');
+
+    b1.className = "bg-slate-200 dark:bg-slate-700 rounded-full";
+    b2.className = "bg-slate-200 dark:bg-slate-700 rounded-full";
+    b3.className = "bg-slate-200 dark:bg-slate-700 rounded-full";
+
+    if (!val || val.length < 5) {
+      lbl.innerText = "Weak";
+      lbl.className = "font-bold text-red-500";
+      b1.className = "bg-red-500 rounded-full";
+    } else if (val.length < 9 || !/[!@#$%^&*]/.test(val)) {
+      lbl.innerText = "Medium";
+      lbl.className = "font-bold text-amber-500";
+      b1.className = "bg-amber-500 rounded-full";
+      b2.className = "bg-amber-500 rounded-full";
+    } else {
+      lbl.innerText = "Cryptographically Strong";
+      lbl.className = "font-bold text-emerald-600";
+      b1.className = "bg-emerald-500 rounded-full";
+      b2.className = "bg-emerald-500 rounded-full";
+      b3.className = "bg-emerald-500 rounded-full";
+    }
+    verifyPasswordMatch();
+  }
+
+  function verifyPasswordMatch() {
+    const p1 = document.getElementById('regPassword').value;
+    const p2 = document.getElementById('regConfirmPass').value;
+    const badge = document.getElementById('matchConfirmBadge');
+    if (p1 === p2 && p2.length > 0) {
+      badge.innerHTML = `<span class="material-symbols-outlined text-[13px]">check_circle</span><span>Passwords Match</span>`;
+      badge.className = "text-[10px] font-semibold text-emerald-600 flex items-center space-x-0.5";
+    } else {
+      badge.innerHTML = `<span class="material-symbols-outlined text-[13px]">error</span><span>Mismatch</span>`;
+      badge.className = "text-[10px] font-semibold text-red-500 flex items-center space-x-0.5";
+    }
+  }
+
+  // Stepper Controller
+  function nextStep(stepNum) {
+    activeStep = stepNum;
+    renderStepView();
+  }
+
+  function prevStep() {
+    if (activeStep > 1) {
+      activeStep--;
+      renderStepView();
+    } else {
+      switchTab('welcome');
+    }
+  }
+
+  function renderStepView() {
+    for (let i = 1; i <= 5; i++) {
+      const card = document.getElementById(`cardRegStep${i}`);
+      const bar = document.getElementById(`barStep${i}`);
+      const lbl = document.getElementById(`lblStep${i}`);
+      if (card) {
+        if (i === activeStep) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+      if (bar && lbl) {
+        if (i <= activeStep) {
+          bar.className = "h-1.5 rounded-full bg-[#059669]";
+          lbl.className = "text-[9px] text-center font-bold text-[#059669]";
+        } else {
+          bar.className = "h-1.5 rounded-full bg-slate-200 dark:bg-slate-700";
+          lbl.className = "text-[9px] text-center font-semibold text-slate-400";
+        }
+      }
+    }
+
+    const titles = [
+      "Step 1: Details",
+      "Step 2: Email Verification",
+      "Step 3: Select Account Role",
+      "Step 4: Legal & Privacy",
+      "Step 5: Account Created"
+    ];
+    document.getElementById('stepperHeaderTitle').innerText = titles[activeStep - 1];
+    document.getElementById('stepperPercentBadge').innerText = `Step ${activeStep}/5 • ${activeStep * 20}%`;
+
+    // Dynamic Step 2 email pass
+    if (activeStep === 2) {
+      const emailVal = document.getElementById('regEmail').value.trim();
+      document.getElementById('dispOtpTargetEmail').innerText = emailVal || "alex.vance@enterprise.ai";
+    }
+
+    // Dynamic Step 5 routing notice setup
+    if (activeStep === 5) {
+      configureStep5Summary();
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function fillDemoCode() {
+    const inputs = document.querySelectorAll('.otp-input');
+    const code = ['8', '4', '9', '2', '0', '1'];
+    inputs.forEach((inp, idx) => {
+      inp.value = code[idx] || '';
+    });
+  }
+
+  // Account Type Selection
+  function selectAccountType(type) {
+    chosenAccountType = type;
+    const cardInd = document.getElementById('roleCardIndividual');
+    const cardComp = document.getElementById('roleCardCompany');
+    const rInd = document.getElementById('radioIndividual');
+    const rComp = document.getElementById('radioCompany');
+
+    if (type === 'individual') {
+      rInd.checked = true;
+      cardInd.className = "p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 cursor-pointer transition relative";
+      cardComp.className = "p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 cursor-pointer transition relative";
+      chosenSubrole = 'Job Seeker';
+    } else {
+      rComp.checked = true;
+      cardComp.className = "p-3.5 rounded-xl border-2 border-[#0A1128] dark:border-emerald-400 bg-slate-100 dark:bg-slate-800/80 cursor-pointer transition relative";
+      cardInd.className = "p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 cursor-pointer transition relative";
+      chosenSubrole = 'Employer';
+    }
+  }
+
+  function setIndividualSubrole(roleName, btn) {
+    chosenSubrole = roleName;
+    selectAccountType('individual');
+    document.querySelectorAll('.subpill-ind').forEach(b => {
+      b.className = "subpill-ind px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700";
+    });
+    btn.className = "subpill-ind px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-[#059669] text-white";
+  }
+
+  function setCompanySubrole(roleName, btn) {
+    chosenSubrole = roleName;
+    selectAccountType('company');
+    document.querySelectorAll('.subpill-comp').forEach(b => {
+      b.className = "subpill-comp px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700";
+    });
+    btn.className = "subpill-comp px-2.5 py-1 rounded-md text-[10px] font-headline font-bold bg-slate-900 text-white dark:bg-slate-700";
+  }
+
+  function configureStep5Summary() {
+    const badge = document.getElementById('step5RoleBadge');
+    const subTxt = document.getElementById('step5SubroleText');
+    const head = document.getElementById('routingTargetHeadline');
+    const desc = document.getElementById('routingTargetDescription');
+    const btnLbl = document.getElementById('btnLaunchLabel');
+
+    subTxt.innerText = chosenSubrole;
+
+    if (chosenAccountType === 'company') {
+      badge.innerText = "Company Account (Enterprise)";
+      badge.className = "px-2 py-0.5 rounded-full font-headline font-bold text-[10px] uppercase bg-slate-900 text-white";
+      head.innerText = "Routing to Company Setup & Organization Verification";
+      desc.innerText = "Routing you to: Company Setup & Organization Verification (EIN, Hiring Requisitions, Escrow Fund Provisioning)...";
+      btnLbl.innerText = "Launch Company Onboarding";
+    } else {
+      badge.innerText = "Individual Account (Verified)";
+      badge.className = "px-2 py-0.5 rounded-full font-headline font-bold text-[10px] uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300";
+      head.innerText = "Routing to Individual Setup & AI Portfolio";
+      desc.innerText = "Routing you to: Individual Setup & AI Portfolio (Skills, Rate Matrix, Availability)...";
+      btnLbl.innerText = "Launch Individual Onboarding";
+    }
+  }
+
+  function launchOnboardingTarget() {
+    startSimulatedSession(chosenAccountType);
+    alert(`Success: Strict routing guard initialized. Loading ${chosenAccountType.toUpperCase()} workspace onboarding...`);
+  }
+
+  function resetFlow() {
+    activeStep = 1;
+    renderStepView();
+  }
+
+  // Session Simulation (Demo Accounts)
+  function startSimulatedSession(type) {
+    const banner = document.getElementById('activeSessionBanner');
+    const avatar = document.getElementById('sessionAvatar');
+    const name = document.getElementById('sessionUserName');
+    const badge = document.getElementById('sessionRoleBadge');
+
+    banner.classList.remove('hidden');
+    sessionActive = true;
+
+    if (type === 'company') {
+      avatar.innerText = "SJ";
+      avatar.className = "w-10 h-10 rounded-full bg-[#0A1128] text-white font-headline font-bold flex items-center justify-center text-sm border-2 border-emerald-400";
+      name.innerText = "Sarah Jenkins";
+      badge.innerText = "Company Lead";
+      badge.className = "text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-[#0A1128] text-white border border-slate-700";
+    } else {
+      avatar.innerText = "MC";
+      avatar.className = "w-10 h-10 rounded-full bg-[#059669] text-white font-headline font-bold flex items-center justify-center text-sm border-2 border-emerald-300";
+      name.innerText = "Marcus Chen";
+      badge.innerText = "Verified Talent";
+      badge.className = "text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-[#059669] text-white";
+    }
+
+    banner.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function terminateSession() {
+    sessionActive = false;
+    document.getElementById('activeSessionBanner').classList.add('hidden');
+  }
+
+  // Modal Controls
+  function openForgotModal() {
+    document.getElementById('forgotModal').classList.remove('hidden');
+    document.getElementById('forgotSuccessBanner').classList.add('hidden');
+  }
+
+  function closeForgotModal() {
+    document.getElementById('forgotModal').classList.add('hidden');
+  }
+
+  function submitResetInstructions() {
+    const banner = document.getElementById('forgotSuccessBanner');
+    banner.classList.remove('hidden');
+  }
+
+  function openSupportModal() {
+    document.getElementById('supportModal').classList.remove('hidden');
+  }
+
+  function closeSupportModal() {
+    document.getElementById('supportModal').classList.add('hidden');
+  }
+</script>
+<script src="../assets/app-nav.js"></script>
+</body></html>

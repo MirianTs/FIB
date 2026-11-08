@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB - Collaboration Hub</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#0b1c30",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3d4a42",
+            "outline-variant": "#bccac0",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#213145",
+            "secondary-fixed": "#dae2fd",
+            "surface-container-low": "#eff4ff",
+            "surface-tint": "#006c4a",
+            "on-secondary-fixed": "#131b2e",
+            "on-background": "#0b1c30",
+            "on-tertiary-fixed": "#001f26",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-dim": "#cbdbf5",
+            "secondary": "#565e74",
+            "primary-fixed": "#85f8c4",
+            "primary-container": "#00855d",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "inverse-primary": "#68dba9",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "surface-bright": "#f8f9ff",
+            "surface": "#f8f9ff",
+            "on-primary-fixed-variant": "#005137",
+            "on-secondary-fixed-variant": "#3f465c",
+            "surface-container": "#e5eeff",
+            "tertiary": "#006577",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "outline": "#6d7a72",
+            "primary": "#006948",
+            "tertiary-container": "#008096",
+            "on-secondary-container": "#5c647a",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#f9fdff",
+            "background": "#f8f9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#d3e4fe",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#dae2fd",
+            "primary-fixed-dim": "#68dba9",
+            "secondary-fixed-dim": "#bec6e0",
+            "on-primary-fixed": "#002114",
+            "tertiary-fixed": "#acedff",
+            "on-primary-container": "#f5fff7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.025em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Hide scrollbars while allowing touch scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Simulator Frame (Max width 420px for high-fidelity native feel) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative pb-28 shadow-2xl border-x border-outline-variant/30">
+<!-- Top Status / Anchored TopAppBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-inverse-primary docked full-width top-0 sticky z-40 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-4 h-16">
+<!-- Logo Branding Anchor with provided logo -->
+<div class="flex items-center gap-2">
+<img alt="FIB Official Logo" class="h-7 w-auto object-contain" src="../assets/logo.svg"/>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-2">
+<button aria-label="Notifications Quick Bell" class="relative p-2 rounded-lg text-secondary hover:bg-surface-container transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface font-label-md text-label-md shadow-sm active:scale-95 transition-transform">
+            Demo Access
+          </button>
+</div>
+</div>
+<!-- Hub Header Title & Subtitle -->
+<div class="px-4 pb-3">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">Collaboration Hub</h1>
+<p class="font-body-sm text-body-sm text-secondary">Verified Institutional Workspace</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Live Mesh
+          </span>
+</div>
+</div>
+<!-- Segmented Tab Control -->
+<div class="px-4 pb-3">
+<nav class="flex p-1 bg-surface-container rounded-xl gap-1 text-center" role="tablist">
+<button class="flex-1 py-2 px-1 rounded-lg font-label-md text-label-md text-on-surface bg-surface-container-lowest shadow-sm transition-all duration-150 flex items-center justify-center gap-1.5 font-bold" id="tab-btn-invitations" onclick="switchTab('invitations')">
+<span>Invitations</span>
+<span class="bg-primary text-on-primary px-1.5 py-0.5 rounded-full text-[10px] leading-none">2</span>
+</button>
+<button class="flex-1 py-2 px-1 rounded-lg font-label-md text-label-md text-secondary hover:text-on-surface transition-all duration-150 flex items-center justify-center gap-1.5" id="tab-btn-messages" onclick="switchTab('messages')">
+<span>Messages</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.5 rounded-full text-[10px] leading-none font-semibold">3</span>
+</button>
+<button class="flex-1 py-2 px-1 rounded-lg font-label-md text-label-md text-secondary hover:text-on-surface transition-all duration-150 flex items-center justify-center gap-1.5" id="tab-btn-notifications" onclick="switchTab('notifications')">
+<span>Notifs</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.5 rounded-full text-[10px] leading-none font-semibold">5</span>
+</button>
+</nav>
+</div>
+</header>
+<!-- Main Dynamic Content Canvas -->
+<main class="flex-1 px-4 py-3 space-y-4">
+<!-- ================= SECTION 1: INVITATIONS (PART 2 & 5) ================= -->
+<section class="space-y-4" id="pane-invitations">
+<!-- Connection State Tracker Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Protocol Pipeline</span>
+<span class="font-label-md text-label-md text-primary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Smart Handshake
+            </span>
+</div>
+<!-- Multi-step Stepper Scroll -->
+<div class="overflow-x-auto no-scrollbar py-1">
+<div class="flex items-center min-w-[540px] text-[11px] font-label-md">
+<!-- Step 1: Sent -->
+<div class="flex flex-col items-center gap-1 w-24 opacity-60">
+<div class="w-6 h-6 rounded-full bg-outline-variant/40 text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">send</span>
+</div>
+<span class="text-center text-secondary">Sent</span>
+</div>
+<div class="h-0.5 flex-1 bg-primary/40 -mt-4"></div>
+<!-- Step 2: Received (Current Active) -->
+<div class="flex flex-col items-center gap-1 w-28">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary ring-4 ring-primary-fixed/40 flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[14px]">mail</span>
+</div>
+<span class="text-center text-primary font-bold">Received</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/40 -mt-4"></div>
+<!-- Step 3: Accepted -->
+<div class="flex flex-col items-center gap-1 w-24 opacity-60">
+<div class="w-6 h-6 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="text-center text-secondary">Accepted</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/40 -mt-4"></div>
+<!-- Step 4: In Discussion -->
+<div class="flex flex-col items-center gap-1 w-28 opacity-60">
+<div class="w-6 h-6 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">forum</span>
+</div>
+<span class="text-center text-secondary">In Discussion</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/40 -mt-4"></div>
+<!-- Step 5: Negotiation -->
+<div class="flex flex-col items-center gap-1 w-24 opacity-60">
+<div class="w-6 h-6 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">handshake</span>
+</div>
+<span class="text-center text-secondary">Negotiation</span>
+</div>
+<div class="h-0.5 flex-1 bg-outline-variant/40 -mt-4"></div>
+<!-- Step 6: Agreement Pending -->
+<div class="flex flex-col items-center gap-1 w-28 opacity-60">
+<div class="w-6 h-6 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+</div>
+<span class="text-center text-secondary">Pending Sign</span>
+</div>
+</div>
+</div>
+<!-- Strict Notice callout -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-outline-variant/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] leading-relaxed">
+<strong class="font-semibold text-on-surface">Notice:</strong> Accepting an invitation initiates <em>In Discussion</em> mode. Final contractual agreements require mutual cryptographic sign-off.
+            </p>
+</div>
+</div>
+<!-- Invitation Card 1: Received by Talent from Apex AI Labs -->
+<article class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/40 shadow-sm space-y-3 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-28 h-28 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<!-- Header info -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-on-surface text-surface flex items-center justify-center font-headline-md text-headline-md font-bold shadow-inner">
+                A
+              </div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-[15px] font-bold text-on-surface">Apex AI Labs</h3>
+<span class="w-2 h-2 rounded-full bg-primary" title="Verified Institutional Partner"></span>
+</div>
+<p class="font-body-sm text-[12px] text-secondary">Sarah Jenkins • VP Eng</p>
+</div>
+</div>
+<!-- Role Distinction Badge -->
+<span class="px-2 py-0.5 rounded text-[11px] font-label-md bg-on-surface text-on-primary flex items-center gap-1 border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Enterprise
+            </span>
+</div>
+<!-- State Badge -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/60 text-on-error-container font-label-md text-label-md border border-error/20">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span>
+            Invitation Received - Action Required
+          </div>
+<!-- Requisition Specs -->
+<div class="bg-surface-container-low/70 rounded-lg p-3 space-y-2 border border-outline-variant/20">
+<div class="font-headline-md text-[14px] text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">hub</span>
+              Senior AI/ML Architect - Autonomous Agent Swarm
+            </div>
+<div class="grid grid-cols-2 gap-2 pt-1 border-t border-outline-variant/20 font-body-sm text-[12px]">
+<div>
+<span class="text-secondary block">Timeline</span>
+<span class="font-semibold text-on-surface">6 Mos (Extendable)</span>
+</div>
+<div>
+<span class="text-secondary block">Comp &amp; Equity</span>
+<span class="font-semibold text-primary">$220k - $250k + 0.35%</span>
+</div>
+</div>
+<div class="text-[11px] text-secondary flex items-center justify-between pt-1">
+<span>Transmitted: October 24, 2024</span>
+<span class="font-label-caps text-label-caps text-outline">REQ #AI-883</span>
+</div>
+</div>
+<!-- Personal Statement -->
+<blockquote class="text-[13px] font-body-sm text-on-surface-variant italic bg-surface-bright p-2.5 rounded-lg border-l-2 border-primary">
+            "Marcus, your work on decentralized multi-agent consensus matches our Q4 roadmap. We'd like to invite you to discuss our core architecture."
+          </blockquote>
+<!-- Action Cluster -->
+<div class="space-y-2 pt-1">
+<button class="w-full h-11 bg-primary text-on-primary rounded-lg font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm hover:bg-primary-container active:scale-[0.98] transition-all" style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+              Accept &amp; Open Chat
+            </button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 bg-on-surface text-surface rounded-lg font-label-md text-label-md font-medium flex items-center justify-center gap-1 hover:bg-inverse-surface active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                Ask / Counter
+              </button>
+<button class="h-10 bg-transparent text-secondary border border-outline-variant/60 rounded-lg font-label-md text-label-md hover:bg-surface-container active:scale-[0.98] transition-all">
+                Decline
+              </button>
+</div>
+</div>
+</article>
+<!-- Invitation Card 2: Sent by Employer to Elena Rostova -->
+<article class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary flex items-center justify-center font-headline-md text-headline-md font-bold">
+<span class="material-symbols-outlined text-[22px]">fingerprint</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-md text-[15px] font-bold text-on-surface">Dr. Elena Rostova</h3>
+<span class="material-symbols-outlined text-primary text-[16px]">verified</span>
+</div>
+<p class="font-body-sm text-[12px] text-secondary">Attested Talent • Polygon DID</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-md bg-secondary-fixed text-on-secondary-fixed font-semibold">
+              Outgoing
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-[13px] bg-surface-bright p-2.5 rounded-lg border border-outline-variant/20">
+<div>
+<span class="text-secondary text-[11px] block">Target Role</span>
+<strong class="text-on-surface font-semibold">ZK Cryptography Auditor</strong>
+</div>
+<div class="text-right">
+<span class="text-secondary text-[11px] block">Rate Locked</span>
+<span class="font-semibold text-primary">$110 / hr</span>
+</div>
+</div>
+<!-- Current status badge & Direct link -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-md text-label-md text-on-surface">
+                Status: <strong class="text-primary">In Discussion</strong>
+</span>
+<span class="text-[11px] text-secondary">(Active 1h ago)</span>
+</div>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:underline font-semibold" onclick="switchTab('messages')">
+<span>Direct Chat</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</section>
+<!-- ================= SECTION 2: REAL-TIME MESSAGING (PART 3) ================= -->
+<section class="space-y-4" id="pane-messages">
+<!-- Search Bar with micro visual style -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3 text-secondary text-[18px]">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface-container-lowest rounded-lg border border-outline-variant/50 text-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:border-primary focus:ring-2 focus:ring-primary-fixed outline-none transition-all" placeholder="Search conversations or project keys..." type="text"/>
+</div>
+<!-- Conversations List -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 divide-y divide-outline-variant/20 shadow-sm overflow-hidden">
+<!-- Conversation 1 (Active) -->
+<div class="p-3.5 bg-surface-container-low/40 flex items-start gap-3 cursor-pointer hover:bg-surface-container transition-colors">
+<div class="relative">
+<div class="w-11 h-11 rounded-lg bg-on-surface text-surface flex items-center justify-center font-bold text-headline-md">
+                A
+              </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-primary border-2 border-surface"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h4 class="font-headline-md text-[14px] font-bold text-on-surface truncate">Apex AI Labs (Sarah Jenkins)</h4>
+<span class="font-label-md text-[11px] text-primary font-semibold">14:32 PM</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant truncate">
+                I've reviewed your proposal milestone 1 specs...
+              </p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+                  Project: Autonomous Swarms
+                </span>
+<span class="ml-auto bg-primary text-on-primary font-bold px-2 py-0.5 rounded-full text-[10px]">
+                  2 Unread
+                </span>
+</div>
+</div>
+</div>
+<!-- Conversation 2 -->
+<div class="p-3.5 flex items-start gap-3 cursor-pointer hover:bg-surface-container transition-colors">
+<div class="relative">
+<div class="w-11 h-11 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-headline-md">
+                H
+              </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-outline-variant border-2 border-surface"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h4 class="font-headline-md text-[14px] font-bold text-on-surface truncate">Hyperledger Systems (Alex Vance)</h4>
+<span class="font-label-md text-[11px] text-secondary">Yesterday</span>
+</div>
+<p class="font-body-sm text-[12px] text-secondary truncate">
+                Can you verify your Polygon DID attestation?
+              </p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-md text-[10px]">
+                  Vacancy: Consensus Protocol
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-Time Chat Preview Widget -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm overflow-hidden">
+<!-- Chat Top Context Ribbon -->
+<div class="bg-on-surface text-surface px-4 py-2.5 flex items-center justify-between text-[12px]">
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-primary-fixed text-[16px]">domain</span>
+<span class="font-semibold truncate">Apex AI Labs</span>
+<span class="text-secondary-fixed-dim">• #REQ-4029</span>
+</div>
+<span class="bg-surface-container/20 text-inverse-on-surface px-2 py-0.5 rounded text-[10px] whitespace-nowrap">
+              In Discussion
+            </span>
+</div>
+<!-- State Warning Ribbon -->
+<div class="bg-surface-container px-3.5 py-1.5 border-b border-outline-variant/20 flex items-center justify-between text-[11px]">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">info</span>
+              State: <strong>In Discussion</strong> (No Contract Locked Yet)
+            </span>
+<span class="text-primary font-semibold cursor-pointer">View Draft</span>
+</div>
+<!-- Chat Stream Area -->
+<div class="p-3.5 space-y-3 bg-surface-bright">
+<!-- Incoming Message -->
+<div class="flex items-start gap-2 max-w-[85%]">
+<div class="w-7 h-7 rounded bg-on-surface text-on-primary flex items-center justify-center text-[10px] font-bold shrink-0">
+                SJ
+              </div>
+<div class="bg-surface-container-lowest p-3 rounded-2xl rounded-tl-sm border border-outline-variant/30 space-y-1 shadow-sm">
+<p class="font-body-sm text-[12px] text-on-surface">
+                  Marcus, we’ve uploaded the swarm consensus specification. Please review Milestone 1 architecture requirements.
+                </p>
+<div class="text-[10px] text-secondary flex justify-end">14:28 PM</div>
+</div>
+</div>
+<!-- Attachment Simulation: PDF -->
+<div class="ml-9 max-w-[85%] bg-surface-container-lowest rounded-xl p-2.5 border border-outline-variant/40 flex items-center justify-between gap-2 shadow-sm">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-error text-[24px]">picture_as_pdf</span>
+<div class="truncate">
+<p class="font-label-md text-[12px] text-on-surface truncate font-semibold">Technical_Architecture_v2.pdf</p>
+<p class="text-[10px] text-secondary">2.4 MB • Cryptographically Signed</p>
+</div>
+</div>
+<button aria-label="Download Attachment" class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface">download</span>
+</button>
+</div>
+<!-- Attachment Simulation: Voice Memo -->
+<div class="ml-9 max-w-[85%] bg-surface-container-lowest rounded-xl p-2.5 border border-outline-variant/40 flex items-center gap-3 shadow-sm">
+<button class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/5"></div>
+</div>
+<div class="flex justify-between text-[10px] text-secondary mt-1">
+<span>Audio note</span>
+<span>0:42</span>
+</div>
+</div>
+</div>
+<!-- Outgoing Message Bubble with read receipt -->
+<div class="flex items-start justify-end gap-2 ml-auto max-w-[85%]">
+<div class="bg-primary text-on-primary p-3 rounded-2xl rounded-tr-sm shadow-sm space-y-1">
+<p class="font-body-sm text-[12px] text-on-primary-container">
+                  Downloaded. I'll audit the agent handoff states and send counter-milestone estimates by 17:00.
+                </p>
+<div class="text-[10px] text-primary-fixed flex items-center justify-end gap-1">
+<span>14:32 PM</span>
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Bar Simulation -->
+<div class="p-2 bg-surface-container-lowest border-t border-outline-variant/30 flex items-center gap-2">
+<button aria-label="Attach File" class="p-2 rounded-lg text-secondary hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<input class="flex-1 h-9 px-3 bg-surface-bright rounded-lg border border-outline-variant/40 text-[12px] text-on-surface outline-none focus:border-primary" placeholder="Type verified encrypted message..." type="text"/>
+<button aria-label="Send Message" class="h-9 w-9 bg-primary text-on-primary rounded-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ================= SECTION 3: GRANULAR NOTIFICATIONS (PART 4) ================= -->
+<section class="space-y-3" id="pane-notifications">
+<!-- Filter Chips Carousel -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+<button class="px-3 py-1 rounded-full bg-on-surface text-surface text-label-md font-label-md font-semibold shrink-0">
+            All
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container text-secondary text-label-md font-label-md hover:text-on-surface shrink-0">
+            Invitations
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container text-secondary text-label-md font-label-md hover:text-on-surface shrink-0">
+            Messages
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container text-secondary text-label-md font-label-md hover:text-on-surface shrink-0">
+            Approvals
+          </button>
+<button class="px-3 py-1 rounded-full bg-surface-container text-secondary text-label-md font-label-md hover:text-on-surface shrink-0">
+            Escrow
+          </button>
+</div>
+<!-- Notification List -->
+<div class="space-y-2.5">
+<!-- 1. New Invitation -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/40 shadow-sm flex items-start gap-3 relative">
+<div class="w-9 h-9 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-md bg-primary-fixed/40 text-on-primary-fixed font-bold">
+                  New Invitation
+                </span>
+<span class="text-[11px] text-secondary">24m ago</span>
+</div>
+<p class="font-body-sm text-[13px] text-on-surface">
+<strong>Apex AI Labs</strong> sent an invitation for <span class="text-primary font-semibold">Senior AI/ML Architect</span>
+</p>
+<div class="mt-2 flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-primary text-on-primary font-label-md text-[11px]" onclick="switchTab('invitations')">
+                  View Terms
+                </button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-secondary font-label-md text-[11px]">
+                  Dismiss
+                </button>
+</div>
+</div>
+</div>
+<!-- 2. Negotiation Request -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/40 shadow-sm flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-md bg-secondary-fixed text-on-secondary-fixed font-semibold">
+                  Negotiation Request
+                </span>
+<span class="text-[11px] text-secondary">2h ago</span>
+</div>
+<p class="font-body-sm text-[13px] text-on-surface">
+<strong>Hyperledger</strong> submitted a milestone revision request for Deliverable Phase 2.
+              </p>
+<div class="mt-1 text-[11px] text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                Waiting on your counter-signature
+              </div>
+</div>
+</div>
+<!-- 3. Brief Update -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/40 shadow-sm flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">update</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-md bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+                  Brief Update
+                </span>
+<span class="text-[11px] text-secondary">5h ago</span>
+</div>
+<p class="font-body-sm text-[13px] text-on-surface">
+                Scope updated on <strong class="text-on-surface">Project Phoenix ZK Proof</strong>. 3 test vectors added to benchmark suite.
+              </p>
+</div>
+</div>
+<!-- 4. Payment Escrow Notification -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-outline-variant/40 shadow-sm flex items-start gap-3 border-l-4 border-l-primary">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-md bg-primary/10 text-primary font-bold">
+                  Payment Escrow
+                </span>
+<span class="text-[11px] text-secondary">Yesterday</span>
+</div>
+<p class="font-body-sm text-[13px] text-on-surface">
+<strong class="text-primary font-bold">$15,000</strong> successfully locked into Smart Vault Escrow for Milestone 1 start.
+              </p>
+<div class="mt-1 flex items-center gap-1.5 text-[11px] text-secondary">
+<span class="material-symbols-outlined text-[13px] text-primary">verified</span>
+<span>TxHash: 0x8b3...4e91</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (FromJson strict compliance with style injected classes) -->
+<!-- Destination count: 3 | Labels: "Registration", "Demo Portal", "Support" -->
+<!-- Context: This collaboration hub is actively linked under "Demo Portal" / Ecosystem -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md shadow-[0_-4px_16px_rgba(11,28,48,0.04)] dark:shadow-none max-w-[420px] mx-auto border-t border-outline-variant/30">
+<!-- Tab 1: Registration (Inactive) -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary active:scale-95 transition-transform duration-150" href="#registration">
+<span class="material-symbols-outlined text-[22px]">how_to_reg</span>
+<span class="font-label-md text-label-md mt-0.5">Registration</span>
+</a>
+<!-- Tab 2: Demo Portal (Active: Semantically maps to current collaboration/interactive hub) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold py-1 active:scale-95 transition-transform duration-150" href="#demo-portal">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-label-md text-label-md mt-0.5">Demo Portal</span>
+</a>
+<!-- Tab 3: Support (Inactive) -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary active:scale-95 transition-transform duration-150" href="#support">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+<span class="font-label-md text-label-md mt-0.5">Support</span>
+</a>
+</nav>
+</div>
+<!-- Inline Tab Switching Vanilla Script -->
+<script>
+    function switchTab(target) {
+      const tabs = ['invitations', 'messages', 'notifications'];
+      
+      tabs.forEach(tab => {
+        const pane = document.getElementById('pane-' + tab);
+        const btn = document.getElementById('tab-btn-' + tab);
+        
+        if (tab === target) {
+          pane.classList.remove('hidden');
+          btn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-bold', 'shadow-sm');
+          btn.classList.remove('text-secondary');
+        } else {
+          pane.classList.add('hidden');
+          btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-bold', 'shadow-sm');
+          btn.classList.add('text-secondary');
+        }
+      });
+    }
+
+    // Default start view: show all initially or start on invitations
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set initial view to invitations tab
+      switchTab('invitations');
+    });
+  </script>
+<script src="../assets/app-nav.js"></script>
+</body></html>

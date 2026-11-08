@@ -10,7 +10,7 @@
        <span class="material-symbols-outlined text-[18px]">${icon}</span>${label}</a>`;
   sw.innerHTML = pill('index.html', 'Client', 'business_center', !isProvider) +
                  pill('provider.html', 'Provider', 'work', isProvider) +
-                 pill('screens/index.html', 'Mobile', 'smartphone', false);
+                 pill('app/index.html', 'Mobile', 'smartphone', false);
   document.body.appendChild(sw);
 
   // 2) Mobile menu: the desktop <nav> is hidden below md, so add a toggle that shows its links.

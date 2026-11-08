@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIB — Mobile App</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Noto+Sans+Georgian:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { brand: '#047857', 'brand-soft': '#ecfdf5', ink: '#0f172a', muted: '#475569', line: '#e2e8f0', canvas: '#f8fafc' },
+    fontFamily: { sans: ['"Plus Jakarta Sans"', '"Noto Sans Georgian"', 'Inter', 'sans-serif'] } } } };
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; line-height: 1; }
+</style>
+</head>
+<body class="bg-canvas text-ink font-sans antialiased">
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
+    <a href="../index.html" class="flex items-center gap-2">
+      <img src="../assets/logo.svg" alt="FIB" class="w-8 h-8">
+      <span class="text-2xl font-bold tracking-tight text-brand">FIB</span>
+      <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[10px] font-semibold bg-brand-soft text-brand uppercase tracking-wider">Mobile app</span>
+    </a>
+    <nav class="flex items-center gap-1 text-sm font-semibold">
+      <a href="../index.html" class="px-3 py-2 rounded-lg text-muted hover:bg-slate-100">Client</a>
+      <a href="../provider.html" class="px-3 py-2 rounded-lg text-muted hover:bg-slate-100">Provider</a>
+      <span class="px-3 py-2 rounded-lg bg-brand-soft text-brand">Mobile</span>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-12">
+  <section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">მობილური აპლიკაცია</h1>
+      <p class="text-muted mt-2 max-w-2xl">FIB-ის ახალი მობილური ვერსია: პროექტის მთელი ციკლი 7 ეტაპად, რეგისტრაციიდან დასრულებამდე. ეკრანზე დაწკაპუნებით გაიხსნება ცოცხალი გვერდი.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2 self-start md:self-auto">
+      <a href="welcome.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold shadow-sm hover:opacity-95"><span class="material-symbols-outlined text-[18px]">play_arrow</span>დაიწყე პირველიდან</a>
+      <a href="../screens/index.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-line bg-white text-sm font-semibold text-muted hover:text-ink"><span class="material-symbols-outlined text-[18px]">history</span>წინა ვერსია</a>
+    </div>
+  </section>
+  <ol id="phases" class="space-y-12"></ol>
+</main>
+
+<footer class="border-t border-line py-6 text-center text-sm text-slate-400">FIB · Professional Ecosystem · Stitch export</footer>
+
+<script src="../assets/app-data.js"></script>
+<script>
+(function () {
+  let n = 0;
+  document.getElementById('phases').innerHTML = window.FIB_APP.map((g, gi) => `
+    <li class="space-y-5">
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span class="text-sm font-bold text-brand tabular-nums">ეტაპი ${gi + 1}</span>
+        <h2 class="text-2xl font-semibold tracking-tight">${g.phase}</h2>
+        <span class="text-sm text-slate-400">${g.en} · ${g.items.length}</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        ${g.items.map(([slug, title]) => { n++; return `
+          <a href="${slug}.html" class="group block">
+            <div class="relative aspect-[9/16] rounded-2xl overflow-hidden border border-line bg-white shadow-sm group-hover:shadow-md group-hover:border-brand/50 transition-all">
+              <img src="thumbs/${slug}.png" alt="${title}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300">
+              <span class="absolute top-2 left-2 min-w-6 h-6 px-1.5 rounded-full bg-white/90 border border-line text-[11px] font-bold text-brand flex items-center justify-center tabular-nums">${n}</span>
+            </div>
+            <p class="mt-2.5 text-sm font-semibold leading-snug group-hover:text-brand transition-colors">${title}</p>
+          </a>`; }).join('')}
+      </div>
+    </li>`).join('');
+})();
+</script>
+</body>
+</html>

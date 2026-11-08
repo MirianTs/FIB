@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB - Mutual Agreement Lock &amp; Project Execution Baseline</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#85f8c4",
+            "surface-container": "#e5eeff",
+            "error": "#ba1a1a",
+            "on-background": "#0b1c30",
+            "on-primary-fixed": "#002114",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#f5fff7",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "primary-fixed-dim": "#68dba9",
+            "on-primary-fixed-variant": "#005137",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#006577",
+            "on-surface-variant": "#3d4a42",
+            "tertiary-container": "#008096",
+            "primary": "#006948",
+            "secondary-fixed": "#dae2fd",
+            "inverse-surface": "#213145",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#131b2e",
+            "surface-tint": "#006c4a",
+            "surface": "#f8f9ff",
+            "inverse-primary": "#68dba9",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#3f465c",
+            "surface-container-low": "#eff4ff",
+            "outline-variant": "#bccac0",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-fixed": "#001f26",
+            "on-surface": "#0b1c30",
+            "tertiary-fixed": "#acedff",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#f9fdff",
+            "on-secondary-container": "#5c647a",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "secondary-container": "#dae2fd",
+            "background": "#f8f9ff",
+            "primary-container": "#00855d",
+            "secondary": "#565e74",
+            "secondary-fixed-dim": "#bec6e0",
+            "outline": "#6d7a72",
+            "surface-container-high": "#dce9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.025em", "fontWeight": "600" }],
+            "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-caps": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-28 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar (Shared Component Anchors) -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md docked full-width top-0 sticky z-40 shadow-sm">
+<div class="flex justify-between items-center w-full px-4 md:px-8 max-w-7xl mx-auto h-16">
+<div class="flex items-center space-x-3">
+<img alt="FIB Executive Brand Logo" class="h-8 w-auto object-contain rounded-md" src="../assets/logo.svg"/>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface">FIB Ecosystem</span>
+<span class="text-label-caps font-label-caps text-secondary">Agreement Vault #AGR-8821</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed border border-primary/20 text-label-caps font-label-caps">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+          MUTUALLY LOCKED &amp; ACTIVE
+        </span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas (Mobile-first disciplined bento flow) -->
+<main class="w-full max-w-lg mx-auto px-4 pt-4 space-y-4">
+<!-- Hero Celebration & Milestone Sealed Card -->
+<section class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-36 h-36 bg-primary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[24px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="space-y-1">
+<span class="text-label-caps font-label-caps text-primary tracking-wider">EXECUTION STAGE REACHED</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Bilateral Agreement Executed &amp; Sealed</h1>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-secondary mt-3 relative z-10 leading-relaxed">
+        Both Apex AI Labs and Marcus Chen have signed Version 1.0. This agreement is now the permanent operational and escrow baseline.
+      </p>
+<!-- Cryptographic Ledger Proof Pill -->
+<div class="mt-4 p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" data-icon="key">key</span>
+<div class="overflow-hidden">
+<div class="text-label-caps font-label-caps text-on-surface truncate">SHA-256 Hash: 0x9f4a...e12d • Dual-Signed on FIB Smart Ledger</div>
+<div class="text-[11px] font-body-sm text-secondary">Block #18,924,102 • Timestamp Verified</div>
+</div>
+</div>
+<!-- Mandatory Legal Notice Box -->
+<div class="mt-3 p-3 bg-surface-container rounded-lg border border-outline-variant/20 flex gap-2.5 items-start">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="text-[11px] font-body-sm text-on-surface-variant leading-tight">
+<strong class="font-semibold text-on-surface">Disclaimer:</strong> This simulated agreement acts as an institutional smart contract prototype and internal project baseline. It does not constitute a statutory electronic signature under local jurisdictional laws unless bound to an external certified eIDAS/ESIGN provider.
+        </p>
+</div>
+</section>
+<!-- Sign-off Audit Trail (Part 5) -->
+<section class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/40 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="history_edu">history_edu</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Sign-off Audit Trail</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps">100% Consensus</span>
+</div>
+<div class="space-y-3">
+<!-- Signatory 1 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant/30 flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-lg font-label-lg text-on-surface">Sarah Jenkins</span>
+<span class="px-1.5 py-0.2 rounded bg-on-surface text-surface-container-lowest text-[10px] font-label-caps">Company</span>
+</div>
+<span class="text-label-caps font-label-caps text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="done_all">done_all</span> Signed
+            </span>
+</div>
+<div class="text-body-sm font-body-sm text-secondary">VP Engineering, Apex AI Labs</div>
+<div class="text-label-caps font-label-caps text-on-surface-variant pt-1 border-t border-outline-variant/20 flex justify-between items-center">
+<span>Oct 24, 2024, 15:40:12 UTC</span>
+<span class="text-secondary">IPFS CID: QmX8...3b9</span>
+</div>
+</div>
+<!-- Signatory 2 -->
+<div class="p-3 rounded-lg bg-surface border border-outline-variant/30 flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-lg font-label-lg text-on-surface">Marcus Chen</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-label-caps">Individual</span>
+</div>
+<span class="text-label-caps font-label-caps text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="done_all">done_all</span> Signed
+            </span>
+</div>
+<div class="text-body-sm font-body-sm text-secondary">Principal Cryptographic Engineer</div>
+<div class="text-label-caps font-label-caps text-on-surface-variant pt-1 border-t border-outline-variant/20 flex justify-between items-center">
+<span>Oct 24, 2024, 16:18:45 UTC</span>
+<span class="text-secondary">IPFS CID: QmZ4...8k2</span>
+</div>
+</div>
+</div>
+<div class="p-2.5 rounded bg-primary-fixed/20 border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="lock_open">lock_open</span>
+<span class="text-label-caps font-label-caps text-on-surface">Status: 100% Consensus reached. Both parties approved identical Brief v1.0.</span>
+</div>
+</section>
+<!-- Core Agreement Summary Card & Immutable Baseline -->
+<section class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/40 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="terminal">terminal</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Core Agreement &amp; Baseline</h2>
+</div>
+<span class="text-label-caps font-label-caps text-secondary">#SV-409</span>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+<span class="text-label-caps font-label-caps text-secondary block">PROJECT SPECIFICATION</span>
+<div class="text-label-lg font-label-lg text-on-surface mt-0.5">Autonomous Consensus Engine &amp; Zero-Knowledge Prover Node</div>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+<span class="text-label-caps font-label-caps text-secondary block">LOCKED ESCROW</span>
+<div class="text-headline-md font-headline-md text-primary mt-0.5">$42,500 <span class="text-label-caps font-label-caps text-on-surface">USDC</span></div>
+<span class="text-[11px] font-body-sm text-secondary">FIB Smart Vault #SV-409</span>
+</div>
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+<span class="text-label-caps font-label-caps text-secondary block">EXECUTION TIMELINE</span>
+<div class="text-label-lg font-label-lg text-on-surface mt-0.5">Nov 1 – Dec 13</div>
+<span class="text-[11px] font-body-sm text-secondary">6-Week Strict Target</span>
+</div>
+</div>
+<!-- Active Milestone 1 Strip -->
+<div class="p-3.5 bg-surface-container-low rounded-lg border border-primary/30 flex flex-col space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="text-label-caps font-label-caps text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> ACTIVE MILESTONE 1
+            </span>
+<span class="text-label-lg font-label-lg text-on-surface font-bold">$12,750 USDC</span>
+</div>
+<div class="text-body-sm font-body-sm font-semibold text-on-surface">Kickoff &amp; Repo Architecture Setup</div>
+<div class="text-[11px] font-body-sm text-secondary">Awaiting initial repository staging &amp; dual-key kickoff verification.</div>
+</div>
+</div>
+</section>
+<!-- Export & Document Simulation Tools -->
+<section class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="file_present">file_present</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">Document &amp; Cryptographic Export</h2>
+</div>
+<div class="space-y-2">
+<!-- PDF Download -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-outline-variant/30 bg-surface">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface">Download Signed Institutional Agreement</div>
+<div class="text-[11px] font-body-sm text-secondary">PDF format • 2.4 MB • SHA-256 Checksum Included</div>
+</div>
+</div>
+<button aria-label="Download Agreement PDF" class="p-2 rounded-lg bg-surface-container-high hover:bg-surface-container active:scale-95 transition-transform text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+<!-- Raw JSON/Markdown Dump -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-outline-variant/30 bg-surface">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="data_object">data_object</span>
+</div>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface">Export Smart Contract Brief</div>
+<div class="text-[11px] font-body-sm text-secondary">JSON &amp; Markdown dump with parameter state</div>
+</div>
+</div>
+<button aria-label="Export Contract Brief" class="p-2 rounded-lg bg-surface-container-high hover:bg-surface-container active:scale-95 transition-transform text-on-surface">
+<span class="material-symbols-outlined text-[20px]" data-icon="code">code</span>
+</button>
+</div>
+</div>
+<!-- Verify Ledger Button -->
+<button class="w-full py-2.5 px-4 rounded-lg border border-outline-variant/40 bg-surface hover:bg-surface-container-low active:scale-95 transition-transform text-label-lg font-label-lg text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="security">security</span>
+        Verify On-Chain Audit Proof
+      </button>
+</section>
+<!-- Project Management Transition (Operational Steps) -->
+<section class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/40 shadow-sm space-y-4">
+<div>
+<span class="text-label-caps font-label-caps text-primary tracking-wider">PROJECT MANAGEMENT TRANSITION</span>
+<h2 class="text-headline-md font-headline-md text-on-surface mt-0.5">Next Operational Steps</h2>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div>
+<div class="text-label-lg font-label-lg text-on-surface">Escrow Funded &amp; Vault Active</div>
+<div class="text-[11px] font-body-sm text-secondary">Capital segregated under multi-signature control</div>
+</div>
+</div>
+<span class="text-label-lg font-label-lg text-primary font-bold">$42,500</span>
+</div>
+<!-- CTA Action Buttons -->
+<div class="space-y-2.5 pt-1">
+<button class="w-full min-h-[44px] bg-primary-container text-on-primary-container rounded-lg px-4 py-3 font-label-lg text-label-lg flex items-center justify-center gap-2 shadow hover:bg-primary transition-colors active:scale-[0.98]">
+<span>Enter Active Collaboration Workspace</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full min-h-[44px] bg-on-surface text-surface-container-lowest rounded-lg px-4 py-2.5 font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-inverse-surface transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+<span>View Milestone Escrow Schedule</span>
+</button>
+</div>
+<!-- Bilateral Change Request Protocol Notice -->
+<div class="pt-2 border-t border-outline-variant/20 flex gap-2 items-start">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0 mt-0.5" data-icon="gavel">gavel</span>
+<p class="text-[11px] font-body-sm text-secondary leading-normal">
+<strong class="text-on-surface">Change Request Protocol:</strong> Any future scope, budget, or timeline modifications must be initiated via Formal Bilateral Change Request.
+        </p>
+</div>
+</section>
+</main>
+<!-- FIB Ecosystem Bottom Navigation Bar (Shared Component Anchor) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md md:hidden shadow-[0_-4px_16px_rgba(11,28,48,0.04)]">
+<!-- Tab 1: Registration -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-md font-label-md mt-0.5">Registration</span>
+</a>
+<!-- Tab 2: Demo Portal (Active: Context represents agreement baseline execution) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="badge" data-weight="fill" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="text-label-md font-label-md mt-0.5">Demo Portal</span>
+</a>
+<!-- Tab 3: Support -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="help_outline">help_outline</span>
+<span class="text-label-md font-label-md mt-0.5">Support</span>
+</a>
+</nav>
+<script src="../assets/app-nav.js"></script>
+</body></html>

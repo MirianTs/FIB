@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB - AI Deal Matrix, Consensus Summary & Mutual Agreement Lock</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#005137",
+            "outline-variant": "#bccac0",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "on-background": "#0b1c30",
+            "primary-fixed-dim": "#68dba9",
+            "primary-fixed": "#85f8c4",
+            "on-surface-variant": "#3d4a42",
+            "secondary-fixed": "#dae2fd",
+            "on-secondary-fixed-variant": "#3f465c",
+            "inverse-surface": "#213145",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#e5eeff",
+            "background": "#f8f9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-secondary-fixed": "#131b2e",
+            "secondary": "#565e74",
+            "on-secondary-container": "#5c647a",
+            "inverse-primary": "#68dba9",
+            "on-tertiary-container": "#f9fdff",
+            "tertiary": "#006577",
+            "inverse-on-surface": "#eaf1ff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#002114",
+            "surface-container-high": "#dce9ff",
+            "outline": "#6d7a72",
+            "secondary-fixed-dim": "#bec6e0",
+            "on-surface": "#0b1c30",
+            "secondary-container": "#dae2fd",
+            "primary-container": "#00855d",
+            "surface-container-low": "#eff4ff",
+            "primary": "#006948",
+            "on-tertiary-fixed": "#001f26",
+            "tertiary-fixed": "#acedff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "surface-tint": "#006c4a",
+            "surface": "#f8f9ff",
+            "surface-variant": "#d3e4fe",
+            "tertiary-container": "#008096",
+            "on-primary-container": "#f5fff7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "label-caps": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.06em", fontWeight: "700" }],
+            "body-md": ["1rem", { lineHeight: "1.5rem", fontWeight: "400" }],
+            "headline-md": ["1.25rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-lg": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.01em", fontWeight: "600" }],
+            "headline-xl-mobile": ["1.75rem", { lineHeight: "2.25rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "display-lg-mobile": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "display-lg": ["3.5rem", { lineHeight: "4rem", letterSpacing: "-0.025em", fontWeight: "700" }],
+            "body-sm": ["0.875rem", { lineHeight: "1.25rem", fontWeight: "400" }],
+            "label-md": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.025em", fontWeight: "600" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", fontWeight: "400" }],
+            "headline-xl": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.02em", fontWeight: "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Wrapper (~390px centered preview canvas) -->
+<div class="max-w-[420px] mx-auto min-h-screen bg-background relative shadow-2xl flex flex-col border-x border-outline-variant/20">
+<!-- Top Navigation / Shared TopAppBar Component -->
+<header class="sticky top-0 z-40 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-4 h-16">
+<div class="flex items-center gap-2">
+<img alt="FIB Logo" class="h-7 w-auto object-contain" src="../assets/logo.svg"/>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface leading-none">FIB Ecosystem</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider font-bold">AI BILATERAL PROTOCOL</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2.5 py-1 rounded-full border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Demo Access</span>
+</div>
+</div>
+</header>
+<!-- Subheader / Screen Context -->
+<section class="px-4 pt-4 pb-3 bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold tracking-wide">Autonomous Engine v4.2</span>
+</div>
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-md text-label-md font-semibold border border-primary/20">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">sync</span>
+<span>88% Reconciled</span>
+</div>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface leading-snug">
+        Consensus Matrix & Agreement Lock
+      </h1>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+        Bilateral institutional alignment: <span class="font-semibold text-on-surface">Apex AI Labs</span> & <span class="font-semibold text-on-surface">Marcus Chen</span>
+</p>
+<!-- Progress Meter Container -->
+<div class="mt-3.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant/40">
+<div class="flex justify-between items-center mb-1.5">
+<span class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[15px]">fact_check</span>
+            Consensus Convergence
+          </span>
+<span class="font-label-md text-label-md font-bold text-primary">8 of 9 Agreed</span>
+</div>
+<!-- Segmented Tracker Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2.5 overflow-hidden p-0.5 flex gap-0.5">
+<div class="bg-primary h-full rounded-l-full w-[88%] transition-all duration-500 shadow-sm"></div>
+<div class="bg-tertiary-fixed-dim/60 h-full w-[12%] rounded-r-full"></div>
+</div>
+<!-- Lock Notice Pill -->
+<div class="mt-2.5 flex items-start gap-1.5 bg-surface-container-lowest px-2.5 py-1.5 rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary text-[16px] mt-0.5">lock_clock</span>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium leading-tight">
+<span class="font-bold text-on-surface">Notice:</span> Final Brief Eligibility: Locked until 100% mutual explicit confirmation.
+          </p>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<main class="px-4 py-4 space-y-4 flex-1">
+<!-- Section Title & Filter Ticker -->
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold tracking-wider">Part 3 & Part 5</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">AI Reconciliation Grid</h2>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-md text-label-md font-semibold bg-surface-container px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[15px]">security</span>
+<span>Zero-Leakage</span>
+</div>
+</div>
+<!-- Bento Cards: The 8 Negotiated Categories -->
+<!-- 1. Scope & Core Deliverables -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">inventory_2</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 01</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Scope & Core Deliverables</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MATCHED · 100%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Rust-based ZK Prover daemon, PlonK verification test suite, Docker images.
+        </p>
+<div class="pl-9 mt-2 flex items-center gap-2 text-xs font-label-md text-secondary">
+<span class="inline-flex items-center gap-1 text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Client Confirmed
+          </span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Provider Confirmed
+          </span>
+</div>
+</div>
+<!-- 2. Compute Resources & Infrastructure -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">memory</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 02</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Compute & Infrastructure</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MATCHED · 100%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Client provides dedicated 8x H100 GPU cluster access & RPC endpoint credentials.
+        </p>
+</div>
+<!-- 3. Intellectual Property Rights -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">gavel</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 03</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Intellectual Property Rights</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MATCHED · 100%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Exclusive institutional assignment upon 100% escrow release.
+        </p>
+</div>
+<!-- 4. Quality & Audit Benchmarks -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">verified</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 04</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Quality & Audit Benchmarks</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MATCHED · 100%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Formally verified ZK circuits, sub-50ms prover latency, 95% test coverage.
+        </p>
+</div>
+<!-- 5. Timeline & Delivery Window (PARTIAL MATCH - ACTION REQUIRED) -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border-2 border-tertiary-fixed-dim/70 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[17px]">schedule</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-tertiary uppercase block">Parameter 05 · Dependency</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Timeline & Delivery Window</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-tertiary/15 text-tertiary border border-tertiary/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">pending</span>
+            85% RECONCILED
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Client requested 6 Weeks; Provider agreed to 6 Weeks conditional on Day 1 H100 cluster handover.
+        </p>
+<div class="pl-9 mt-2.5">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low border border-tertiary/20">
+<span class="font-label-md text-label-md text-tertiary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              Awaiting Client Sign-off on Day 1 Handover Guarantee
+            </span>
+<button class="px-2 py-1 bg-inverse-surface text-surface-container-lowest rounded font-label-md text-label-md font-semibold active:scale-95 transition-transform">
+              Review
+            </button>
+</div>
+</div>
+</div>
+<!-- 6. Budget & Financial Settlement -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">account_balance_wallet</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 06</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Budget & Escrow Settlement</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            90% LOCKED
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Settlement amount reconciled at <span class="font-bold text-on-surface">$42,500 USDC</span> locked in FIB Smart Vault Escrow.
+        </p>
+<!-- Tranche Milestones Breakdown -->
+<div class="pl-9 mt-2.5 space-y-1.5">
+<div class="font-label-caps text-label-caps text-secondary uppercase font-bold">Milestone Tranches:</div>
+<div class="grid grid-cols-3 gap-1.5 text-center">
+<div class="bg-surface-container-low p-1.5 rounded border border-outline-variant/30">
+<div class="font-label-md text-label-md font-bold text-on-surface">30% ($12,750)</div>
+<div class="font-label-caps text-label-caps text-secondary text-[10px]">Kickoff Tranche</div>
+</div>
+<div class="bg-surface-container-low p-1.5 rounded border border-outline-variant/30">
+<div class="font-label-md text-label-md font-bold text-on-surface">40% ($17,000)</div>
+<div class="font-label-caps text-label-caps text-secondary text-[10px]">Core Circuits</div>
+</div>
+<div class="bg-surface-container-low p-1.5 rounded border border-outline-variant/30">
+<div class="font-label-md text-label-md font-bold text-on-surface">30% ($12,750)</div>
+<div class="font-label-caps text-label-caps text-secondary text-[10px]">Final Audit</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 7. Revisions & Architectural Review (ACTIVE AI INTERVENTION) -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border-2 border-secondary/40 shadow-sm relative overflow-hidden bg-gradient-to-br from-surface-container-lowest via-surface-container-lowest to-surface-container-low">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[17px]">rate_review</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 07 · Conflict Point</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Revisions & Review Policy</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-surface-container text-secondary border border-outline-variant/60 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">handshake</span>
+            RESOLVING · 60%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Client requested 2 architectural revision rounds; Provider offered 1 comprehensive round + 14-day warranty.
+        </p>
+<!-- AI Intervention Callout -->
+<div class="pl-9 mt-3">
+<div class="p-2.5 rounded-lg bg-secondary-container/40 border border-secondary/30 space-y-1.5">
+<div class="flex items-center gap-1.5 text-on-secondary-fixed font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-tertiary text-[16px]">smart_toy</span>
+              Active AI Compromise Recommendation:
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface leading-tight font-medium">
+              "AI compromise proposal: 1 formal architectural review + 1 dedicated 14-day stabilization sprint."
+            </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-caps text-label-caps text-secondary font-bold">STATUS: Pending Both Parties' Confirmation</span>
+<div class="flex gap-1.5">
+<button class="px-2.5 py-1 bg-primary text-surface-container-lowest text-xs font-label-md font-bold rounded shadow-sm hover:bg-primary-container active:scale-95 transition-all">
+                  Accept AI Rule
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 8. Cancellation & Termination -->
+<div class="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[17px]">cancel_schedule_send</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block">Parameter 08</span>
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Cancellation & Termination</h3>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider font-label-caps bg-primary/10 text-primary border border-primary/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            MATCHED · 100%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-9 leading-relaxed">
+          Pro-rata payment for accepted milestones, 7-day written notice, code handover within 48h.
+        </p>
+</div>
+<!-- Part 6: Neutral Negotiation Summary & Final Brief Lock Engine -->
+<section class="mt-6 pt-4 border-t border-outline-variant/30 space-y-3">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold tracking-wider">Part 6 Engine</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Consensus Summary Tally</h2>
+</div>
+<!-- Metric Tally Cards -->
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2.5 rounded-xl bg-surface-container-lowest border border-primary/30 flex flex-col items-center justify-center text-center shadow-xs">
+<span class="material-symbols-outlined text-primary text-[20px] mb-0.5" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">6</span>
+<span class="font-label-caps text-label-caps text-secondary leading-tight mt-0.5">Agreed Items (Collapsible)</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-lowest border border-secondary/30 flex flex-col items-center justify-center text-center shadow-xs">
+<span class="material-symbols-outlined text-secondary text-[20px] mb-0.5">forum</span>
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">1</span>
+<span class="font-label-caps text-label-caps text-secondary leading-tight mt-0.5">In Discussion (Revisions)</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-lowest border border-tertiary/30 flex flex-col items-center justify-center text-center shadow-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px] mb-0.5">hourglass_bottom</span>
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">1</span>
+<span class="font-label-caps text-label-caps text-secondary leading-tight mt-0.5">Pending Sign-off (Cluster)</span>
+</div>
+</div>
+<!-- Collapsible Agreed Items Drawer Trigger -->
+<details class="group bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-xs">
+<summary class="flex justify-between items-center p-3 cursor-pointer select-none font-label-lg text-label-lg font-bold text-on-surface">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+              Inspect 6 Reconciled Clauses
+            </span>
+<span class="material-symbols-outlined text-secondary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-3 pb-3 pt-1 border-t border-outline-variant/20 font-body-sm text-body-sm text-secondary space-y-1.5 bg-surface-container-low/50">
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<span>Scope & Artifact Specs</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<span>H100 Hardware Sizing</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<span>Complete IP Assignment</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<span>50ms Latency Benchmark</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<span>Escrow Structure ($42.5k)</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span>Pro-Rata Termination Terms</span>
+<span class="text-primary font-bold">Agreed</span>
+</div>
+</div>
+</details>
+<!-- Eligibility Guard & Mutual Sign-Off Card -->
+<div class="p-4 rounded-xl bg-inverse-surface text-surface-container-lowest shadow-md space-y-3">
+<div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-[22px]">lock</span>
+<div>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim uppercase tracking-wider block">Lock Status</span>
+<span class="font-label-lg text-label-lg font-bold text-white">FINAL BRIEF ELIGIBILITY: LOCKED</span>
+</div>
+</div>
+<span class="bg-white/10 px-2 py-0.5 rounded text-[11px] font-mono text-tertiary-fixed font-semibold">2 Awaiting</span>
+</div>
+<!-- Rules of Engagement -->
+<div class="space-y-1.5 text-xs text-inverse-on-surface/90 bg-white/5 p-3 rounded-lg border border-white/5">
+<span class="font-label-caps text-label-caps text-primary-fixed font-bold tracking-wider block mb-1">
+              Rules of Engagement
+            </span>
+<div class="flex items-start gap-1.5">
+<span class="text-primary-fixed font-bold">•</span>
+<p class="leading-tight">Neither party's approval acts as proxy for the other.</p>
+</div>
+<div class="flex items-start gap-1.5">
+<span class="text-primary-fixed font-bold">•</span>
+<p class="leading-tight">Any modification to an agreed parameter instantly returns that parameter to 'Pending Confirmation' status for both parties.</p>
+</div>
+<div class="flex items-start gap-1.5">
+<span class="text-primary-fixed font-bold">•</span>
+<p class="leading-tight">Cryptographic Dual-Signature activates only upon 100% resolution.</p>
+</div>
+</div>
+<!-- Dual Action Sign-off Simulation Statuses -->
+<div class="space-y-2 pt-1">
+<div class="flex items-center justify-between p-2 rounded bg-white/5 border border-white/10">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-primary/30 flex items-center justify-center text-primary-fixed font-bold text-xs">C</span>
+<span class="font-label-md text-label-md text-white font-semibold">Apex AI Labs</span>
+</div>
+<span class="font-label-md text-label-md text-tertiary-fixed font-medium">Ready (Pending 1 change)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-white/5 border border-white/10">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-secondary-fixed/20 flex items-center justify-center text-secondary-fixed font-bold text-xs">P</span>
+<span class="font-label-md text-label-md text-white font-semibold">Marcus Chen</span>
+</div>
+<span class="font-label-md text-label-md text-tertiary-fixed font-medium">Ready (Pending 1 change)</span>
+</div>
+</div>
+<!-- Disabled Master CTA Button -->
+<div class="pt-2">
+<button class="w-full h-12 bg-white/15 text-white/50 rounded-xl font-label-lg text-label-lg font-bold flex flex-col items-center justify-center cursor-not-allowed border border-white/10 relative overflow-hidden" disabled="">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Generate Final Institutional Brief & Lock Escrow</span>
+</div>
+<span class="text-[10px] font-label-caps tracking-widest text-primary-fixed-dim/80">Reconciliation at 88%</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (BottomNavBar Component from JSON) -->
+<!-- Destination 2 (Demo Portal) active based on Bilateral Demo Context -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 md:hidden backdrop-blur-md shadow-[0_-4px_16px_rgba(11,28,48,0.04)] border-t border-outline-variant/30">
+<!-- Item 1: Registration -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#registration">
+<span class="material-symbols-outlined text-[22px]">how_to_reg</span>
+<span class="text-label-md font-label-md mt-0.5">Registration</span>
+</a>
+<!-- Item 2: Demo Portal (Active Lock View) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#demo-portal">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="text-label-md font-label-md mt-0.5">Demo Portal</span>
+</a>
+<!-- Item 3: Support -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#support">
+<span class="material-symbols-outlined text-[22px]">help_outline</span>
+<span class="text-label-md font-label-md mt-0.5">Support</span>
+</a>
+</nav>
+</div>
+<script src="../assets/app-nav.js"></script>
+</body></html>

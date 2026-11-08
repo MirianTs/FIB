@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>FIB Ecosystem — Deliverables Review &amp; Audit</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#dce9ff",
+            "tertiary-container": "#008096",
+            "inverse-on-surface": "#eaf1ff",
+            "surface": "#f8f9ff",
+            "primary-fixed": "#85f8c4",
+            "outline-variant": "#bccac0",
+            "on-surface-variant": "#3d4a42",
+            "on-tertiary-fixed": "#001f26",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#3f465c",
+            "outline": "#6d7a72",
+            "surface-container-highest": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#f5fff7",
+            "on-secondary-fixed": "#131b2e",
+            "tertiary-fixed": "#acedff",
+            "on-primary-fixed-variant": "#005137",
+            "error": "#ba1a1a",
+            "background": "#f8f9ff",
+            "primary": "#006948",
+            "surface-bright": "#f8f9ff",
+            "on-secondary-container": "#5c647a",
+            "secondary-container": "#dae2fd",
+            "inverse-primary": "#68dba9",
+            "inverse-surface": "#213145",
+            "surface-dim": "#cbdbf5",
+            "secondary-fixed": "#dae2fd",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "on-tertiary-container": "#f9fdff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#002114",
+            "on-background": "#0b1c30",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "primary-container": "#00855d",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#006c4a",
+            "surface-container": "#e5eeff",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-variant": "#d3e4fe",
+            "on-surface": "#0b1c30",
+            "tertiary": "#006577",
+            "secondary": "#565e74",
+            "primary-fixed-dim": "#68dba9",
+            "secondary-fixed-dim": "#bec6e0",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "margin": "2rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-caps": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.025em", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md min-h-screen pb-24 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TOP APP BAR (Shared Components JSON Anchor) -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/20 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-4 md:px-8 max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="verified_user">verified_user</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface dark:text-inverse-on-surface">FIB Ecosystem</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="hidden md:inline-flex text-label-md font-label-md bg-surface-container text-on-surface-variant px-2.5 py-1 rounded border border-outline-variant/40">AGR-8821</span>
+<button class="text-label-lg font-label-lg text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors duration-150 active:scale-[0.98] px-3 py-1.5 rounded-lg border border-outline-variant/40">
+          Demo Access
+        </button>
+</div>
+</div>
+</header>
+<!-- MAIN VIEW CONTAINER (Optimized for Mobile ~390px, scalable to desktop) -->
+<main class="max-w-[440px] md:max-w-2xl mx-auto px-4 pt-4 space-y-5">
+<!-- PROJECT HEADER & STATUS CONTEXT -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-[0_4px_20px_-4px_rgba(11,28,48,0.05)]">
+<div class="flex items-start justify-between gap-2 mb-3">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="text-label-caps font-label-caps text-secondary tracking-wider">PROJECT CONTEXT</span>
+<span class="text-label-caps font-label-caps bg-surface-container px-1.5 py-0.5 rounded text-on-surface-variant font-mono">AGR-8821</span>
+</div>
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface leading-tight">Autonomous Consensus Engine</h1>
+</div>
+<div class="bg-surface-container-low px-2 py-1 rounded text-right shrink-0 border border-outline-variant/30">
+<span class="text-label-caps font-label-caps text-secondary block">TRANCHE 2</span>
+<span class="text-label-md font-label-md text-primary font-bold">$17,000 USDC</span>
+</div>
+</div>
+<!-- ACTIVE STATUS PILL -->
+<div class="bg-primary/10 border border-primary/30 rounded-lg p-2.5 mb-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="text-label-md font-label-md font-semibold text-primary">Milestone 2: Submitted for Review</span>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant/40">Stage 3 of 8</span>
+</div>
+<!-- LIFECYCLE STATE TRACKER (All 8 Lifecycle States) -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-caps font-label-caps text-secondary tracking-wider">LIFECYCLE VERIFICATION PROTOCOL</span>
+<span class="text-label-caps font-label-caps text-primary font-semibold">Active: Stage 3</span>
+</div>
+<!-- 8 States Horizontal Stepper (Touch-scrollable) -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
+<!-- 1. Upcoming -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 opacity-70">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="schedule">schedule</span>
+<span class="text-label-caps font-label-caps text-secondary">Upcoming</span>
+</div>
+<!-- 2. In Progress -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-label-caps font-label-caps text-on-surface">In Progress</span>
+</div>
+<!-- 3. Submitted for Review (Active) -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-primary text-on-primary shadow-sm ring-2 ring-primary/20">
+<span class="material-symbols-outlined text-[16px]" data-icon="rate_review">rate_review</span>
+<span class="text-label-caps font-label-caps text-on-primary font-bold">Submitted for Review</span>
+</div>
+<!-- 4. Revision Requested -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="replay">replay</span>
+<span class="text-label-caps font-label-caps text-secondary">Revision Requested</span>
+</div>
+<!-- 5. Approved -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="task_alt">task_alt</span>
+<span class="text-label-caps font-label-caps text-secondary">Approved</span>
+</div>
+<!-- 6. Completed -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="verified">verified</span>
+<span class="text-label-caps font-label-caps text-secondary">Completed</span>
+</div>
+<!-- 7. Overdue -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="warning">warning</span>
+<span class="text-label-caps font-label-caps text-secondary">Overdue</span>
+</div>
+<!-- 8. Disputed -->
+<div class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="gavel">gavel</span>
+<span class="text-label-caps font-label-caps text-secondary">Disputed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PART 4: DELIVERABLE REVIEW PIPELINE -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-[0_4px_20px_-4px_rgba(11,28,48,0.05)] space-y-4">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+<h2 class="text-label-lg font-label-lg font-bold text-on-surface">Deliverable Review Pipeline</h2>
+</div>
+<span class="text-label-caps font-label-caps bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-semibold">PART 4</span>
+</div>
+<!-- Active Submission Card -->
+<div class="bg-surface-container-low rounded-lg p-3.5 border border-outline-variant/30 space-y-3">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-caps font-label-caps text-tertiary font-bold tracking-wider">PRIMARY ARTIFACT SPEC</span>
+<span class="text-label-caps font-label-caps bg-emerald-100 text-primary px-2 py-0.5 rounded-full font-bold">In Escrow Lock</span>
+</div>
+<h3 class="text-body-md font-body-md font-bold text-on-surface">Rust Prover Daemon v0.9 &amp; PlonK Circuit Test Suite</h3>
+<p class="text-body-sm font-body-sm text-secondary mt-0.5">Submitted By: <span class="text-on-surface font-medium">Marcus Chen</span> (Nov 18, 2024 · 11:20 UTC)</p>
+</div>
+<!-- Cryptographic & Build Artifacts -->
+<div class="space-y-2 bg-surface-container-lowest p-3 rounded border border-outline-variant/30">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5" data-icon="cloud_download">cloud_download</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md text-on-surface font-semibold truncate">libprover-v0.9-x86_64.tar.gz</p>
+<p class="text-label-caps font-label-caps text-secondary font-mono">IPFS Artifact · SHA-256: 0x88f...1b2</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 pt-2 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px] text-tertiary shrink-0 mt-0.5" data-icon="insights">insights</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md text-on-surface font-semibold">Code Coverage &amp; Benchmarks</p>
+<p class="text-label-caps font-label-caps text-secondary">PlonK Proof Benchmarks (&gt;96.2% line coverage, 48ms latency)</p>
+</div>
+</div>
+<div class="flex items-start gap-2.5 pt-2 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant shrink-0 mt-0.5" data-icon="deployed_code">deployed_code</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md text-on-surface font-semibold">Multi-Arch Docker Container</p>
+<p class="text-label-caps font-label-caps text-secondary font-mono">Digest: sha256:4c21...89 (x86_64 / arm64)</p>
+</div>
+</div>
+</div>
+<!-- Client Review Actions (Apex AI Labs) -->
+<div class="pt-2 space-y-2">
+<span class="text-label-caps font-label-caps text-secondary tracking-wider block">CLIENT REVIEW ACTIONS (APEX AI LABS)</span>
+<!-- 1. Accept CTA -->
+<button class="w-full min-h-[44px] bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+            Accept &amp; Authorize Escrow Release ($17,000 USDC)
+          </button>
+<!-- 2. Request Revision -->
+<button class="w-full min-h-[44px] bg-surface-container-lowest border border-outline-variant/60 hover:bg-surface-container text-on-surface rounded-lg font-label-lg text-label-lg flex flex-col items-center justify-center py-1.5 active:scale-[0.98] transition-all">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="edit_note">edit_note</span>
+<span>Request Revision</span>
+</div>
+<span class="text-label-caps font-label-caps text-secondary">Section 08 limit: 1 of 1 formal review used</span>
+</button>
+<!-- 3. Report Problem -->
+<button class="w-full min-h-[44px] bg-transparent hover:bg-error-container/20 text-error rounded-lg font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-[0.98] transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="flag">flag</span>
+            Report a Problem / Flag Divergence
+          </button>
+</div>
+<!-- Historical Submission & Feedback Log -->
+<div class="border-t border-outline-variant/30 pt-3">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-caps font-label-caps text-secondary tracking-wider">HISTORICAL LOG (VERSION TRAIL)</span>
+<span class="text-label-caps font-label-caps text-primary font-medium">1 Previous Iteration</span>
+</div>
+<div class="bg-surface-container-lowest rounded p-2.5 border border-outline-variant/30 text-body-sm font-body-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-on-surface text-label-md font-label-md">Submission v0.8 · Initial daemon benchmarks</span>
+<span class="text-label-caps font-label-caps text-secondary">Nov 14</span>
+</div>
+<div class="bg-surface-container-low rounded p-2 border-l-2 border-primary text-secondary text-label-md font-label-md">
+<p class="text-on-surface-variant"><span class="font-semibold text-on-surface">Sarah Jenkins (Feedback):</span> "Test on AVX-512 cluster required before signoff."</p>
+<div class="flex items-center gap-1 mt-1 text-primary text-label-caps font-label-caps font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+<span>Resolved in v0.9 via Benchmark Suite</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PART 5 & PART 2: CHANGE REQUEST PROTOCOL & CONTRACT INVARIANTS -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-[0_4px_20px_-4px_rgba(11,28,48,0.05)] space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="rule_folder">rule_folder</span>
+<h2 class="text-label-lg font-label-lg font-bold text-on-surface">Change Request Protocol &amp; Invariants</h2>
+</div>
+<span class="text-label-caps font-label-caps bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-semibold">PART 5 &amp; 2</span>
+</div>
+<!-- Current State Badge -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="lock">lock</span>
+<span class="text-label-md font-label-md font-semibold text-on-surface">No Active Change Requests</span>
+</div>
+<span class="text-label-caps font-label-caps bg-surface-container-highest text-on-secondary-fixed px-2 py-0.5 rounded font-mono font-bold">Brief v1.0 Enforced</span>
+</div>
+<!-- Bilateral Guard Protocol Banner -->
+<div class="p-3 rounded-lg bg-tertiary-fixed/20 border border-tertiary/30 space-y-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="shield">shield</span>
+<span class="text-label-caps font-label-caps text-on-tertiary-fixed font-bold">BILATERAL CHANGE GUARD</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+          Scope, budget, or deadline alterations cannot be made unilaterally. Initiating a change opens an isolated <span class="font-semibold text-on-surface">Bilateral AI Negotiation</span> subject to escrow recalibration.
+        </p>
+</div>
+<!-- Formal Change Button -->
+<button class="w-full min-h-[44px] bg-surface-container-lowest border border-outline-variant/60 hover:border-primary text-primary hover:bg-surface-container-low rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+        + Request Formal Scope/Budget Change
+      </button>
+</section>
+<!-- PART 6: FINAL COMPLETION & ARBITRATION AUDIT -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-[0_4px_20px_-4px_rgba(11,28,48,0.05)] space-y-3 mb-6">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="fact_check">fact_check</span>
+<h2 class="text-label-lg font-label-lg font-bold text-on-surface">Completion &amp; Arbitration Audit</h2>
+</div>
+<span class="text-label-caps font-label-caps bg-surface-container px-2 py-0.5 rounded text-on-surface-variant font-semibold">PART 6</span>
+</div>
+<!-- Completion Checklist Gatekeeper -->
+<div class="space-y-2">
+<span class="text-label-caps font-label-caps text-secondary tracking-wider block">COMPLETION CHECKLIST GATEKEEPER</span>
+<!-- Gate 1: Completed -->
+<div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" data-icon="check_circle">check_circle</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md font-semibold text-on-surface">Section 03 Deliverables Verified</p>
+<p class="text-body-sm font-body-sm text-secondary">Rust prover daemon, Docker images, and Spec docs indexed</p>
+</div>
+</div>
+<!-- Gate 2: Completed -->
+<div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" data-icon="check_circle">check_circle</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md font-semibold text-on-surface">Formal Verification Audit Passed</p>
+<p class="text-body-sm font-body-sm text-secondary">Zero critical security leaks · PlonK circuit constraints sound</p>
+</div>
+</div>
+<!-- Gate 3: Pending -->
+<div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-surface-container border border-outline-variant/40">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0" data-icon="hourglass_top">hourglass_top</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md font-semibold text-on-surface">Final Client Sign-off &amp; Tranche 3 Release</p>
+<p class="text-body-sm font-body-sm text-secondary">$12,750 USDC pending post-Milestone 2 acceptance</p>
+</div>
+</div>
+<!-- Gate 4: Pending -->
+<div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-surface-container border border-outline-variant/40">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0" data-icon="hourglass_top">hourglass_top</span>
+<div class="min-w-0">
+<p class="text-label-md font-label-md font-semibold text-on-surface">100% IP Assignment Attestation</p>
+<p class="text-body-sm font-body-sm text-secondary">Statutory assignment deed awaiting cryptographic multisig sign</p>
+</div>
+</div>
+</div>
+<!-- Inviolable Rule Badge -->
+<div class="p-3 rounded-lg bg-surface-container-highest border border-outline-variant/40 flex items-start gap-2">
+<span class="material-symbols-outlined text-on-secondary-fixed text-[18px] shrink-0 mt-0.5" data-icon="gavel">gavel</span>
+<p class="text-body-sm font-body-sm text-on-secondary-fixed leading-snug">
+<span class="font-bold">Inviolable Rule:</span> Project cannot be marked Completed until all deliverable tranches are accepted and statutory completion conditions are verified.
+        </p>
+</div>
+<!-- Baseline Brief Link -->
+<div class="pt-1 text-center">
+<a class="inline-flex items-center gap-1.5 text-label-md font-label-md text-primary font-semibold hover:underline" href="#baseline-brief">
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+          View Approved Baseline Brief v1.0 (Immutable)
+        </a>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Components JSON Anchor) -->
+<!-- Strict semantic map: This screen is a review/audit inside Demo Portal -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 dark:bg-inverse-surface/90 md:hidden backdrop-blur-md border-t border-outline-variant/30 dark:border-outline/20 shadow-[0_-4px_16px_rgba(11,28,48,0.04)] dark:shadow-none">
+<!-- Tab 1: Registration -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#registration">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-md font-label-md">Registration</span>
+</a>
+<!-- Tab 2: Demo Portal (Active Destination) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-semibold py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#demo-portal">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="text-label-md font-label-md">Demo Portal</span>
+</a>
+<!-- Tab 3: Support -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim py-1 hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 active:scale-95" href="#support">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-label-md font-label-md">Support</span>
+</a>
+</nav>
+<script src="../assets/app-nav.js"></script>
+</body></html>

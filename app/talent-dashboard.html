@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIB Individual &amp; Talent Master Dashboard</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts for Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "outline-variant": "#bccac0",
+            "on-secondary-fixed-variant": "#3f465c",
+            "on-secondary-container": "#5c647a",
+            "secondary": "#565e74",
+            "primary-fixed": "#85f8c4",
+            "on-surface-variant": "#3d4a42",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#dae2fd",
+            "surface-tint": "#006c4a",
+            "on-tertiary-container": "#f9fdff",
+            "on-tertiary-fixed": "#001f26",
+            "on-error-container": "#93000a",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#005137",
+            "outline": "#6d7a72",
+            "surface-container-high": "#dce9ff",
+            "surface": "#f8f9ff",
+            "primary-container": "#00855d",
+            "on-surface": "#0b1c30",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-dim": "#cbdbf5",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "on-primary-fixed": "#002114",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#f5fff7",
+            "tertiary-container": "#008096",
+            "secondary-fixed": "#dae2fd",
+            "on-background": "#0b1c30",
+            "error": "#ba1a1a",
+            "surface-variant": "#d3e4fe",
+            "background": "#f8f9ff",
+            "inverse-surface": "#213145",
+            "tertiary-fixed": "#acedff",
+            "secondary-fixed-dim": "#bec6e0",
+            "tertiary": "#006577",
+            "primary": "#006948",
+            "primary-fixed-dim": "#68dba9",
+            "on-secondary-fixed": "#131b2e",
+            "surface-container-highest": "#d3e4fe",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "on-primary": "#ffffff",
+            "surface-container": "#e5eeff",
+            "surface-container-low": "#eff4ff",
+            "inverse-primary": "#68dba9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.025em", "fontWeight": "600" }],
+            "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"],
+    .icon-fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Hide scrollbars for slick mobile pill tracks */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ========================================== -->
+<!-- TOP APP BAR (Shared Component Anchor)      -->
+<!-- ========================================== -->
+<header class="bg-surface/80 backdrop-blur-md top-0 sticky z-40 shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-4 max-w-md mx-auto h-16">
+<!-- FIB Ecosystem Brand Anchor + Official Logo -->
+<div class="flex items-center gap-2.5">
+<div class="h-8 flex items-center">
+<img alt="FIB AI Professional Ecosystem" class="h-7 w-auto object-contain" src="../assets/logo.svg"/>
+</div>
+<div class="hidden sm:flex flex-col">
+<span class="font-headline-md text-label-md font-bold tracking-tight text-on-surface leading-none">FIB Ecosystem</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase font-semibold">Talent Master</span>
+</div>
+</div>
+<!-- Action Cluster: Individual Mode Status + Bell + Avatar -->
+<div class="flex items-center gap-2">
+<!-- Quick Mode Pill -->
+<div class="flex items-center bg-primary-container/10 px-2.5 py-1 rounded-full border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse mr-1.5"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">Talent</span>
+</div>
+<!-- Notification Bell with count -->
+<button aria-label="Notifications" class="relative p-2 rounded-lg text-secondary hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-caps text-[9px] flex items-center justify-center font-bold">3</span>
+</button>
+<!-- User Avatar with Verified Pro Pip -->
+<div class="relative cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center font-label-md font-bold text-on-surface overflow-hidden shadow-sm">
+<span class="text-primary font-bold">MC</span>
+</div>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-primary rounded-full border-2 border-surface-container-lowest flex items-center justify-center" title="Level 3 Verified Pro">
+<span class="material-symbols-outlined text-white text-[9px] font-bold">verified</span>
+</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ========================================== -->
+<!-- MAIN MOBILE CANVAS (~390px - 430px optimal) -->
+<!-- ========================================== -->
+<main class="max-w-md mx-auto px-4 pt-4 space-y-5">
+<!-- USER QUICK STATUS & VISIBILITY CONTROLLER -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-[0_4px_18px_rgba(11,28,48,0.03)]">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div>
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Marcus Chen</h1>
+<!-- Level 3 Badge -->
+<span class="bg-surface-container px-2 py-0.5 rounded-full text-on-surface-variant font-label-caps text-label-caps flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px] text-primary" data-weight="fill">verified_user</span>
+              L3 Verified
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">AI Systems &amp; Cryptographic Architecture</p>
+</div>
+<!-- Talent Match Index Radial indicator mini -->
+<div class="text-right">
+<div class="font-headline-md text-label-lg font-bold text-primary">99.4%</div>
+<span class="font-label-caps text-[10px] text-secondary tracking-wider uppercase">Rep Index</span>
+</div>
+</div>
+<!-- Visibility Toggle Switch (Verified Employers Only) -->
+<div class="pt-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-weight="fill">visibility</span>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">Visibility Status</div>
+<div class="font-body-sm text-[11px] text-secondary">Verified Institutional Employers Only</div>
+</div>
+</div>
+<!-- Active Toggle Pill -->
+<button class="relative w-12 h-6.5 bg-primary rounded-full p-0.5 transition-colors focus:outline-none cursor-pointer flex items-center justify-end pr-1">
+<span class="w-5 h-5 bg-white rounded-full shadow-md transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary font-bold">lock</span>
+</span>
+</button>
+</div>
+</section>
+<!-- AI COPILOT INTERACTIVE PROMPT PILL (PART 2) -->
+<section class="bg-gradient-to-r from-surface-container-high/90 to-surface-container/60 rounded-xl p-3.5 border border-outline-variant/30 flex items-center justify-between gap-3 shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 border border-tertiary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[20px]">smart_toy</span>
+</div>
+<div class="truncate">
+<div class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider font-bold">FIB Copilot Assistant</div>
+<p class="font-body-sm text-body-sm text-on-surface truncate font-medium">"Optimize proposal for Apex AI Labs"</p>
+</div>
+</div>
+<button class="shrink-0 bg-surface-container-lowest text-primary px-3 py-1.5 rounded-lg border border-outline-variant/40 font-label-md text-label-md flex items-center gap-1 shadow-sm active:scale-95 transition-transform">
+<span>Ask</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+<!-- PERFORMANCE & STATUS OVERVIEW (PART 6 - 4-Grid + Totals) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">monitoring</span>
+          Performance Pulse
+        </h2>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Real-Time Sync</span>
+</div>
+<!-- Main Metric Matrix (2x2 Grid + Full Width Banner) -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Metric 1: Active Applications -->
+<div class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="font-label-caps text-label-caps tracking-wider uppercase font-semibold">Applications</span>
+<span class="material-symbols-outlined text-[18px] text-primary">send</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">5</div>
+<div class="mt-1 flex items-center gap-1 text-[11px] font-label-md text-primary bg-primary-container/10 px-1.5 py-0.5 rounded w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            2 in Interview
+          </div>
+</div>
+<!-- Metric 2: Pending Offers / Contracts -->
+<div class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="font-label-caps text-label-caps tracking-wider uppercase font-semibold">Active Offers</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">contract</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">3</div>
+<div class="mt-1 font-body-sm text-[11px] text-secondary truncate">
+<span class="font-bold text-on-surface">$42.0k</span> Escrow hold
+          </div>
+</div>
+<!-- Metric 3: Active Collaborations -->
+<div class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="font-label-caps text-label-caps tracking-wider uppercase font-semibold">Collaborations</span>
+<span class="material-symbols-outlined text-[18px] text-primary">sync_saved_locally</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">2</div>
+<div class="mt-1 flex items-center gap-1 font-body-sm text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[13px] text-primary">check_circle</span>
+            Milestones 80% on track
+          </div>
+</div>
+<!-- Metric 4: Completed Projects & Success Score -->
+<div class="bg-surface-container-lowest rounded-xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="font-label-caps text-label-caps tracking-wider uppercase font-semibold">Delivered</span>
+<span class="material-symbols-outlined text-[18px] text-primary" data-weight="fill">verified</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">14</div>
+<div class="mt-1 font-body-sm text-[11px] text-on-surface-variant font-semibold">
+            100% JSS • 4.98 ★
+          </div>
+</div>
+</div>
+<!-- Financial & Profile Views Inset Card -->
+<div class="bg-gradient-to-br from-surface-container-lowest via-surface to-surface-container-low rounded-xl p-4 border border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center mb-3 pb-2.5 border-b border-outline-variant/20">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Earnings Summary</span>
+<div class="font-headline-lg text-headline-lg font-bold text-primary mt-0.5">$68,400</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Smart Vault Escrow</span>
+<div class="font-headline-md text-label-lg font-semibold text-on-surface mt-0.5">$14,500 <span class="text-xs text-secondary font-normal">pending</span></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs pt-0.5">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">visibility</span>
+<span class="font-semibold">412</span> Profile views (30d)
+          </div>
+<span class="font-label-md text-label-md text-primary flex items-center font-bold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+            +28% surge
+          </span>
+</div>
+</div>
+</section>
+<!-- SEGMENTED NAVIGATION SWITCHER (PART 3 & 4) -->
+<section>
+<div class="bg-surface-container p-1 rounded-xl flex items-center shadow-inner">
+<button class="flex-1 py-2 px-1 text-center rounded-lg font-label-md text-label-md font-bold transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1" id="tab-jobs" onclick="switchTalentTab('jobs')">
+<span class="material-symbols-outlined text-[16px]">work</span>
+          Job Seeker
+        </button>
+<button class="flex-1 py-2 px-1 text-center rounded-lg font-label-md text-label-md font-semibold text-secondary hover:text-on-surface transition-all flex items-center justify-center gap-1" id="tab-services" onclick="switchTalentTab('services')">
+<span class="material-symbols-outlined text-[16px]">handshake</span>
+          Freelancer Hub
+        </button>
+<button class="flex-1 py-2 px-1 text-center rounded-lg font-label-md text-label-md font-semibold text-secondary hover:text-on-surface transition-all flex items-center justify-center gap-1" id="tab-radar" onclick="switchTalentTab('radar')">
+<span class="material-symbols-outlined text-[16px]">radar</span>
+          AI Radar
+        </button>
+</div>
+</section>
+<!-- ============================================================ -->
+<!-- VIEW CONTAINER 1: JOB SEEKER FLOW & ATS PIPELINE (PART 3)     -->
+<!-- ============================================================ -->
+<div class="space-y-4" id="section-jobs">
+<!-- ATS Pipeline Header -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">Active Applications Tracker</span>
+<span class="bg-primary/10 text-primary font-label-caps text-label-caps px-2 py-0.5 rounded-full font-bold">3 Active</span>
+</div>
+<button class="font-label-md text-label-md text-primary font-semibold hover:underline">View All</button>
+</div>
+<!-- Application Card 1: Interview Scheduled (Apex AI Labs) -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-start justify-between">
+<div class="space-y-0.5">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Apex AI Labs • San Francisco (Remote)</span>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface">Senior AI/ML Architect</h3>
+<div class="text-xs text-secondary font-medium">$230,000 - $260,000 • Full-Time Equity</div>
+</div>
+<!-- Role distinction badge (Company) -->
+<span class="bg-inverse-surface text-inverse-on-surface px-2 py-0.5 rounded text-[11px] font-label-caps font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+            Apex
+          </span>
+</div>
+<!-- ATS Stage Notification Box -->
+<div class="bg-surface-container-high/60 rounded-lg p-2.5 border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-weight="fill">event_available</span>
+              Interview Scheduled
+            </span>
+<span class="font-body-sm text-[11px] text-on-surface font-semibold">Tomorrow 2:00 PM PST</span>
+</div>
+<p class="font-body-sm text-[11px] text-secondary mt-1">Technical Architecture Deep Dive w/ VP of Engineering</p>
+</div>
+<!-- ATS Action Cluster -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<button class="bg-primary text-on-primary py-2 px-2 rounded-lg font-label-md text-label-md font-bold hover:bg-surface-tint active:scale-95 transition-transform flex items-center justify-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[15px]">check</span>
+            Accept
+          </button>
+<button class="bg-surface-container text-on-surface py-2 px-2 rounded-lg font-label-md text-label-md font-semibold hover:bg-surface-container-high active:scale-95 transition-transform flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+            Reschedule
+          </button>
+<button class="border border-outline-variant text-secondary py-2 px-1 rounded-lg font-label-md text-label-md hover:bg-surface-container active:scale-95 transition-transform flex items-center justify-center">
+            Withdraw
+          </button>
+</div>
+</div>
+<!-- Application Card 2: Under Review (HyperLedger Systems) -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-2.5">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">HyperLedger Systems • Zug / Zurich</span>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface">Lead Consensus Protocol Dev</h3>
+<div class="text-xs text-secondary font-medium">$190,000 - $220,000 • Core Contributor</div>
+</div>
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-secondary font-label-caps text-[11px] font-bold">Reviewing</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2.5 border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">manage_search</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Under Review by Hiring Manager (Submitted 2d ago)</span>
+</div>
+</div>
+<!-- Application Card 3: Offer Received (VaultShield) -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-primary/40 shadow-[0_4px_20px_rgba(0,105,72,0.06)] space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-wider font-bold">VaultShield Security</span>
+<span class="bg-primary/10 text-primary px-1.5 py-0.2 rounded font-label-caps text-[9px] font-bold">OFFER READY</span>
+</div>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface">Zero-Knowledge Cryptographer</h3>
+<div class="font-body-sm text-body-sm text-primary font-bold mt-0.5">$210,000 + 0.45% Equity</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]" data-weight="fill">verified</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-2.5 text-xs text-secondary flex items-center justify-between">
+<span>Official Institutional Offer Letter expires in 48 hours</span>
+<span class="font-label-md text-on-surface font-semibold underline">Details</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-on-primary py-2 px-3 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1 hover:bg-surface-tint shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+            Review Offer
+          </button>
+<button class="bg-surface-container-highest text-on-surface py-2 px-3 rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1 hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+            Counter
+          </button>
+</div>
+</div>
+<!-- Recommended Jobs Card Deck (AI Match 98%) -->
+<div class="pt-2 space-y-3">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[20px]">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Recommended Jobs</h3>
+</div>
+<span class="bg-tertiary-container/15 text-tertiary font-label-caps text-label-caps px-2 py-0.5 rounded-full font-bold">98% Fit</span>
+</div>
+<!-- Job Recommendation 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-start justify-between">
+<div class="space-y-0.5">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Nexus Core AI • Remote</span>
+<h4 class="font-headline-md text-label-lg font-bold text-on-surface">Distributed Systems ML Engineer</h4>
+<div class="text-xs text-secondary font-medium">$215k - $245k • Smart Contract Payroll</div>
+</div>
+<button aria-label="Bookmark" class="text-secondary hover:text-primary p-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">bookmark_border</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] text-on-surface-variant font-medium">PyTorch Distributed</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] text-on-surface-variant font-medium">Rust Core</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[11px] font-bold">99.1% Skill Match</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-label-lg text-label-lg font-bold flex items-center justify-center gap-1.5 hover:bg-surface-tint shadow-sm active:scale-98 transition-transform">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+            1-Click Apply (Auto-attach CV &amp; Portfolio)
+          </button>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- VIEW CONTAINER 2: FREELANCER & SERVICE PROVIDER (PART 4)      -->
+<!-- ============================================================ -->
+<div class="space-y-4 hidden" id="section-services">
+<!-- Catalog Management & Service Offerings -->
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">Published Services</h2>
+<button class="bg-primary text-on-primary px-2.5 py-1 rounded-lg font-label-md text-label-md font-bold flex items-center gap-1 hover:bg-surface-tint active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">add</span>
+          New Service
+        </button>
+</div>
+<!-- Service Card 1: End-to-End LLM Agent -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">Active Catalog</span>
+</div>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface mt-1">End-to-End LLM Agent Deployment &amp; Fine-Tuning</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Enterprise LangChain + vLLM optimized pipelines with zero data leakage.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-md text-label-lg font-bold text-on-surface">$4,500</span>
+<div class="text-[11px] text-secondary font-medium">7-Day Turnaround</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-xs">
+<span class="text-secondary font-medium">9 orders completed • 5.0 Rating</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-container font-label-md text-on-surface font-semibold hover:bg-surface-container-high">Edit Service</button>
+<button class="px-2 py-1 rounded text-secondary hover:text-error">Pause</button>
+</div>
+</div>
+</div>
+<!-- Service Card 2: Smart Contract & ZK Audit -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">Hourly Consultation</span>
+</div>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface mt-1">Smart Contract &amp; ZK Audit Architecture</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Cryptographic formal verification, EVM invariants &amp; Halo2 circuits.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-md text-label-lg font-bold text-on-surface">$130<span class="text-xs text-secondary font-normal">/hr</span></span>
+<div class="text-[11px] text-primary font-bold">Instant Book</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20 text-xs">
+<span class="text-secondary font-medium">Verified by zkVerify Protocol</span>
+<button class="px-2.5 py-1 rounded bg-surface-container font-label-md text-on-surface font-semibold hover:bg-surface-container-high">Configure Availability</button>
+</div>
+</div>
+<!-- Open Briefs / Browse Client Projects -->
+<div class="pt-2 space-y-3">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+            Open Client Briefs
+          </h3>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Verified Funds</span>
+</div>
+<!-- Project Brief Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-tertiary uppercase font-bold tracking-wider">Verified Escrow Secured</span>
+<h4 class="font-headline-md text-label-lg font-bold text-on-surface mt-0.5">Autonomous Agent Fleet for Financial Forecasting</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Multi-modal predictive pipeline across equity derivatives and OTC feeds.</p>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-lg text-xs">
+<div>
+<div class="text-secondary font-medium">Verified Budget</div>
+<div class="font-headline-md text-label-lg font-bold text-on-surface">$18,000</div>
+</div>
+<div class="text-right">
+<div class="text-secondary font-medium">Competition</div>
+<div class="font-label-md text-on-surface font-semibold">4 proposals submitted</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:bg-surface-tint shadow-sm active:scale-98 transition-transform">
+<span class="material-symbols-outlined text-[18px]">post_add</span>
+            Submit Proposal &amp; Milestone Quote
+          </button>
+</div>
+</div>
+<!-- Active Collaborations & Smart Vault Escrow -->
+<div class="pt-2 space-y-3">
+<div class="flex items-center justify-between px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+            Smart Vault Escrow
+          </h3>
+<span class="font-label-caps text-label-caps text-primary uppercase font-bold">1 Milestone Ready</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase font-semibold">Contract #ESC-8924</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] font-label-caps text-primary font-bold">Escrow Funded</span>
+</div>
+<div>
+<h4 class="font-headline-md text-label-lg font-bold text-on-surface">Project Phoenix ZK Proof</h4>
+<div class="flex items-center justify-between text-xs text-secondary mt-1 font-medium">
+<span>Milestone 2 of 3</span>
+<span class="font-bold text-on-surface">$5,000 USD</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container rounded-full mt-1.5 overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 66%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg text-[11px] text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">info</span>
+<span>Awaiting client code review sign-off. Automated release in 24h.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- VIEW CONTAINER 3: AI CAREER RADAR & REPUTATION (PART 2)       -->
+<!-- ============================================================ -->
+<div class="space-y-4 hidden" id="section-radar">
+<!-- AI Radar Analytics Banner -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-xl p-4 shadow-md space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-[22px]">radar</span>
+<span class="font-headline-md text-label-lg font-bold">Talent Market Radar</span>
+</div>
+<span class="bg-primary text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded font-bold uppercase">Live Index</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline-variant">Your profile is trending in top 2% of AI Infrastructure Architects across North America.</p>
+<div class="grid grid-cols-2 gap-2 pt-1 text-center">
+<div class="bg-surface-container-highest/20 p-2 rounded-lg border border-outline-variant/20">
+<div class="font-headline-lg text-label-lg font-bold text-primary-fixed">$140 - $165</div>
+<div class="text-[10px] text-outline-variant uppercase">Optimal Market Rate / hr</div>
+</div>
+<div class="bg-surface-container-highest/20 p-2 rounded-lg border border-outline-variant/20">
+<div class="font-headline-lg text-label-lg font-bold text-tertiary-fixed">+34%</div>
+<div class="text-[10px] text-outline-variant uppercase">Demand Surge YoY</div>
+</div>
+</div>
+</div>
+<!-- Reputation & Verified Client Reviews Showcase -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div>
+<h3 class="font-headline-md text-label-lg font-bold text-on-surface">Verified Reputation</h3>
+<span class="font-body-sm text-xs text-secondary">Cryptographically anchored on FIB Ledger</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-[18px]" data-weight="fill">star</span>
+<span class="font-headline-md text-label-lg font-bold text-on-surface">5.0</span>
+</div>
+</div>
+<!-- Verified Quote -->
+<blockquote class="bg-surface-container-low p-3 rounded-lg border-l-2 border-primary space-y-1.5">
+<p class="font-body-sm text-body-sm text-on-surface italic">"Marcus delivered world-class PyTorch optimizations ahead of schedule. Scaled our inference throughput by 3.2x without touching model weights."</p>
+<footer class="flex items-center justify-between text-[11px] text-secondary not-italic pt-1">
+<span class="font-semibold text-on-surface">— Dr. Aris Vance, CTO @ HyperScale AI</span>
+<span class="text-primary font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+              Verified Contract
+            </span>
+</footer>
+</blockquote>
+</div>
+</div>
+</main>
+<!-- ========================================== -->
+<!-- DEDICATED INDIVIDUAL BOTTOM NAVIGATION BAR -->
+<!-- (Shared Component Blueprint executed)     -->
+<!-- ========================================== -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/90 backdrop-blur-md shadow-[0_-4px_16px_rgba(11,28,48,0.06)] border-t border-outline-variant/30">
+<!-- Item 1: Overview (Active by design hierarchy) -->
+<button aria-label="Dashboard Overview" class="flex flex-col items-center justify-center text-primary font-semibold py-1 active:scale-95 transition-transform" id="nav-overview" onclick="handleBottomNav('overview')">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill">dashboard</span>
+<span class="font-label-md text-[11px] mt-0.5">Overview</span>
+</button>
+<!-- Item 2: Jobs -->
+<button aria-label="Job Seeker Portal" class="flex flex-col items-center justify-center text-secondary py-1 active:scale-95 transition-transform hover:text-primary" id="nav-jobs" onclick="handleBottomNav('jobs')">
+<span class="material-symbols-outlined text-[24px]">work_outline</span>
+<span class="font-label-md text-[11px] mt-0.5">Jobs</span>
+</button>
+<!-- Item 3: Services -->
+<button aria-label="Freelancer Hub" class="flex flex-col items-center justify-center text-secondary py-1 active:scale-95 transition-transform hover:text-primary" id="nav-services" onclick="handleBottomNav('services')">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+<span class="font-label-md text-[11px] mt-0.5">Services</span>
+</button>
+<!-- Item 4: Network -->
+<button aria-label="Institutional Network" class="flex flex-col items-center justify-center text-secondary py-1 active:scale-95 transition-transform hover:text-primary" id="nav-network" onclick="handleBottomNav('network')">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+<span class="font-label-md text-[11px] mt-0.5">Network</span>
+</button>
+<!-- Item 5: Profile -->
+<button aria-label="Talent Profile" class="flex flex-col items-center justify-center text-secondary py-1 active:scale-95 transition-transform hover:text-primary" id="nav-profile" onclick="handleBottomNav('profile')">
+<span class="material-symbols-outlined text-[24px]">account_circle</span>
+<span class="font-label-md text-[11px] mt-0.5">Profile</span>
+</button>
+</nav>
+<!-- Dynamic Segment Switching Logic -->
+<script>
+    function switchTalentTab(tabName) {
+      const sections = ['jobs', 'services', 'radar'];
+      sections.forEach(s => {
+        const secEl = document.getElementById('section-' + s);
+        const tabEl = document.getElementById('tab-' + s);
+        if (s === tabName) {
+          secEl.classList.remove('hidden');
+          tabEl.className = "flex-1 py-2 px-1 text-center rounded-lg font-label-md text-label-md font-bold transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center gap-1";
+        } else {
+          secEl.classList.add('hidden');
+          tabEl.className = "flex-1 py-2 px-1 text-center rounded-lg font-label-md text-label-md font-semibold text-secondary hover:text-on-surface transition-all flex items-center justify-center gap-1";
+        }
+      });
+    }
+
+    function handleBottomNav(destination) {
+      if (destination === 'jobs') {
+        switchTalentTab('jobs');
+      } else if (destination === 'services') {
+        switchTalentTab('services');
+      } else if (destination === 'overview') {
+        switchTalentTab('jobs');
+      }
+      
+      const navItems = ['overview', 'jobs', 'services', 'network', 'profile'];
+      navItems.forEach(item => {
+        const btn = document.getElementById('nav-' + item);
+        if (btn) {
+          if (item === destination) {
+            btn.className = "flex flex-col items-center justify-center text-primary font-semibold py-1 active:scale-95 transition-transform";
+          } else {
+            btn.className = "flex flex-col items-center justify-center text-secondary py-1 active:scale-95 transition-transform hover:text-primary";
+          }
+        }
+      });
+    }
+  </script>
+<script src="../assets/app-nav.js"></script>
+</body></html>
