@@ -1,15 +1,21 @@
 // Floating navigation on each screen of the new mobile version: gallery, previous / next step in the flow.
+// Config via the script tag: data-data (data file) and data-var (global it defines). Defaults: the FIB_APP version.
 (function () {
+  const me = document.currentScript;
+  const dataSrc = (me && me.dataset.data) || '../assets/app-data.js';
+  const dataVar = (me && me.dataset.var) || 'FIB_APP';
   const s = document.createElement('script');
-  s.src = '../assets/app-data.js';
+  s.src = dataSrc;
   s.onload = build;
   document.head.appendChild(s);
 
   function build() {
+    const groups = window[dataVar] || [];
     const slug = location.pathname.split('/').pop().replace(/\.html$/, '');
     const flat = [];
-    window.FIB_APP.forEach((g, gi) => g.items.forEach(i => flat.push({ slug: i[0], title: i[1], phase: gi + 1 })));
+    groups.forEach((g, gi) => g.items.forEach(i => flat.push({ slug: i[0], title: i[1], phase: gi + 1 })));
     const idx = flat.findIndex(i => i.slug === slug);
+    if (idx >= 0 && /^FIB - [a-z-]+$/.test(document.title)) document.title = 'FIB — ' + flat[idx].title;
 
     const bar = document.createElement('nav');
     bar.setAttribute('aria-label', 'Screen navigation');
@@ -28,7 +34,7 @@
     if (idx >= 0) {
       const pos = document.createElement('span');
       pos.textContent = (idx + 1) + '/' + flat.length;
-      pos.title = 'Phase ' + flat[idx].phase + ' of 7';
+      pos.title = 'Phase ' + flat[idx].phase + ' of ' + groups.length;
       pos.style.cssText = 'padding:4px 0;font-variant-numeric:tabular-nums';
       bar.appendChild(pos);
     }

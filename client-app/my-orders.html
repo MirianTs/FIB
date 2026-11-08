@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ka"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<title>FIB - my-orders</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#003827", "background": "#041423", "on-secondary-container": "#a0b9c6", "surface-dim": "#041423", "surface-container-high": "#1b2b3b", "secondary": "#b1cad7", "error": "#ffb4ab", "surface-container-low": "#0c1d2c", "on-secondary-fixed-variant": "#324a55", "surface-container": "#112130", "surface-variant": "#263646", "tertiary-container": "#cba72f", "tertiary": "#e9c349", "on-background": "#d4e4f9", "surface-tint": "#5ddcab", "primary-fixed-dim": "#5ddcab", "primary-fixed": "#7cf9c6", "on-primary-container": "#003423", "on-surface-variant": "#bccac1", "on-error": "#690005", "on-primary-fixed": "#002115", "surface": "#041423", "tertiary-fixed": "#ffe088", "surface-container-lowest": "#000f1e", "inverse-primary": "#006c4d", "surface-container-highest": "#263646", "on-tertiary": "#3c2f00", "on-tertiary-fixed": "#241a00", "inverse-on-surface": "#223242", "outline-variant": "#3d4a43", "on-tertiary-fixed-variant": "#574500", "on-tertiary-container": "#4e3d00", "on-secondary-fixed": "#041e28", "secondary-container": "#324a55", "on-surface": "#d4e4f9", "secondary-fixed-dim": "#b1cad7", "primary": "#5ddcab", "surface-bright": "#2b3b4b", "primary-container": "#12a87b", "on-primary-fixed-variant": "#005139", "error-container": "#93000a", "inverse-surface": "#d4e4f9", "on-secondary": "#1b333e", "secondary-fixed": "#cde6f4", "outline": "#86948c", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#e9c349" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-sm": "0.75rem", "space-lg": "1.5rem", "margin-md": "1.5rem", "space-xs": "0.25rem", "margin": "1rem" }, fontFamily: { "label-lg": ["Noto Sans"], "body-md": ["Noto Sans"], "headline-md": ["Noto Sans"], "headline-xl-mobile": ["Noto Sans"], "headline-lg": ["Noto Sans"], "label-md": ["Noto Sans"], "title-lg": ["Noto Sans"], "headline-xl": ["Noto Sans"], "body-lg": ["Noto Sans"], "title-md": ["Noto Sans"], "label-sm": ["Noto Sans"], "body-sm": ["Noto Sans"] }, fontSize: { "label-lg": ["14px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "headline-xl-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "title-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "title-md": ["16px", { lineHeight: "22px", fontWeight: "600" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#041423;color:#d4e4f9;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface min-h-screen flex flex-col font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_4px_20px_rgba(4,20,35,0.4)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center"><span class="text-primary font-headline-md text-headline-md tracking-tight font-bold">F</span></div><div class="flex flex-col"><span class="text-on-surface font-title-lg text-title-lg tracking-tight">პროგრესი</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">FIB Client</span></div></div><div class="flex items-center gap-space-xs"><button class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors active:scale-95"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-28"><div class="flex flex-col w-full px-gutter space-y-space-md">
+<!-- Top Summary & Title Row -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">ჩემი დაკვეთები</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/15 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        3 აქტიური
+      </span>
+</div>
+<button class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+</button>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex items-center gap-space-sm">
+<div class="flex-1 flex items-center bg-surface-container rounded-xl px-3.5 h-12 gap-2.5 shadow-inner">
+<span class="material-symbols-outlined text-outline text-[20px]">search</span>
+<input class="w-full bg-transparent text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none" placeholder="ძებნა დაკვეთებში, შემსრულებლებში..." type="search"/>
+</div>
+<div class="relative">
+<button class="h-12 w-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-transform active:scale-95 shadow-sm" id="filterToggleBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md">
+        2
+      </span>
+</div>
+</div>
+<!-- Filter Pills Bar (Horizontal Scroll) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-gutter px-gutter no-scrollbar">
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all active:scale-95">
+      ყველა (5)
+    </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-[0_4px_12px_rgba(93,220,171,0.25)] active:scale-95">
+      აქტიური (3)
+    </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all active:scale-95">
+      გუნდები (2)
+    </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all active:scale-95">
+      კომპანიები (1)
+    </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all active:scale-95">
+      განსახილველი (1)
+    </button>
+</div>
+<!-- Order Cards Stack -->
+<div class="flex flex-col space-y-space-md">
+<!-- Card 1: Fintech B2B MVP -->
+<article class="relative flex flex-col bg-surface-container rounded-2xl p-4 shadow-[0_8px_24px_-4px_rgba(4,20,35,0.6)] space-y-3.5 overflow-hidden transition-transform active:scale-[0.99]">
+<!-- Background Ambient Glow -->
+<div class="absolute -right-12 -top-12 w-32 h-32 rounded-full bg-primary/10 blur-2xl pointer-events-none"></div>
+<!-- Card Top: Category Badge & Status Indicators -->
+<div class="flex items-center justify-between relative z-10">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+          ფრილანსერების გუნდი
+        </span>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            2 ახალი ფაილი
+          </span>
+<button class="text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Title & Team Identity -->
+<div class="flex flex-col space-y-2 relative z-10">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-snug">
+            Fintech B2B Mobile App MVP
+          </h3>
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">verified</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<!-- Stacked Avatars -->
+<div class="flex -space-x-2 overflow-hidden shrink-0">
+<img class="w-7 h-7 rounded-full object-cover bg-surface-container-high" data-alt="Close-up portrait of a young Georgian lead UI designer with glasses in a modern moody office with emerald neon backlight, cinematic tones" src="../assets/img/ca-35.jpg"/>
+<img class="w-7 h-7 rounded-full object-cover bg-surface-container-high" data-alt="Portrait of a software developer engineer looking confident, wearing dark minimal hoodie, soft cinematic teal lighting" src="../assets/img/ca-33.jpg"/>
+<img class="w-7 h-7 rounded-full object-cover bg-surface-container-high" data-alt="Studio portrait of a female QA tester smiling warmly, short dark hair, subdued dark ambient background" src="../assets/img/ca-36.jpg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium truncate max-w-[140px]">
+              Fintech Core Team
+            </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">schedule</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">7 დღე დარჩა</span>
+</div>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col space-y-1.5 bg-surface-container-low rounded-xl p-3 relative z-10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">
+            ეტაპი 2: Frontend &amp; API კავშირი
+          </span>
+<span class="font-label-md text-label-md text-primary font-bold">65%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container via-primary to-primary-fixed" style="width: 65%;"></div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">ვადა: 24 ივლისი</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+            მილსთოუნი 2/3
+          </span>
+</div>
+</div>
+<!-- Card Footer: Escrow & Actions -->
+<div class="flex items-center justify-between pt-0.5 relative z-10">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-title-md text-title-md font-bold tracking-tight">₾5,200</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Escrow</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md font-semibold transition-transform active:scale-95" type="button">
+          დეტალები
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 2: E-Commerce Branding (Completed/Pending Stage) -->
+<article class="relative flex flex-col bg-surface-container rounded-2xl p-4 shadow-[0_8px_24px_-4px_rgba(4,20,35,0.6)] space-y-3.5 overflow-hidden transition-transform active:scale-[0.99]">
+<div class="absolute -right-10 -bottom-10 w-28 h-28 rounded-full bg-tertiary/10 blur-xl pointer-events-none"></div>
+<!-- Top Row -->
+<div class="flex items-center justify-between relative z-10">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[14px]">apartment</span>
+          სააგენტო / კომპანია
+        </span>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+            1 განსახილველი
+          </span>
+<button class="text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Title & Agency Info -->
+<div class="flex flex-col space-y-2 relative z-10">
+<div class="flex items-start justify-between gap-2">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-snug">
+            E-Commerce ბრენდინგი &amp; UI Kit
+          </h3>
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">verified</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[18px]">auto_awesome_motion</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Studio Apex</span>
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ვადა: 18 ივლისი</span>
+</div>
+</div>
+<!-- Urgent Review Box -->
+<div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-tertiary/10 text-tertiary relative z-10">
+<span class="material-symbols-outlined text-[18px] shrink-0">task_alt</span>
+<span class="font-label-sm text-label-sm font-semibold truncate">ჩაბარებულია! საჭიროებს თქვენს დადასტურებას</span>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col space-y-1.5 bg-surface-container-low rounded-xl p-3 relative z-10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">
+            ეტაპი 3: საბოლოო QA &amp; ჩაბარება
+          </span>
+<span class="font-label-md text-label-md text-primary font-bold">90%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container via-primary to-primary-fixed" style="width: 90%;"></div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-outline">დარჩა: მიღება-ჩაბარება</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ეტაპი 3/3</span>
+</div>
+</div>
+<!-- Footer CTA with primary action button for review -->
+<div class="flex items-center justify-between pt-1 relative z-10">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span class="font-title-md text-title-md font-bold tracking-tight">₾3,800</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">GEL</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-[0_4px_16px_rgba(93,220,171,0.3)] transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+          შემოწმება
+        </button>
+</div>
+</article>
+<!-- Card 3: SMM Video Campaign -->
+<article class="relative flex flex-col bg-surface-container rounded-2xl p-4 shadow-[0_8px_24px_-4px_rgba(4,20,35,0.6)] space-y-3.5 overflow-hidden transition-transform active:scale-[0.99]">
+<!-- Top Row -->
+<div class="flex items-center justify-between relative z-10">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+          ფრილანსერების გუნდი
+        </span>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+            გრაფიკშია
+          </span>
+<button class="text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Title & Team Identity -->
+<div class="flex flex-col space-y-2 relative z-10">
+<h3 class="font-title-lg text-title-lg text-on-surface leading-snug">
+          SMM სარეკლამო ვიდეო რგოლები
+        </h3>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="flex -space-x-2 overflow-hidden shrink-0">
+<img class="w-7 h-7 rounded-full object-cover bg-surface-container-high" data-alt="Close up profile of a creative video editor working with multi-monitor workstation showing timeline glow in a dark navy studio" src="../assets/img/ca-37.jpg"/>
+<img class="w-7 h-7 rounded-full object-cover bg-surface-container-high" data-alt="Portrait of a motion designer wearing headphones with soft cyan fill light in a sleek minimalist tech workspace" src="../assets/img/ca-34.jpg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">
+              Motion Squad
+            </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span class="font-label-sm text-label-sm">30 ივლისი</span>
+</div>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col space-y-1.5 bg-surface-container-low rounded-xl p-3 relative z-10">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">
+            ეტაპი 1: სცენარი და სთორიბორდი
+          </span>
+<span class="font-label-md text-label-md text-primary font-bold">30%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary-container to-primary" style="width: 30%;"></div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-outline">დამტკიცებულია მონახაზი</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ეტაპი 1/4</span>
+</div>
+</div>
+<!-- Footer -->
+<div class="flex items-center justify-between pt-0.5 relative z-10">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-title-md text-title-md font-bold tracking-tight">₾2,100</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Escrow</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md font-semibold transition-transform active:scale-95" type="button">
+          დეტალები
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Bottom AI Brief Quick-Start Action Card -->
+<div class="relative rounded-2xl p-4 bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-low shadow-[0_4px_20px_rgba(4,20,35,0.4)] flex flex-col space-y-3 overflow-hidden">
+<!-- Decorative background accent shapes -->
+<div class="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-primary/15 blur-xl pointer-events-none"></div>
+<div class="flex items-center gap-3 relative z-10">
+<div class="w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface leading-tight font-semibold">გაქვს ახალი იდეა?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">დაიწყე ახალი დაკვეთა AI-სთან 2 წუთში</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 relative z-10">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+<span class="font-label-sm text-label-sm">ავტომატური ბრიფი &amp; ბიუჯეტი</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-[0_4px_16px_rgba(18,168,123,0.35)] transition-transform active:scale-95" type="button">
+        ახალი ბრიფი ⚡
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive filter toggle & feedback micro-interactions
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtn = document.getElementById('filterToggleBtn');
+    if (filterBtn) {
+      filterBtn.addEventListener('click', () => {
+        filterBtn.classList.toggle('text-primary');
+      });
+    }
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(4,20,35,0.6)]" data-active-classes="text-primary"><div class="relative flex items-center justify-around h-[68px] px-gutter"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="info" href="#"><span class="material-symbols-outlined text-[24px]">info</span><span class="font-label-sm text-label-sm">ინფო</span></a><div class="relative -top-5 flex flex-col items-center justify-center"><a class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-[0_6px_20px_rgba(18,168,123,0.35)] transition-transform active:scale-95" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-[28px]">auto_awesome</span></a></div><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="progresi" href="#"><span class="material-symbols-outlined text-[24px]">trending_up</span><span class="font-label-sm text-label-sm">პროგრესი</span></a></div></nav><script src="../assets/app-nav.js" data-data="../assets/client-app-data.js" data-var="FIB_CLIENT_APP"></script>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ka"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<title>FIB - brief-summary</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-dim": "#041423", "background": "#041423", "secondary-fixed": "#cde6f4", "on-tertiary-fixed": "#241a00", "primary-fixed-dim": "#5ddcab", "surface-bright": "#2b3b4b", "on-primary-fixed-variant": "#005139", "on-error": "#690005", "secondary": "#b1cad7", "outline": "#86948c", "surface-tint": "#5ddcab", "on-tertiary-container": "#4e3d00", "tertiary-fixed-dim": "#e9c349", "surface-container-high": "#1b2b3b", "surface-container-lowest": "#000f1e", "tertiary-container": "#cba72f", "tertiary": "#e9c349", "on-tertiary": "#3c2f00", "on-tertiary-fixed-variant": "#574500", "secondary-fixed-dim": "#b1cad7", "on-primary-container": "#003423", "on-secondary-container": "#a0b9c6", "on-background": "#d4e4f9", "on-surface-variant": "#bccac1", "on-primary": "#003827", "primary": "#5ddcab", "surface-container-highest": "#263646", "on-secondary": "#1b333e", "error-container": "#93000a", "error": "#ffb4ab", "primary-fixed": "#7cf9c6", "surface-container-low": "#0c1d2c", "outline-variant": "#3d4a43", "on-secondary-fixed": "#041e28", "inverse-surface": "#d4e4f9", "on-secondary-fixed-variant": "#324a55", "inverse-on-surface": "#223242", "inverse-primary": "#006c4d", "on-primary-fixed": "#002115", "tertiary-fixed": "#ffe088", "surface": "#041423", "surface-container": "#112130", "on-error-container": "#ffdad6", "secondary-container": "#324a55", "surface-variant": "#263646", "primary-container": "#12a87b", "on-surface": "#d4e4f9" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-sm": "0.5rem", "margin-md": "1.5rem", "space-xs": "0.25rem", "gutter-sm": "0.75rem", "space-md": "1rem", "space-xl": "2rem", "gutter": "1rem", "margin": "1rem" }, "fontFamily": { "body-lg": ["Noto Sans"], "label-lg": ["Noto Sans"], "headline-md": ["Noto Sans"], "label-md": ["Noto Sans"], "title-md": ["Noto Sans"], "label-sm": ["Noto Sans"], "title-lg": ["Noto Sans"], "body-md": ["Noto Sans"], "headline-lg": ["Noto Sans"], "headline-xl-mobile": ["Noto Sans"], "headline-xl": ["Noto Sans"], "body-sm": ["Noto Sans"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center"><span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">FIB</span></div><h1 class="font-title-lg text-title-lg text-on-surface tracking-tight truncate">Ai Brief Assistant</h1></div><div class="flex items-center gap-space-sm"><button aria-label="Settings" class="w-11 h-11 flex items-center justify-center rounded-full text-secondary hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">tune</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col flex-1 relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full px-margin pb-6 gap-space-md">
+<!-- AI Assistant Conversation Header Status -->
+<div class="flex items-center justify-between py-space-xs">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="font-label-md text-label-md text-primary tracking-wide">FIB AI ასისტენტი • ონლაინ</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full text-secondary">
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface">დაცული სესია</span>
+</div>
+</div>
+<!-- AI Message Bubble -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-container to-surface-container flex items-center justify-center shadow-md shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px] text-on-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="bg-gradient-to-br from-primary-container/20 to-surface-container-high text-on-surface p-space-md rounded-2xl rounded-tl-sm shadow-md flex-1">
+<div class="flex items-center gap-1.5 mb-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide">ბრიფი მზადაა</span>
+</div>
+<p class="font-body-md text-body-md leading-relaxed text-on-surface">
+        გილოცავთ! თქვენი პროექტის ბრიფი წარმატებით დაგენერირდა და მზადაა შემსრულებლებთან (კომპანიებთან და ფრილანსერებთან) გასაზიარებლად. გადახედეთ შეჯამებას:
+      </p>
+</div>
+</div>
+<!-- The Master Brief Ready Card -->
+<div class="relative bg-surface-container rounded-2xl p-space-md shadow-xl overflow-hidden flex flex-col gap-space-md">
+<!-- Ambient Radial Glow Accent -->
+<div class="absolute -top-16 -right-16 w-44 h-44 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-16 -left-16 w-36 h-36 bg-tertiary/5 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Header inside Card -->
+<div class="relative flex flex-col gap-2">
+<!-- FIB AI Verified Stamp -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider">დაგენერირებულია FIB AI-ით</span>
+<span class="material-symbols-outlined text-[13px]">arrow_back_ios_new</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">#BRF-9204</span>
+</div>
+<!-- Project Title & Meta -->
+<div class="mt-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Fintech B2B Mobile Payment App</h2>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-surface-container-highest text-secondary font-label-sm text-label-sm">მობილური აპლიკაცია</span>
+<span class="font-label-sm text-label-sm text-secondary">•</span>
+<span class="font-label-sm text-label-sm text-secondary">დღეს, 14:30</span>
+</div>
+</div>
+</div>
+<!-- Brief Summary Specification Grid -->
+<div class="flex flex-col gap-2.5">
+<!-- 1. მიზანი -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">track_changes</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-secondary font-medium">მიზანი</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug mt-0.5">
+            B2B ბიზნესებისთვის ინვოისებისა და სწრაფი გადარიცხვების მობილური აპლიკაცია
+          </p>
+</div>
+</div>
+<!-- 2. სამიზნე აუდიტორია -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-secondary font-medium">სამიზნე აუდიტორია</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug mt-0.5">
+            მცირე და საშუალო ბიზნესის მფლობელები, სტარტაპერები
+          </p>
+</div>
+</div>
+<!-- 3. ვიზუალური სტილი -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">palette</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-secondary font-medium">ვიზუალური სტილი</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug mt-0.5">
+            Dark Mode Premium Fintech, მინიმალისტური, სუფთა იერარქია
+          </p>
+</div>
+</div>
+<!-- 4. ჩასაბარებელი მასალები -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-secondary font-medium">ჩასაბარებელი მასალები</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-snug mt-0.5">
+            Figma UI/UX დიზაინი (iOS/Android), საპრეზენტაციო პროტოტიპი, UI Kit კომპონენტები
+          </p>
+</div>
+</div>
+<!-- 5 & 6 Budget & Timeline Two-Column Metric Cards -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Budget -->
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px] text-tertiary">payments</span>
+<span class="font-label-sm text-label-sm">საორიენტაციო ბიუჯეტი</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-md text-headline-md font-bold text-tertiary tracking-tight">₾5,000 – ₾8,000</span>
+<span class="font-label-sm text-label-sm text-secondary block mt-0.5">ესქროუ დაცვით</span>
+</div>
+</div>
+<!-- Timeline -->
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">timelapse</span>
+<span class="font-label-sm text-label-sm">სასურველი ვადა</span>
+</div>
+<div class="mt-2">
+<span class="font-title-lg text-title-lg font-bold text-on-surface tracking-tight">4-6 კვირა</span>
+<span class="font-label-sm text-label-sm text-primary block mt-0.5">სპრინტებით</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Protection Guarantee Banner -->
+<div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-surface-container-highest shadow-inner">
+<div class="w-6 h-6 rounded-full bg-tertiary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px] text-tertiary">verified_user</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface font-semibold flex-1">
+        100% FIB ესქროუ დაცვა და სმარტ-კონტრაქტი
+      </p>
+</div>
+<!-- Action CTA Buttons -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary py-3.5 px-5 rounded-xl font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.98]" id="sendBriefBtn">
+<span>დადასტურება და გაგზავნა</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface py-3 px-5 rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 transition-colors active:scale-[0.98]" id="editBriefBtn">
+<span class="material-symbols-outlined text-[18px] text-secondary">edit</span>
+<span>რედაქტირება</span>
+</button>
+</div>
+</div>
+<!-- Helper Note Below Card -->
+<div class="flex items-center justify-center gap-2 px-space-md text-center">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-secondary">
+      დადასტურების შემდეგ ბრიფი გაეგზავნება ვერიფიცირებულ კომპანიებსა და ტოპ ფრილანსერებს.
+    </p>
+</div>
+<!-- Quick Chat Input Bar for Feedback -->
+<div class="mt-2 bg-surface-container p-2 rounded-2xl flex items-center gap-2 shadow-md">
+<div class="w-9 h-9 rounded-xl bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<input class="flex-1 bg-transparent border-0 text-on-surface placeholder:text-secondary font-body-sm text-body-sm focus:outline-none px-2 py-1.5" placeholder="მისწერეთ AI-ს დამატებითი დეტალი..." type="text"/>
+<button aria-label="Send" class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm hover:opacity-95 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    const sendBtn = document.getElementById('sendBriefBtn');
+    const editBtn = document.getElementById('editBriefBtn');
+
+    if (sendBtn) {
+      sendBtn.addEventListener('click', function() {
+        const originalText = sendBtn.innerHTML;
+        sendBtn.innerHTML = `
+          <span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+          <span>იგზავნება შემსრულებლებთან...</span>
+        `;
+        sendBtn.classList.add('opacity-90');
+        setTimeout(() => {
+          sendBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+            <span>წარმატებით გაიგზავნა!</span>
+          `;
+          sendBtn.classList.remove('bg-primary-container');
+          sendBtn.classList.add('bg-primary');
+        }, 1200);
+      });
+    }
+
+    if (editBtn) {
+      editBtn.addEventListener('click', function() {
+        editBtn.classList.add('bg-surface-bright');
+        setTimeout(() => {
+          editBtn.classList.remove('bg-surface-bright');
+        }, 200);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.35)]" data-active-classes="text-primary font-label-sm"><div class="relative flex justify-around items-center h-[68px] px-margin"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-secondary transition-colors" data-path="info-tab" href="#"><span class="material-symbols-outlined text-[24px]">info</span><span class="font-label-sm text-label-sm">ინფო</span></a><div class="relative -top-5 flex flex-col items-center"><a aria-current="page" aria-label="AI Asistenti" class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary-container to-primary flex items-center justify-center shadow-[0_6px_20px_0_rgba(18,168,123,0.35)] hover:shadow-[0_8px_24px_0_rgba(93,220,171,0.45)] transition-all active:scale-95 text-primary font-label-sm" data-path="ai-brief-assistant" href="#"><span class="material-symbols-outlined text-[28px]">auto_awesome</span></a><span class="font-label-sm text-label-sm text-primary font-semibold mt-1">AI</span></div><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-1 text-secondary transition-colors" data-path="progress-tab" href="#"><span class="material-symbols-outlined text-[24px]">trending_up</span><span class="font-label-sm text-label-sm">პროგრესი</span></a></div></nav><script src="../assets/app-nav.js" data-data="../assets/client-app-data.js" data-var="FIB_CLIENT_APP"></script>
+</body></html>

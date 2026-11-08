@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ka"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<title>FIB - orders-filter</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#003827", "background": "#041423", "on-secondary-container": "#a0b9c6", "surface-dim": "#041423", "surface-container-high": "#1b2b3b", "secondary": "#b1cad7", "error": "#ffb4ab", "surface-container-low": "#0c1d2c", "on-secondary-fixed-variant": "#324a55", "surface-container": "#112130", "surface-variant": "#263646", "tertiary-container": "#cba72f", "tertiary": "#e9c349", "on-background": "#d4e4f9", "surface-tint": "#5ddcab", "primary-fixed-dim": "#5ddcab", "primary-fixed": "#7cf9c6", "on-primary-container": "#003423", "on-surface-variant": "#bccac1", "on-error": "#690005", "on-primary-fixed": "#002115", "surface": "#041423", "tertiary-fixed": "#ffe088", "surface-container-lowest": "#000f1e", "inverse-primary": "#006c4d", "surface-container-highest": "#263646", "on-tertiary": "#3c2f00", "on-tertiary-fixed": "#241a00", "inverse-on-surface": "#223242", "outline-variant": "#3d4a43", "on-tertiary-fixed-variant": "#574500", "on-tertiary-container": "#4e3d00", "on-secondary-fixed": "#041e28", "secondary-container": "#324a55", "on-surface": "#d4e4f9", "secondary-fixed-dim": "#b1cad7", "primary": "#5ddcab", "surface-bright": "#2b3b4b", "primary-container": "#12a87b", "on-primary-fixed-variant": "#005139", "error-container": "#93000a", "inverse-surface": "#d4e4f9", "on-secondary": "#1b333e", "secondary-fixed": "#cde6f4", "outline": "#86948c", "on-error-container": "#ffdad6", "tertiary-fixed-dim": "#e9c349" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-sm": "0.75rem", "space-lg": "1.5rem", "margin-md": "1.5rem", "space-xs": "0.25rem", "margin": "1rem" }, fontFamily: { "label-lg": ["Noto Sans"], "body-md": ["Noto Sans"], "headline-md": ["Noto Sans"], "headline-xl-mobile": ["Noto Sans"], "headline-lg": ["Noto Sans"], "label-md": ["Noto Sans"], "title-lg": ["Noto Sans"], "headline-xl": ["Noto Sans"], "body-lg": ["Noto Sans"], "title-md": ["Noto Sans"], "label-sm": ["Noto Sans"], "body-sm": ["Noto Sans"] }, fontSize: { "label-lg": ["14px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }], "headline-xl-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "title-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "title-md": ["16px", { lineHeight: "22px", fontWeight: "600" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#041423;color:#d4e4f9;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface min-h-screen flex flex-col font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_4px_20px_rgba(4,20,35,0.4)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center"><span class="text-primary font-headline-md text-headline-md tracking-tight font-bold">F</span></div><div class="flex flex-col"><span class="text-on-surface font-title-lg text-title-lg tracking-tight">პროგრესი</span><span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">FIB Client</span></div></div><div class="flex items-center gap-space-xs"><button class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors active:scale-95"><span class="material-symbols-outlined text-[22px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-28"><div class="flex flex-col w-full relative min-w-0">
+<!-- Dimmed Orders Progress Background Layer -->
+<div class="w-full px-gutter space-y-space-md opacity-25 filter blur-[1px] pointer-events-none select-none">
+<!-- Stat Summary Bar -->
+<div class="grid grid-cols-2 gap-gutter-sm">
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="text-on-surface-variant font-label-md text-label-md">აქტიური პროექტები</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="text-primary font-headline-xl-mobile text-headline-xl-mobile">08</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">/ 12</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-xs">
+<span class="text-on-surface-variant font-label-md text-label-md">ჯამური ბიუჯეტი</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="text-tertiary font-headline-xl-mobile text-headline-xl-mobile">₾24,800</span>
+</div>
+</div>
+</div>
+<!-- Mock Card 1 -->
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-on-surface font-title-md text-title-md">FIB მობილური აპლიკაცია</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Nexus Studio • UI/UX &amp; Dev</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">მიმდინარე</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4 rounded-full"></div>
+</div>
+</div>
+<!-- Mock Card 2 -->
+<div class="bg-surface-container rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-on-surface font-title-md text-title-md">ფინტექ პლატფორმის რებრენდინგი</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Vector Collective • ბრენდინგი</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm">განხილვა</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-2/5 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Dim Backing Backdrop Overlay -->
+<div class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-sm z-40 transition-opacity"></div>
+<!-- Bottom Sheet Modal Container -->
+<div class="fixed inset-x-0 bottom-0 z-50 flex flex-col max-h-[751px] bg-surface-container-low rounded-t-3xl shadow-[0_-12px_40px_rgba(0,15,30,0.85)]" style="padding-bottom: env(safe-area-inset-bottom, 16px);">
+<!-- Sheet Drag Handle & Header -->
+<div class="shrink-0 px-gutter pt-3 pb-space-sm flex flex-col items-center">
+<div class="w-12 h-1.5 rounded-full bg-surface-variant mb-space-sm"></div>
+<div class="w-full flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<span class="text-on-surface font-headline-md text-headline-md tracking-tight">დაკვეთების ფილტრი</span>
+</div>
+<button aria-label="დახურვა" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-variant text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-transform active:scale-90" id="close-modal-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Filter Content Zone -->
+<div class="flex-1 overflow-y-auto px-gutter py-space-sm space-y-space-lg overscroll-contain">
+<!-- Section 1: სტატუსი (Multi-select) -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">სტატუსი</label>
+<span class="text-primary font-label-sm text-label-sm">2 არჩეულია</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<!-- All -->
+<button class="filter-chip px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-all flex items-center gap-1.5" type="button">
+<span>ყველა</span>
+</button>
+<!-- Selected: Active -->
+<button class="filter-chip is-selected px-3.5 py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_2px_12px_rgba(18,168,123,0.35)] transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>მიმდინარე (აქტიური)</span>
+</button>
+<!-- Selected: In Review -->
+<button class="filter-chip is-selected px-3.5 py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_2px_12px_rgba(18,168,123,0.35)] transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>განსახილველი</span>
+</button>
+<!-- Completed -->
+<button class="filter-chip px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-all flex items-center gap-1.5" type="button">
+<span>დასრულებული</span>
+</button>
+<!-- Cancelled -->
+<button class="filter-chip px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-all flex items-center gap-1.5" type="button">
+<span>გაუქმებული</span>
+</button>
+</div>
+</div>
+<!-- Section 2: შემსრულებლის ტიპი -->
+<div class="space-y-space-xs">
+<label class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">შემსრულებლის ტიპი</label>
+<div class="flex flex-wrap gap-2">
+<button class="type-chip px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-all" type="button">
+            ყველა ტიპი
+          </button>
+<button class="type-chip px-3.5 py-2 rounded-full bg-surface-container hover:bg-surface-variant text-on-surface-variant font-label-md text-label-md transition-all" type="button">
+            კომპანია (სააგენტო)
+          </button>
+<button class="type-chip px-3.5 py-2 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_2px_12px_rgba(18,168,123,0.35)] transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>ფრილანსერების გუნდი</span>
+</button>
+</div>
+</div>
+<!-- Section 3: კატეგორია -->
+<div class="space-y-space-xs">
+<label class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">კატეგორია</label>
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-gutter px-gutter no-scrollbar">
+<button class="cat-chip shrink-0 px-4 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-[0_2px_10px_rgba(93,220,171,0.25)] flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+<span>მობილური აპი</span>
+</button>
+<button class="cat-chip shrink-0 px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">palette</span>
+<span>UI/UX დიზაინი</span>
+</button>
+<button class="cat-chip shrink-0 px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">code</span>
+<span>ვებ-დეველოპმენტი</span>
+</button>
+<button class="cat-chip shrink-0 px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span>ბრენდინგი</span>
+</button>
+</div>
+</div>
+<!-- Section 4: თარიღის დიაპაზონი -->
+<div class="space-y-space-xs">
+<label class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">თარიღის დიაპაზონი</label>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Start Date -->
+<div class="bg-surface-container rounded-xl p-3 flex items-center justify-between active:scale-[0.99] transition-transform">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm">დან</span>
+<span class="text-on-surface font-label-lg text-label-lg mt-0.5">01 ივლ 2024</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+</div>
+<!-- End Date -->
+<div class="bg-surface-container rounded-xl p-3 flex items-center justify-between active:scale-[0.99] transition-transform">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm">მდე</span>
+<span class="text-on-surface font-label-lg text-label-lg mt-0.5">31 ივლ 2024</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">event_repeat</span>
+</div>
+</div>
+</div>
+<!-- Section 5: დალაგება (სორტირება) -->
+<div class="space-y-space-xs">
+<label class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">დალაგება (სორტირება)</label>
+<div class="space-y-2">
+<!-- Option 1: Selected -->
+<div class="sort-option bg-surface-container rounded-xl p-3.5 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">hourglass_top</span>
+</div>
+<span class="text-on-surface font-label-lg text-label-lg">ვადის მიხედვით (უახლოესი)</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-[0_0_8px_rgba(93,220,171,0.5)]">
+<div class="w-2 h-2 rounded-full bg-on-primary"></div>
+</div>
+</div>
+<!-- Option 2 -->
+<div class="sort-option bg-surface-container rounded-xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-variant/80 transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">update</span>
+</div>
+<span class="text-on-surface font-body-md text-body-md">ბოლო განახლებით</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-variant"></div>
+</div>
+<!-- Option 3 -->
+<div class="sort-option bg-surface-container rounded-xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-variant/80 transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<span class="text-on-surface font-body-md text-body-md">ბიუჯეტით (კლებადი)</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-variant"></div>
+</div>
+<!-- Option 4 -->
+<div class="sort-option bg-surface-container rounded-xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-variant/80 transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+</div>
+<span class="text-on-surface font-body-md text-body-md">პროგრესით %</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="shrink-0 p-gutter bg-surface-container-high/90 backdrop-blur-md flex items-center gap-space-md shadow-[0_-4px_16px_rgba(0,15,30,0.5)]">
+<!-- Clear Button -->
+<button class="px-space-md py-3.5 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/40 font-label-lg text-label-lg transition-all active:scale-95" id="clear-filters-btn" type="button">
+        გასუფთავება
+      </button>
+<!-- Apply Primary Action Button -->
+<button class="flex-1 py-3.5 px-space-lg rounded-xl bg-primary-container text-on-primary font-headline-md text-headline-md flex items-center justify-center gap-space-xs shadow-[0_6px_20px_rgba(18,168,123,0.35)] transition-all active:scale-[0.98]" id="apply-filters-btn" type="button">
+<span>ჩვენება (5 შედეგი)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+    (function() {
+      // Micro-interactions for chip selection
+      const chips = document.querySelectorAll('.filter-chip, .type-chip, .cat-chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chip.classList.toggle('scale-95');
+          setTimeout(() => chip.classList.remove('scale-95'), 120);
+        });
+      });
+
+      // Clear button feedback
+      const clearBtn = document.getElementById('clear-filters-btn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          clearBtn.classList.add('opacity-50');
+          setTimeout(() => clearBtn.classList.remove('opacity-50'), 300);
+        });
+      }
+
+      // Close modal / Apply feedback
+      const closeBtn = document.getElementById('close-modal-btn');
+      const applyBtn = document.getElementById('apply-filters-btn');
+      [closeBtn, applyBtn].forEach(el => {
+        if (el) {
+          el.addEventListener('click', () => {
+            el.classList.add('scale-95');
+            setTimeout(() => el.classList.remove('scale-95'), 150);
+          });
+        }
+      });
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(4,20,35,0.6)]" data-active-classes="text-primary"><div class="relative flex items-center justify-around h-[68px] px-gutter"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="info" href="#"><span class="material-symbols-outlined text-[24px]">info</span><span class="font-label-sm text-label-sm">ინფო</span></a><div class="relative -top-5 flex flex-col items-center justify-center"><a class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-[0_6px_20px_rgba(18,168,123,0.35)] transition-transform active:scale-95" data-path="ai-assistant" href="#"><span class="material-symbols-outlined text-[28px]">auto_awesome</span></a></div><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-space-xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="progresi" href="#"><span class="material-symbols-outlined text-[24px]">trending_up</span><span class="font-label-sm text-label-sm">პროგრესი</span></a></div></nav><script src="../assets/app-nav.js" data-data="../assets/client-app-data.js" data-var="FIB_CLIENT_APP"></script>
+</body></html>

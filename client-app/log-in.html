@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ka"><head>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<title>FIB - log-in</title><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;font-family:'Noto Sans',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface":"#d4e4f9","surface-container":"#112130","surface-container-low":"#0c1d2c","on-secondary":"#1b333e","on-primary-fixed-variant":"#005139","on-surface-variant":"#bccac1","tertiary":"#e9c349","on-background":"#d4e4f9","secondary-container":"#324a55","on-tertiary-fixed":"#241a00","on-primary":"#003827","surface-bright":"#2b3b4b","surface-container-lowest":"#000f1e","primary-container":"#12a87b","on-tertiary-container":"#4e3d00","secondary-fixed":"#cde6f4","on-error":"#690005","surface-tint":"#5ddcab","error":"#ffb4ab","on-secondary-container":"#a0b9c6","secondary":"#b1cad7","surface-container-high":"#1b2b3b","tertiary-container":"#cba72f","surface-dim":"#041423","on-error-container":"#ffdad6","on-tertiary-fixed-variant":"#574500","outline-variant":"#3d4a43","on-primary-container":"#003423","tertiary-fixed-dim":"#e9c349","inverse-primary":"#006c4d","background":"#041423","error-container":"#93000a","primary-fixed":"#7cf9c6","primary-fixed-dim":"#5ddcab","on-secondary-fixed-variant":"#324a55","surface-container-highest":"#263646","on-tertiary":"#3c2f00","on-secondary-fixed":"#041e28","inverse-surface":"#d4e4f9","surface-variant":"#263646","primary":"#5ddcab","tertiary-fixed":"#ffe088","on-primary-fixed":"#002115","inverse-on-surface":"#223242","surface":"#041423","outline":"#86948c","secondary-fixed-dim":"#b1cad7"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-md":"1rem","gutter-sm":"0.75rem","margin-md":"1.5rem","space-xl":"2rem","space-lg":"1.5rem","margin":"1rem","gutter":"1rem","space-xs":"0.25rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Noto Sans"],"headline-xl":["Noto Sans"],"label-lg":["Noto Sans"],"title-lg":["Noto Sans"],"label-sm":["Noto Sans"],"body-sm":["Noto Sans"],"headline-xl-mobile":["Noto Sans"],"headline-lg":["Noto Sans"],"body-lg":["Noto Sans"],"label-md":["Noto Sans"],"title-md":["Noto Sans"],"headline-md":["Noto Sans"]},fontSize:{"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"title-lg":["18px",{"lineHeight":"24px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-xl-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"title-md":["16px",{"lineHeight":"22px","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen pt-safe pb-safe antialiased"><main class="flex-1 flex flex-col relative w-full bg-surface px-margin"><div class="flex flex-col w-full pb-8">
+<!-- Top Navigation & Brand Header -->
+<div class="flex items-center justify-between py-space-sm mb-space-md">
+<button aria-label="უკან დაბრუნება" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-headline-md font-bold text-xs tracking-wider shadow-md">
+        F
+      </div>
+<span class="font-headline-md text-headline-md text-on-surface tracking-wider">FIB</span>
+</div>
+<div class="w-10 h-10"></div>
+</div>
+<!-- Welcome / Titles Block -->
+<div class="mb-space-lg">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>დაცული კავშირი</span>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface mb-space-xs">
+      მოგესალმებით
+    </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+      შეიყვანეთ მონაცემები თქვენს ანგარიშზე შესასვლელად
+    </p>
+</div>
+<!-- Primary Login Form Card -->
+<div class="bg-surface-container rounded-2xl p-space-md shadow-xl mb-space-lg">
+<form class="flex flex-col gap-space-md" id="loginForm" onsubmit="event.preventDefault();">
+<!-- Identifier Field (Email / Phone) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="login-identifier">
+          ელფოსტა ან ტელეფონის ნომერი
+        </label>
+<div class="relative flex items-center bg-surface-container-low rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-primary/40 transition-all">
+<span class="material-symbols-outlined text-secondary mr-2 text-[20px]">alternate_email</span>
+<input autocomplete="username" class="w-full bg-transparent text-on-surface font-body-md text-body-md placeholder-secondary/50 focus:outline-none" id="login-identifier" placeholder="example@mail.com ან +995..." type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="login-password">
+          პაროლი
+        </label>
+<div class="relative flex items-center bg-surface-container-low rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-primary/40 transition-all">
+<span class="material-symbols-outlined text-secondary mr-2 text-[20px]">key</span>
+<input autocomplete="current-password" class="w-full bg-transparent text-on-surface font-body-md text-body-md placeholder-secondary/50 focus:outline-none" id="login-password" placeholder="••••••••••••" type="password"/>
+<button aria-label="პაროლის ჩვენება/დამალვა" class="text-secondary hover:text-primary transition-colors flex items-center justify-center p-1" id="togglePasswordBtn" type="button">
+<span class="material-symbols-outlined text-[20px]" id="passwordEyeIcon">visibility</span>
+</button>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end pt-1">
+<a class="font-label-md text-label-md text-primary hover:underline inline-block" href="#">
+            დაგავიწყდა პაროლი?
+          </a>
+</div>
+</div>
+<!-- Submit Primary Action -->
+<button class="w-full mt-2 bg-primary-container text-on-primary py-3.5 px-5 rounded-2xl font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all" id="submitBtn" type="submit">
+<span>შესვლა</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Divider: ან -->
+<div class="flex items-center gap-4 mb-space-lg px-2">
+<div class="flex-1 h-[1px] bg-surface-variant"></div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">ან</span>
+<div class="flex-1 h-[1px] bg-surface-variant"></div>
+</div>
+<!-- Social Auth Section -->
+<div class="flex flex-col gap-space-sm mb-space-xl">
+<button class="w-full bg-surface-container hover:bg-surface-container-high text-on-surface py-3.5 px-4 rounded-2xl font-label-lg text-label-lg flex items-center justify-center gap-3 transition-colors active:scale-[0.98] shadow-sm" type="button">
+<svg aria-hidden="true" class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Google-ით ავტორიზაცია</span>
+</button>
+</div>
+<!-- Registration Redirection Footer -->
+<div class="mt-auto text-center pt-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+      არ გაქვს ანგარიში? 
+      <a class="font-label-lg text-label-lg text-primary hover:underline ml-1" href="#">
+        დარეგისტრირდი
+      </a>
+</p>
+</div>
+</div>
+<script>
+  (function() {
+    const passwordInput = document.getElementById('login-password');
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    const eyeIcon = document.getElementById('passwordEyeIcon');
+
+    if (toggleBtn && passwordInput && eyeIcon) {
+      toggleBtn.addEventListener('click', function() {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+      });
+    }
+  })();
+</script></main><script src="../assets/app-nav.js" data-data="../assets/client-app-data.js" data-var="FIB_CLIENT_APP"></script>
+</body></html>

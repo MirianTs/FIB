@@ -8,6 +8,8 @@
 | `provider.html` | შემსრულებლის (Provider) პორტალი (პროფილი, განაცხადები, AI შესაბამისობა, ახლომდებარე სამუშაოები) |
 | `app/index.html` | **ახალი მობილური ვერსია** (Stitch: „FIB Professional Ecosystem“) — 18 ეკრანი, 7 ეტაპად |
 | `app/*.html` | ახალი ვერსიის ეკრანები; `app/QA-REPORT.md` — Stitch-ის ტესტირების ანგარიში, `app/DESIGN.md` — დიზაინ-სისტემა |
+| `client-app/index.html` | **კლიენტის მობილური აპლიკაცია** (Stitch: „FIB Mobile App Foundation“, ქართულად, მუქი) — 23 ეკრანი, 5 ეტაპად |
+| `client-app/*.html`, `assets/client-app-data.js` | კლიენტის აპლიკაციის ეკრანები და მათი რიგი; `client-app/DESIGN.md` — დიზაინ-სისტემა |
 | `assets/app-data.js`, `assets/app-nav.js` | ახალი ვერსიის ეკრანების რიგი და ნავიგაცია (წინა/შემდეგი, ტელეფონზე იკეცება) |
 | `screens/index.html` | წინა მობილური ვერსია (33 ეკრანი, 4 ჯგუფად, Light/Dark გადამრთველით) |
 | `screens/*.html` | თითოეული მობილური ეკრანი; `-dark` სუფიქსი = მუქი ვერსია |

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIB — კლიენტის აპლიკაცია</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Georgian:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: '#041421', panel: '#0b1f2e', line: '#16324a', brand: '#12A870', mint: '#8BFAC1', muted: '#94a3b8' },
+    fontFamily: { sans: ['"Noto Sans Georgian"', '"Plus Jakarta Sans"', 'sans-serif'] } } } };
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; line-height: 1; }
+</style>
+</head>
+<body class="bg-navy text-white font-sans antialiased">
+<header class="sticky top-0 z-50 bg-navy/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between gap-4">
+    <a href="../index.html" class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg bg-white flex items-center justify-center"><img src="../assets/logo.svg" alt="FIB" class="w-6 h-6"></span>
+      <span class="text-2xl font-bold tracking-tight text-mint">FIB</span>
+      <span class="hidden sm:inline px-2 py-0.5 rounded-full text-[10px] font-semibold bg-brand/15 text-mint uppercase tracking-wider">Client app</span>
+    </a>
+    <nav class="flex items-center gap-1 text-sm font-semibold">
+      <a href="../index.html" class="px-3 py-2 rounded-lg text-muted hover:text-white hover:bg-panel">Web</a>
+      <a href="../app/index.html" class="px-3 py-2 rounded-lg text-muted hover:text-white hover:bg-panel">Mobile</a>
+      <span class="px-3 py-2 rounded-lg bg-brand/15 text-mint">Client app</span>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-12">
+  <section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">კლიენტის მობილური აპლიკაცია</h1>
+      <p class="text-muted mt-2 max-w-2xl">FIB-ის ქართულენოვანი კლიენტის აპლიკაცია: რეგისტრაციიდან AI ბრიფამდე, გუნდის შერჩევამდე და დაკვეთის მართვამდე. ეკრანზე დაწკაპუნებით გაიხსნება ცოცხალი გვერდი.</p>
+    </div>
+    <a href="splash.html" class="self-start md:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-brand text-navy text-sm font-bold shadow-sm hover:brightness-110"><span class="material-symbols-outlined text-[18px]">play_arrow</span>დაიწყე პირველიდან</a>
+  </section>
+  <ol id="phases" class="space-y-12"></ol>
+</main>
+
+<footer class="border-t border-line py-6 text-center text-sm text-muted">FIB · Mobile App Foundation · Stitch export</footer>
+
+<script src="../assets/client-app-data.js"></script>
+<script>
+(function () {
+  let n = 0;
+  document.getElementById('phases').innerHTML = window.FIB_CLIENT_APP.map((g, gi) => `
+    <li class="space-y-5">
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span class="text-sm font-bold text-mint tabular-nums">ეტაპი ${gi + 1}</span>
+        <h2 class="text-2xl font-semibold tracking-tight">${g.phase}</h2>
+        <span class="text-sm text-muted">${g.en} · ${g.items.length}</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        ${g.items.map(([slug, title]) => { n++; return `
+          <a href="${slug}.html" class="group block">
+            <div class="relative aspect-[9/16] rounded-2xl overflow-hidden border border-line bg-panel shadow-sm group-hover:border-brand transition-all">
+              <img src="thumbs/${slug}.png" alt="${title}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300">
+              <span class="absolute top-2 left-2 min-w-6 h-6 px-1.5 rounded-full bg-navy/85 border border-line text-[11px] font-bold text-mint flex items-center justify-center tabular-nums">${n}</span>
+            </div>
+            <p class="mt-2.5 text-sm font-semibold leading-snug text-slate-200 group-hover:text-mint transition-colors">${title}</p>
+          </a>`; }).join('')}
+      </div>
+    </li>`).join('');
+})();
+</script>
+</body>
+</html>

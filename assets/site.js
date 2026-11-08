@@ -6,11 +6,13 @@
   const sw = document.createElement('div');
   sw.className = 'fixed bottom-4 left-4 z-[60] flex items-center gap-1 p-1 rounded-full bg-surface-container-lowest/95 backdrop-blur border border-outline-variant/50 shadow-lg text-label-md font-label-md';
   const pill = (href, label, icon, active) =>
-    `<a href="${href}" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-colors ${active ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low'}">
-       <span class="material-symbols-outlined text-[18px]">${icon}</span>${label}</a>`;
+    // On phones only the active pill keeps its label, so four pills fit in 375px.
+    `<a href="${href}" title="${label}" aria-label="${label}" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-colors ${active ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low'}">
+       <span class="material-symbols-outlined text-[18px]">${icon}</span><span class="${active ? '' : 'hidden sm:inline'}">${label}</span></a>`;
   sw.innerHTML = pill('index.html', 'Client', 'business_center', !isProvider) +
                  pill('provider.html', 'Provider', 'work', isProvider) +
-                 pill('app/index.html', 'Mobile', 'smartphone', false);
+                 pill('app/index.html', 'Mobile', 'smartphone', false) +
+                 pill('client-app/index.html', 'Client app', 'phone_iphone', false);
   document.body.appendChild(sw);
 
   // 2) Mobile menu: the desktop <nav> is hidden below md, so add a toggle that shows its links.
