@@ -2,8 +2,8 @@
 // Config via the script tag: data-data (data file) and data-var (global it defines). Defaults: the FIB_APP version.
 (function () {
   const me = document.currentScript;
-  const dataSrc = (me && me.dataset.data) || '../assets/app-data.js';
-  const dataVar = (me && me.dataset.var) || 'FIB_APP';
+  const dataSrc = (me && me.dataset.data) || '../assets/client-app-data.js';
+  const dataVar = (me && me.dataset.var) || 'FIB_CLIENT_APP';
   const s = document.createElement('script');
   s.src = dataSrc;
   s.onload = build;
