@@ -185,11 +185,12 @@
 
   // Top section tabs on the "Info" area
   if (['home', 'inbox', 'notifications'].includes(page)) {
-    on(T('მიმოხილვა'), () => page !== 'home' && go('home'));
-    on(T('ჩატები'), () => page !== 'inbox' && go('inbox'));
-    on(T('შეტყობინებები'), () => page !== 'notifications' && go('notifications'));
+    const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    on(T('მიმოხილვა'), () => page !== 'home' ? go('home') : toTop());
+    on(T('ჩატები'), () => page !== 'inbox' ? go('inbox') : toTop());
+    on(T('შეტყობინებები'), () => page !== 'notifications' ? go('notifications') : toTop());
   }
-  if (page !== 'notifications') on(I('notifications'), () => go('notifications'));
+  on(I('notifications'), () => page !== 'notifications' ? go('notifications') : (window.scrollTo({ top: 0, behavior: 'smooth' }), toast('ყველა შეტყობინება აქ არის')));
 
   // ---------- per-screen behaviour ----------
   const screens = {
@@ -481,6 +482,96 @@
   };
 
   (screens[page] || (() => {}))();
+
+  // ---------- controls that had no behaviour in the Stitch export ----------
+  const iconsOf = el => [...el.querySelectorAll('.material-symbols-outlined')].map(i => i.textContent.trim());
+  const checkIcon = el => [...el.querySelectorAll('.material-symbols-outlined')].find(i => i.textContent.trim() === 'check');
+
+  // Pick-one group: the active item is the one with a ✓ icon, or the one whose classes differ from the rest.
+  // Clicking another item swaps the look (classes + ✓) so the choice visibly moves.
+  function selectOne(items, onPick) {
+    items = items.filter(Boolean);
+    if (items.length < 2) return;
+    let active = items.find(checkIcon) || items.find(a => items.filter(b => b.className === a.className).length === 1) || null;
+    if (!active) { // all identical: mark the first one ourselves
+      active = items[0];
+      active.classList.add('ring-2', 'ring-primary');
+    }
+    items.forEach(el => {
+      el.dataset.fibWired = '1';
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', e => {
+        if (e.target.closest('input')) return;
+        if (el !== active) {
+          const cls = active.className; active.className = el.className; el.className = cls;
+          const ck = checkIcon(active);
+          if (ck) { const host = ck.parentElement === active ? el : (el.querySelector(':scope > div:last-child') || el); ck.parentElement === active && active.firstElementChild === ck ? el.insertBefore(ck, el.firstChild) : host.appendChild(ck); }
+          active = el;
+        }
+        if (onPick) onPick(el, describe(el));
+      });
+    });
+  }
+  const leafWith = (txt, root) => [...(root || document).querySelectorAll('main *')].find(n => n.children.length === 0 && n.textContent.trim() === txt);
+
+  // ⚙️ "tune" buttons in the top bar
+  const tuneMsg = {
+    inbox: 'ფილტრი: ყველა საუბარი', 'media-stream': 'ფილტრი: ყველა ფაილი',
+  };
+  on(I('tune'), () => toast(tuneMsg[page] || 'AI პარამეტრები: ენა — ქართული • პასუხები — მოკლე და მარტივი'));
+
+  // Tab of the screen you're already on: scroll to top instead of doing nothing
+  if (page === 'order-detail') on(d => d.text === 'ინფო', () => window.scrollTo({ top: 0, behavior: 'smooth' }), 'main');
+
+  const extra = {
+    'brief-progress'() {
+      const budgets = [...document.querySelectorAll('main button')].filter(b => /^(₾|ბიუჯეტი ღიაა)/.test(describe(b).text));
+      selectOne(budgets, (el, d) => store.set('budget', d.text));
+      const styles = ['dark_mode', 'light_mode', 'palette'].map(ic => { const s = [...document.querySelectorAll('main .material-symbols-outlined')].find(i => i.textContent.trim() === ic); return s && s.closest('[class*="rounded-xl"]'); });
+      selectOne(styles, (el, d) => toast('ვიზუალური სტილი: ' + d.text.split(' ').slice(0, 2).join(' '), true));
+    },
+    home() {
+      const bars = [...document.querySelectorAll('main .cursor-pointer')].filter(b => /(იან|თებ|მარ|აპრ|მაი|ივნ)$/.test(b.textContent.trim()));
+      const month = { იან: 'იანვარი', თებ: 'თებერვალი', მარ: 'მარტი', აპრ: 'აპრილი', მაი: 'მაისი', ივნ: 'ივნისი' };
+      bars.forEach(b => { b.dataset.fibWired = '1'; b.addEventListener('click', () => {
+        bars.forEach(x => { x.style.opacity = x === b ? '1' : '.55'; });
+        const t = b.textContent.replace(/\s+/g, ' ').trim(); const m = t.slice(-3); const v = t.slice(0, -3).trim();
+        toast(month[m] + ': ' + (/₾/.test(v) ? v + ' დახარჯული' : 'ყველაზე მაღალი ხარჯი'), true);
+      }); });
+    },
+    inbox() {
+      cardTo('FIB AI ასისტენტი', () => go('brief-start'));
+      ['SoftCraft', 'Fullstack Core Team', 'Fintech UI Squad'].forEach(n => cardTo(n, () => go('team-chat')));
+    },
+    'ai-offers'() {
+      chipToChat(T('შეადარე ვადები'));
+      chipToChat(T('NDA მოთხოვნა'));
+    },
+    'orders-filter'() {
+      selectOne([...document.querySelectorAll('main .sort-option')], (el, d) => toast('დალაგება: ' + d.text, true));
+    },
+    media() {
+      on(I('play_arrow'), (e, el) => { const ic = el.querySelector('.material-symbols-outlined'); const playing = ic.textContent.trim() === 'pause'; ic.textContent = playing ? 'play_arrow' : 'pause'; toast(playing ? 'პაუზა' : 'ვიდეო უკრავს (დემო)'); });
+      let n = 1; const total = 4;
+      const step = dir => { n = (n - 1 + dir + total) % total + 1; const img = document.querySelector('main img'); if (img) { img.style.transition = 'opacity .15s'; img.style.opacity = '.3'; setTimeout(() => { img.style.opacity = ''; }, 160); } toast('ფაილი ' + n + ' / ' + total); };
+      on(I('chevron_left'), () => step(-1));
+      on(I('chevron_right'), () => step(1));
+      on(T('ყველა ('), () => go('media-stream'));
+    },
+    'media-stream'() {
+      const tabs = ['მედია (', 'ფაილები ('].map(t => [...document.querySelectorAll('main button')].find(b => describe(b).text.startsWith(t)));
+      selectOne(tabs, (el, d) => { if (d.text.startsWith('ფაილები')) toast('ფაილები: 4 დოკუმენტი (PDF, FIG)'); });
+      const grid = [...document.querySelectorAll('main [class*="grid-cols"]')].find(g => /\.(mp4|png)/i.test(g.textContent));
+      const items = grid ? [...grid.children] : [];
+      items.forEach(it => { it.dataset.fibWired = '1'; it.style.cursor = 'pointer'; it.addEventListener('click', e => { if (e.target.closest('button')) return; go('media'); }); });
+      const chips = ['ყველა (', 'ფოტო (', 'ვიდეო ('].map(t => [...document.querySelectorAll('main button')].find(b => describe(b).text.startsWith(t)));
+      selectOne(chips, (el, d) => {
+        const kind = d.text.startsWith('ფოტო') ? 'png' : d.text.startsWith('ვიდეო') ? 'mp4' : '';
+        items.forEach(it => { it.style.display = !kind || it.textContent.toLowerCase().includes('.' + kind) ? '' : 'none'; });
+      });
+    },
+  };
+  (extra[page] || (() => {}))();
 
   // Search (🔍 in the top bar) — screens with a header only
   if (document.querySelector('header')) {
